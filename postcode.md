@@ -31,7 +31,49 @@ If so, a natural next question is:
 
 PostCode need not demonstrate that projections universally outperform source. Discovering which kinds of software questions are well served by projections—and which continue to send the developer back to source—is itself a useful result.
 
-### 1.1 What PostCode does not establish about source
+### 1.1 Adaptive representation as a familiar AI interaction
+
+PostCode's proposed interaction has an analogue in an increasingly ordinary use of AI outside programming:
+
+> **Inspect this larger artifact and give me the representation of it that is useful for my current purpose.**
+
+For example:
+
+> Read this paper and summarize it for me.
+
+> Compare these two documents.
+
+> What changed between these reports?
+
+> What matters in this email thread?
+
+The human does not necessarily want to navigate the complete underlying artifact. Nor do they necessarily specify in advance exactly how the result should be represented. They express an information need and delegate some combination of inspection, selection, compression and presentation.
+
+PostCode asks whether this increasingly familiar interaction can usefully extend to software:
+
+> **Don't require me to reconstruct the program from source. Inspect it and give me the projection appropriate to what I need to know.**
+
+This makes PostCode less radical as an interaction model than it might initially appear. What is unusual is the degree of trust required.
+
+Ordinary summarization can often tolerate approximation, omission and interpretive compression. Software investigation frequently cannot.
+
+For example:
+
+> These are the three callers.
+
+is materially different from:
+
+> These are the three direct callers established by static analysis; additional calls through escaped closures cannot be exhaustively determined.
+
+Thus PostCode can be thought of, in part, as applying AI-mediated adaptive representation to programs while imposing a stronger epistemological discipline on the resulting claims.
+
+This also provides another possible explanation for why the timing may matter.
+
+Developers are increasingly becoming accustomed to delegating **representation selection and compression** to AI in other domains. At the same time, coding agents are reducing the amount of source developers necessarily inspect as a side effect of implementation.
+
+PostCode asks whether these two changes make a source-secondary software-development workflow newly practical.
+
+### 1.2 What PostCode does not establish about source
 
 There are at least three distinct questions:
 
@@ -115,7 +157,8 @@ Examples include:
 - tests;
 - behavior;
 - history;
-- rationale.
+- rationale;
+- summary.
 
 A lens answers:
 
@@ -350,7 +393,7 @@ Claim
   from synchronization policy.
 
 Evidence
-  Source structure + Git history + tests
+  Source structure + Git + tests
 
 Status
   Interpretive explanation.
@@ -641,7 +684,160 @@ The important rule is:
 
 > **Interpretation may guide investigation and may itself be useful output, but it must not masquerade as mechanically established program truth.**
 
-### Textual views
+### 6.1 Summary as an entry lens
+
+One particularly important lens is also one of the simplest and most familiar:
+
+> **Summarize this.**
+
+Conceptually:
+
+```text
+summarize(subject)
+```
+
+The subject might be:
+
+- a repository;
+- a package;
+- a subsystem;
+- a module;
+- a class/type;
+- a function;
+- a test;
+- a collection of entities;
+- a change between revisions.
+
+Unlike a conventional prose summary generated directly from source, a PostCode summary can potentially be assembled from other qualified projections.
+
+For example:
+
+```text
+summarize(MediaManager)
+        │
+        ├── structure(MediaManager)
+        ├── dependencies(MediaManager)
+        ├── callers(MediaManager)
+        ├── tests(MediaManager)
+        ├── history(MediaManager)
+        │
+        ↓
+qualified summary
+```
+
+This makes `summary` potentially a **composite lens**: it can select and combine information from other lenses according to the subject and current investigation.
+
+Its output might contain claims with different epistemological status:
+
+```text
+MediaManager coordinates media synchronization.
+
+  [interpretation]
+  Based on structure, dependencies and tests.
+
+It directly uses MediaCatalog and StagingMirror.
+
+  [derived]
+  TypeScript static analysis.
+
+Six tests directly exercise MediaManager.
+
+  [derived]
+  Test relationship analysis.
+
+The current separation from MediaCatalog appears to have
+been introduced to isolate catalog state from synchronization
+policy.
+
+  [interpretation]
+  Based on source structure and commit history.
+```
+
+The summary should preserve these distinctions rather than flattening everything into equally authoritative prose.
+
+This makes summary a useful stress test of PostCode's epistemological contract: it deliberately compresses several kinds of program knowledge while still being required to preserve the strength and provenance of consequential claims.
+
+### 6.2 `summarize(root)` as the unfamiliar-project entry point
+
+When PostCode first opens an unfamiliar repository, the natural initial projection may simply be:
+
+```text
+summarize(root)
+```
+
+The purpose is not to produce a definitive architecture document.
+
+It is to provide enough orientation for the human to decide **where to look next**.
+
+A root summary might identify, where supportable:
+
+- major packages/modules;
+- executable applications or libraries;
+- major dependency boundaries;
+- entry points;
+- exported APIs;
+- tests and their distribution;
+- build/package structure;
+- major externally recorded descriptions;
+- candidate architectural groupings, explicitly marked as interpretation.
+
+For example:
+
+```text
+Repository summary
+
+This repository contains:
+  • a command-line publishing application
+  • a web viewer application
+
+[derived]
+The publisher and viewer are separate packages with
+one-way generated-data dependencies.
+
+[derived]
+143 tests were discovered, concentrated in the
+publisher package.
+
+[interpretation]
+The principal architectural boundary appears to be
+between content publishing and content viewing.
+
+Possible next investigations:
+  Publishing
+  Viewer
+  Media synchronization
+  Tests
+```
+
+The summary is therefore not merely an endpoint.
+
+It is a **navigation surface**.
+
+A typical investigation might proceed:
+
+```text
+summarize(root)
+        ↓
+summarize(publishing)
+        ↓
+structure(publishing)
+        ↓
+summarize(MediaManager)
+        ↓
+tests(MediaManager)
+        ↓
+callers(reconcile)
+```
+
+This gives PostCode a simple recursive interaction model:
+
+> **Summarize where I am; then let me follow whatever becomes interesting.**
+
+The summary lens can also help PostCode choose subsequent lenses and views.
+
+Rather than requiring the human to know PostCode's visualization vocabulary in advance, a summary can expose useful subjects, relationships and possible questions from which deeper investigation proceeds.
+
+### 6.3 Textual views
 
 A projection need not be graphical or mechanically derived.
 
@@ -720,7 +916,7 @@ Possible entities include:
 
 The available entities may vary by language.
 
-### Persistence of Human Attention
+### 7.1 Persistence of Human Attention
 
 PostCode can persist workspace state without claiming that program identities survive arbitrary transformations.
 
@@ -834,7 +1030,54 @@ The initial vocabulary should avoid claims such as “important component” or 
 
 These are **candidate lenses**, not a proposed universal ontology.
 
-### 10.1 System/repository lenses
+### 10.1 Summary lens
+
+Summary is a candidate foundational lens:
+
+```text
+summarize(subject)
+```
+
+It differs from many other lenses because it is likely to be **composite and interpretive** rather than a single mechanically defined analysis.
+
+It may draw upon:
+
+- structure;
+- dependencies;
+- exports;
+- references;
+- tests;
+- history;
+- recorded assertions;
+- other available projections.
+
+Its purpose is:
+
+> **Provide a compact, qualified orientation to this subject and expose useful directions for further investigation.**
+
+Summary should be recursive across entity levels.
+
+In particular:
+
+```text
+summarize(root)
+```
+
+is the candidate default entry point for an unfamiliar repository.
+
+This is also a useful test of PostCode's ability to distinguish evidence types. A summary that merely produces plausible prose from source would provide little epistemological improvement over existing LLM code summarization.
+
+A PostCode summary should instead retain the distinction between:
+
+- derived facts;
+- recorded assertions;
+- behavioral/observational evidence;
+- interpretation;
+- unknown or unavailable information.
+
+The summary lens may therefore become one of the earliest practical demonstrations of the difference between PostCode and unconstrained code summarization.
+
+### 10.2 System/repository lenses
 
 Examples:
 
@@ -845,7 +1088,7 @@ Examples:
 - type relationships;
 - package/module references.
 
-### 10.2 Entity cross-reference lenses
+### 10.3 Entity cross-reference lenses
 
 For an identified entity:
 
@@ -865,7 +1108,7 @@ The available facts and guarantees are language-dependent.
 
 Do not manufacture symmetry where language semantics differ.
 
-### 10.3 Test lenses
+### 10.4 Test lenses
 
 Potential test projections include:
 
@@ -906,7 +1149,7 @@ Status
 
 PostCode should not require every test to have a language-independent behavioral description.
 
-### 10.4 Path lenses
+### 10.5 Path lenses
 
 Potential examples:
 
@@ -917,7 +1160,7 @@ Potential examples:
 
 These may frequently produce qualified rather than exact projections.
 
-### 10.5 Temporal/version lenses
+### 10.6 Temporal/version lenses
 
 Examples:
 
@@ -928,7 +1171,7 @@ Examples:
 - changes in what a test exercises or asserts;
 - the same projection across branches.
 
-### 10.6 Rationale/evidence lenses — if demanded by use
+### 10.7 Rationale/evidence lenses — if demanded by use
 
 Possible examples:
 
@@ -1154,7 +1397,35 @@ That is a feature of this phase, not a methodological flaw: sustained use expose
 
 It does mean that dogfooding cannot establish whether other developers would naturally prefer PostCode to source.
 
-### 16.1 PostCode on PostCode
+### 16.1 `summarize(root)` as a standard opening move
+
+A standard first action when PostCode is pointed at a repository should be:
+
+```text
+summarize(root)
+```
+
+This creates a repeatable orientation exercise across repositories.
+
+For familiar repositories such as PostCode and Enblog, the developer can compare the resulting summary with an existing mental model.
+
+For unfamiliar repositories, it tests whether PostCode can establish enough orientation to begin useful investigation without first requiring broad source reading.
+
+The interesting observations are not simply whether the summary is “good.”
+
+They include:
+
+- which information is consistently useful for orientation;
+- which information is omitted but immediately wanted;
+- which claims are difficult to qualify;
+- which summaries merely restate obvious repository structure;
+- which interpretations genuinely help navigation;
+- which suggested next lenses are actually followed;
+- when the developer immediately wants source instead.
+
+These observations can help determine whether `summary` deserves to remain a foundational lens or is merely a convenient initial feature.
+
+### 16.2 PostCode on PostCode
 
 Build the minimum version conventionally, then use PostCode to develop PostCode.
 
@@ -1174,7 +1445,7 @@ This distinction itself may prove useful during dogfooding:
 
 > **Was the failure in lens selection, projection capability, presentation, or the underlying idea?**
 
-### 16.2 Enblog
+### 16.3 Enblog
 
 Use PostCode during ordinary Enblog development.
 
@@ -1491,6 +1762,16 @@ Choose:
 - 2–4 lenses with explicit semantics;
 - simple views appropriate to their results.
 
+Among the initial lenses, strongly consider including:
+
+```text
+summarize(subject)
+```
+
+alongside a small number of mechanically defined lenses.
+
+This deliberately puts the epistemological contract under pressure early: PostCode must combine precise analysis with useful interpretation rather than postponing the difficult case until after a purely mechanical browser has been built.
+
 Deliverable:
 
 > A library/command capable of answering a few projection queries and accurately stating their limitations.
@@ -1537,19 +1818,90 @@ Allow another language to exert pressure on the existing abstractions.
 
 Do not generalize first.
 
+Observe:
+
+- which entities and lenses transfer;
+- which assumptions were artifacts of the first language;
+- which new language-specific concepts appear;
+- whether guarantees change;
+- whether the existing entity model breaks;
+- whether shared terminology conceals importantly different semantics;
+- how test projections transfer or fail to transfer.
+
+Repeat with another repository in the second language if doing so still teaches something.
+
 ### Phase 9 — Third language / unfamiliar-language challenge
 
 Preferably choose a language the developer does not know.
 
 Where practical, have coding agents implement the adapter without language-specific guidance from the developer.
 
-Ask:
+The developer supplies PostCode-level requirements:
 
-> **Can PostCode support meaningful investigation of a program whose source language the human cannot comfortably read?**
+- the kinds of entities PostCode currently understands;
+- questions existing lenses answer;
+- epistemological requirements;
+- adapter interfaces that have emerged from previous implementations;
+- the requirement not to discard language-specific information merely to fit existing abstractions.
+
+The agent supplies the language-specific realization:
+
+- learns the relevant semantics;
+- finds parser/compiler/indexer/LSP/static-analysis tooling;
+- determines which projections can be supported;
+- determines what guarantees can be made;
+- identifies where existing semantics do not transfer;
+- proposes language-specific concepts where necessary.
+
+The experiment should begin with:
+
+```text
+summarize(root)
+```
+
+This provides a particularly clean question:
+
+> **Can I begin forming a useful mental model of a program through PostCode when I do not know its implementation language well enough to comfortably reconstruct that model from source?**
+
+Investigation can then proceed recursively from the summary into whatever subjects and lenses appear useful.
+
+If the developer must first learn substantial source-language semantics before `summarize(root)` becomes trustworthy or useful, that is important negative evidence.
+
+If an agent reports:
+
+> The existing `callers` lens cannot provide the same semantics in this language because X; I can instead provide A, B and C with these guarantees.
+
+that is not merely an adapter inconvenience.
+
+It is evidence about the abstraction itself.
+
+> **An adapter fighting the abstraction is exactly the pressure this phase is intended to discover.**
+
+The unfamiliar-language case also strengthens the epistemological experiment: the developer cannot rely as readily on source-language expertise to notice that a plausible-looking projection is wrong.
+
+PostCode must increasingly earn trust through analysis, provenance and explicit guarantees.
 
 ### Phase 10 — Cross-language refactoring
 
 Only now ask which concepts genuinely survived contact with multiple languages and tasks.
+
+Compare:
+
+- adapter implementations;
+- lenses actually used;
+- projections repeatedly wanted;
+- unavailable projections;
+- guarantees;
+- language-specific concepts;
+- test projections;
+- source excursions;
+- successful and failed reuse of abstractions.
+
+Ask:
+
+> **Which concepts genuinely survived contact with multiple languages and multiple real programming tasks?**
+
+A federation of shared concepts plus language-specific extensions may be preferable to a universal ontology.
 
 ### Phase 11 — External exploratory use
 
@@ -1571,6 +1923,15 @@ This is the actual near-term plan.
 
 The first useful PostCode should be almost embarrassingly small.
 
+Choose:
+
+- one language;
+- one repository;
+- a few precisely defined entity types;
+- 2–4 projections/lenses with explicit semantics.
+
+A minimal workspace might look approximately like:
+
 ```text
 Repository: ./postcode
 Revision: working tree
@@ -1589,6 +1950,16 @@ Entities
       projection.test
 
 Open views:
+
+┌────────────────────────────┐
+│ repository / summary       │
+│                            │
+│ [qualified summary]        │
+│                            │
+│ Lens: summary              │
+│ Status: mixed              │
+│ Evidence: expand…          │
+└────────────────────────────┘
 
 ┌────────────────────────────┐
 │ repository / dependencies  │
@@ -1787,13 +2158,19 @@ PostCode may instead reproduce the historical pattern: source may remain suffici
 
 That possibility makes the Merino et al. work particularly useful prior art rather than merely historical background.
 
-**Code2UML: Agentic LLMs with Context Engineering for Scalable Software Visualization (Văduva et al., 2026). arXiv:2605.24453.**
+**Văduva, et al. (2026). _Code2UML: Agentic LLMs with Context Engineering for Scalable Software Visualization._ arXiv:2605.24453.**
 
 Generates multiple UML views from repositories across Java, JavaScript, PHP and Python using deterministic IR processing plus specialized agents.
 
 Especially interesting for PostCode because it demonstrates multi-language projection generation while reporting high relationship precision but deliberately limited entity recall.
 
 This provides a concrete nearby example of useful projections whose incompleteness matters.
+
+**CodeSkyline (VISSOFT 2026). _A Code-Map Visualization with Juxtaposed Views for Program Comprehension and Navigation._**
+
+Provides multiple simultaneous code-map views and abstraction levels, with a four-week adoption study in which some participants continued using the system occasionally.
+
+Relevant precedent for multi-view and sustained-use software visualization, while remaining primarily within the conventional program-comprehension/navigation framing.
 
 ## A.4 Architecture and agent-generated software
 
@@ -1886,6 +2263,35 @@ It asks:
 > Can multiple trustworthy projections become a viable primary human investigation surface?
 
 It additionally asks whether agent-mediated selection and generation can make task-specific projections cheap enough to alter the historical economics of software visualization.
+
+### Versus conventional LLM code summarization
+
+PostCode overlaps superficially with an already common AI interaction:
+
+> Summarize this code.
+
+The distinction is not that PostCode can produce prose summaries while existing LLMs cannot.
+
+Instead, PostCode asks whether program summarization can become part of a **qualified, navigable projection system**.
+
+A PostCode summary may:
+
+- compose mechanically defined lenses;
+- incorporate recorded assertions and behavioral evidence;
+- expose provenance;
+- distinguish derived facts from interpretation;
+- state limitations and unavailable information;
+- link directly into deeper projections;
+- remain associated with a particular repository revision;
+- be compared across revisions.
+
+Thus `summarize(root)` is not intended merely as a better prompt for an LLM.
+
+It is a candidate entry point into a structured investigation of the program.
+
+This may also provide a useful bridge between familiar contemporary AI use and PostCode's broader research question:
+
+> **Can the adaptive representation pattern people increasingly use for documents and other information become trustworthy enough to serve as a routine human interface to software?**
 
 ### Versus AI code review
 
