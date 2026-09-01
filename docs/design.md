@@ -22,11 +22,13 @@ analysis / adapter layer
 read-only PostCode workspace
 ```
 
-## 2. Lenses, Projections, and Views
+## 2. Core Model and Design Principles
+
+### 2.1 Lenses, Projections, and Views
 
 PostCode distinguishes three related concepts that should not be used interchangeably. They need not become formal software abstractions prematurely; their immediate purpose is to keep the design vocabulary clear.
 
-### 2.1 Lens
+#### 2.1.1 Lens
 
 A **lens** describes the aspect of the program being investigated: the question being asked of it.
 
@@ -49,7 +51,9 @@ A lens answers:
 
 A lens may accept lens-specific parameters that refine the information requested. A summary lens might specify focus, breadth, depth, or an information budget; a callers lens might distinguish direct from transitive callers.
 
-### 2.2 Projection
+A lens may be primitive or composite. A composite lens can select and combine information from other qualified projections; for example, `summarize(subject)` might draw on structure, dependencies, callers, tests, and history while remaining a lens over the subject.
+
+#### 2.1.2 Projection
 
 A **projection** is the information produced by applying a lens to a particular program state and subject.
 
@@ -85,7 +89,7 @@ Limitation
   exhaustively determined.
 ```
 
-### 2.3 View
+#### 2.1.3 View
 
 A **view** is the human-facing presentation of a projection.
 
@@ -101,7 +105,7 @@ A projection might be presented as:
 
 Presentation can be selected independently of the information requested. Four dependencies might be most useful as a small graph; eighty-seven might be better as a searchable or clustered table. A rationale projection might be best presented as annotated text.
 
-## 3. Epistemological Contract
+### 2.2 Epistemological Contract
 
 The requirement is not that every projection be exact or complete.
 
@@ -202,7 +206,7 @@ Status
   Plausible but not mechanically established.
 ```
 
-### 3.1 Status is part of the view
+#### 2.2.1 Status is part of the view
 
 Epistemological qualification must not exist only in internal metadata or surrounding documentation.
 
@@ -218,15 +222,15 @@ The governing principle is:
 
 Trust is critical. If subtle errors cause the user to doubt every projection, the environment loses its value as an alternative working surface.
 
-## 4. Sources of Program Knowledge
+### 2.3 Sources of Program Knowledge
 
 Program understanding can draw on several epistemologically different sources. PostCode should not collapse them into a single category of facts.
 
-### 4.1 Derived facts
+#### 2.3.1 Derived facts
 
 Derived facts are established through a defined analysis, such as an import relationship or a set of statically identifiable direct callers. The relevant adapter must describe what the analysis does and does not establish.
 
-### 4.2 Recorded assertions
+#### 2.3.2 Recorded assertions
 
 Programs and their histories contain statements made by humans or agents about the program. Possible sources include comments, structured annotations, design documents, commit messages, pull-request descriptions, issue discussions, agent-supplied development context, and other project documentation.
 
@@ -249,7 +253,7 @@ Status
   remains true or current.
 ```
 
-### 4.3 Behavioral and observational evidence
+#### 2.3.3 Behavioral and observational evidence
 
 Tests, runtime traces, profiler output, debugger observations, and similar evidence establish something different again.
 
@@ -264,7 +268,7 @@ That is stronger than merely guessing that duplicates are invalid, but weaker th
 
 Likewise, a runtime call count is an observation about a particular execution, not necessarily a statement about all executions.
 
-### 4.4 Inferred explanations
+#### 2.3.4 Inferred explanations
 
 Some useful questions inherently require interpretation:
 
@@ -280,7 +284,29 @@ An answer may combine current source structure, derived relationships, recorded 
 
 Such an answer may be extremely useful while still being an interpretation rather than an established program fact. Its evidence, confidence, and limitations should remain visible.
 
-## 5. Investigation and Representation Selection
+### 2.4 Entities, Identity, and Continuity of Attention
+
+PostCode does not initially require persistent semantic identities or a formal architecture model.
+
+Entities can be discovered from the implementation according to explicit adapter rules. Possible entities include repositories, packages, modules, files, namespaces, types, functions, methods, exported symbols, tests, and fields or variables where useful. The available entities may vary by language.
+
+PostCode can persist workspace state without claiming that program identities survive arbitrary transformations.
+
+For example:
+
+```text
+MediaManager / dependencies
+SyncReconciler / callers
+sync tests
+```
+
+This records what the human was paying attention to.
+
+If `MediaManager` later disappears, PostCode need not infer that another entity is its conceptual successor. It can show that the entity no longer exists, identify the revisions in which it was last present and removed, and allow the user to ask what happened. Git history and interpretation can then address the question without pretending to have established persistent semantic identity.
+
+## 3. Interaction Model
+
+### 3.1 Investigation and Representation Selection
 
 The human can choose a subject, lens, lens parameter values, view, or any combination of them. PostCode can choose whichever elements the human leaves unspecified, based on the expressed information need and the projections available.
 
@@ -346,40 +372,7 @@ The important rule is:
 
 Text is a first-class kind of view. A projection need not be graphical or mechanically derived, provided the provenance and epistemological status of its claims remain visible.
 
-## 6. Summary and Recursive Investigation
-
-One particularly important lens is also one of the simplest and most familiar:
-
-> **Summarize this.**
-
-Conceptually:
-
-```text
-summarize(subject)
-```
-
-The subject might be a repository, package, subsystem, module, type, function, test, collection of entities, or change between revisions.
-
-Unlike a conventional prose summary generated directly from source, a PostCode summary can be assembled from other qualified projections:
-
-```text
-summarize(MediaManager)
-        │
-        ├── structure(MediaManager)
-        ├── dependencies(MediaManager)
-        ├── callers(MediaManager)
-        ├── tests(MediaManager)
-        ├── history(MediaManager)
-        │
-        ↓
-qualified summary
-```
-
-Summary is therefore potentially a composite lens. Its output may contain derived facts, recorded assertions, observations, and interpretations. It must preserve those distinctions rather than flattening everything into equally authoritative prose.
-
-This makes summary a useful stress test of PostCode's epistemological contract: it deliberately compresses several kinds of program knowledge while still preserving the strength and provenance of consequential claims.
-
-### 6.1 `summarize(root)`
+### 3.2 Summary as Entry Point and Recursive Navigation
 
 When PostCode first opens an unfamiliar repository, the natural initial projection may be:
 
@@ -422,29 +415,7 @@ This gives PostCode a simple recursive interaction model:
 
 > **Summarize where I am; then let me follow whatever becomes interesting.**
 
-## 7. Subjects, Identity, and Workspace
-
-PostCode does not initially require persistent semantic identities or a formal architecture model.
-
-Entities can be discovered from the implementation according to explicit adapter rules. Possible entities include repositories, packages, modules, files, namespaces, types, functions, methods, exported symbols, tests, and fields or variables where useful. The available entities may vary by language.
-
-### 7.1 Persistence of human attention
-
-PostCode can persist workspace state without claiming that program identities survive arbitrary transformations.
-
-For example:
-
-```text
-MediaManager / dependencies
-SyncReconciler / callers
-sync tests
-```
-
-This records what the human was paying attention to.
-
-If `MediaManager` later disappears, PostCode need not infer that another entity is its conceptual successor. It can show that the entity no longer exists, identify the revisions in which it was last present and removed, and allow the user to ask what happened. Git history and interpretation can then address the question without pretending to have established persistent semantic identity.
-
-### 7.2 Workspace model
+### 3.3 Workspace Model
 
 A workspace contains an arbitrary number of independent views over projections.
 
@@ -464,25 +435,178 @@ Views may be:
 
 The user constructs the working surface appropriate to the current problem rather than operating within a predetermined dashboard.
 
-### 7.3 Structural navigation
+A PostCode workspace may comprise multiple linked workspaces, each preserving its own focal subject and collection of views. Collectively, these linked contexts form the workspace through which the human conducts an investigation.
 
-Hierarchy may be useful as a structural lens rather than as the universal representation of the program.
+### 3.4 Navigation Through Views
 
-Containment or decomposition may be hierarchical; dependencies, behavior, data flow, calls, and other relationships generally are not. PostCode should not assume that there is one uniquely correct conceptual hierarchy.
+Views are not merely endpoints. Subjects and relationships exposed by one view can become the starting points for further investigation.
 
-Initially, structural projections should be based only on relationships the relevant adapter can define accurately.
+Selecting an entity shown in a summary, tree, graph, table, or textual view can apply another lens to that entity or make it the subject of a new query. A dependency shown in one view might lead to a summary of the dependency, its callers, its tests, its history, or another available projection.
 
-## 8. Candidate Lens Families
+Selecting a subject or relationship can open another projection in the current workspace, add a new view alongside the existing views, or create a linked workspace focused on that subject. A focused workspace might begin with `summarize(subject)` and accumulate additional views as the investigation develops. The originating workspace remains available so that the human can move among related investigation contexts without reconstructing them.
+
+Some views may be constructed primarily for navigation. A package or module hierarchy, for example, might be presented as a tree through which the human can move into more specific subjects. Other navigation may proceed through non-hierarchical relationships such as dependencies, calls, data flow, tests, or history.
+
+PostCode should not assume that there is one uniquely correct conceptual hierarchy of the program. Containment and decomposition may be hierarchical; many other useful relationships are not. Navigation should follow whichever subjects and relationships the current investigation exposes.
+
+### 3.5 Source as a Secondary View
+
+Source should not be PostCode's default or primary representation. Completely excluding it, however, would hide the cases in which projections are insufficient and add artificial friction to investigation.
+
+PostCode may therefore provide an explicit **Show Source** escape hatch.
+
+Source can be understood as a special view whose underlying information is the conventional implementation itself rather than a deliberately reduced PostCode projection.
+
+Opening source is a legitimate action, not a failure. It allows the human to obtain implementation detail, verify a projection, or continue an investigation for which PostCode cannot yet provide an adequate representation.
+
+### 3.6 Revision and Projection Comparison
+
+During agent-mediated development, one of the most important questions is:
+
+> **What did the agent just change?**
+
+Git source diffs answer that at the implementation-text level. A projection comparison can instead ask:
+
+> **What changed at the level at which I was thinking about the program?**
+
+Examples include changed dependencies, callers, construction sites, test relationships, behavior, call paths, or recorded rationale.
+
+The smallest design is to apply the same lens to the same subject at two revisions and compare the resulting projections:
+
+```text
+before = lens(repository, revisionA, subject, parameters)
+after  = lens(repository, revisionB, subject, parameters)
+
+compare(before, after)
+```
+
+The two projections may initially be placed side by side. More specialized comparison views can emerge if use demands them.
+
+Projection stability is particularly important here: changes in the projection mechanism must not masquerade as changes in the program.
+
+### 3.7 Agent Integration
+
+Separating PostCode from the coding agent creates an important interaction question.
+
+The human may understand a desired change through a PostCode view, but the agent ordinarily sees the repository and the human's prose—not necessarily the projection, its qualifications, or the investigation that produced it. If the human must repeatedly translate a projected concept back into filenames, symbols, and implementation details, much of the value of working at the projection level may be lost.
+
+The human and agent should be able to discuss the software using projections as shared referents. For example:
+
+> Separate the synchronization policy shown in this projection from catalog-state management.
+
+or:
+
+> Preserve the behavior represented here, but remove this dependency path.
+
+#### 3.7.1 Shared machine-readable context
+
+The initial mechanism can be a machine-readable context artifact that PostCode keeps synchronized with the current workspace. Agent instructions such as `AGENTS.md` or `CLAUDE.md` can direct coding agents to read that artifact when interpreting the human's prompts.
+
+The purpose is not merely to give the agent another description of the repository. It is to let the human refer directly to PostCode context in a prompt: the focused view, a projected relationship, a qualified summary, or the current investigation. The agent can then resolve that reference without requiring the human to translate the projection back into filenames, symbols, and implementation details.
+
+The artifact should describe at least:
+
+- the repository and revision or working-tree state against which it was generated;
+- the open views and their stable identifiers;
+- which view or subject currently has the human's focus;
+- the lens, subject, and projection underlying each view;
+- the projection's content, provenance, epistemological status, and limitations;
+- source entities or locations that allow an agent to reconnect projected concepts to the implementation;
+- relationships among views where they form part of the same investigation.
+
+Conceptually:
+
+```text
+PostCode workspace
+        │
+        ↓ continuously updates
+machine-readable context artifact
+        │
+        ↓ read according to project agent instructions
+external coding agent
+```
+
+The context artifact should be generated state rather than a canonical program representation. It should not normally be committed, and updating it should not dirty the repository or trigger PostCode to analyze its own output. It should be written atomically and carry enough revision information for an agent to recognize when the context no longer describes the current program state.
+
+A compact manifest may be preferable to duplicating every projection into one indefinitely growing file. The manifest can describe the current workspace and point to separate machine-readable projection records when necessary. The exact representation can emerge with the implementation, but it should be documented and stable enough that different coding agents can consume it without bespoke integration.
+
+This allows prompts such as “remove the dependency shown in the focused view” or “preserve the behavior represented here” to carry useful shared context.
+
+#### 3.7.2 Agent-supplied context
+
+Communication can also flow from the coding agent back into PostCode.
+
+Project instructions can ask the agent to leave a structured response artifact or invoke a command to record context relating to its work. That context might include:
+
+- which projected concept the agent understood the request to concern;
+- how the implementation corresponds to that concept;
+- rationale for a change;
+- constraints, uncertainty, or missing information encountered;
+- tests or other verification performed;
+- source entities affected;
+- projections that should be refreshed or shown;
+- questions that another lens might help answer.
+
+Agent-supplied context must retain its provenance and epistemological status. An agent's account of its rationale, behavior, or interpretation is a recorded assertion or interpretation, not a derived fact merely because it was written in a structured form.
+
+The response artifact should be associated with the relevant repository state and, where possible, the task or conversation that produced it. PostCode can then present this development context alongside derived structure, history, tests, and other evidence without collapsing their distinctions.
+
+#### 3.7.3 Bidirectional interaction
+
+The file-based exchange can later develop into a more interactive protocol. An external agent might:
+
+- query PostCode lenses directly;
+- refer to projections and views by stable identifier;
+- request a new projection or refresh;
+- contribute rationale or uncertainty during development rather than only after a task;
+- suggest useful additions to the current investigation.
+
+PostCode might in turn generate prompt-ready references, expose structured queries, or eventually contain the agent conversation itself. These mechanisms can build on the same shared context model rather than replacing it.
+
+## 4. Projection Capabilities and Architecture
+
+### 4.1 Candidate Lens Families
 
 The initial vocabulary should avoid claims such as “important component” or “architectural responsibility” that inherently require judgment unless those claims are explicitly presented as interpretation.
 
 These are candidate lenses, not a proposed universal ontology.
 
-### 8.1 Summary lenses
+#### 4.1.1 Summary lenses
 
-Summary is a composite, qualified orientation to a subject and a way to expose useful directions for further investigation. It should be recursive across entity levels, with `summarize(root)` as the candidate entry point for an unfamiliar repository.
+One particularly important lens is also one of the simplest and most familiar:
 
-### 8.2 System and repository lenses
+> **Summarize this.**
+
+Conceptually:
+
+```text
+summarize(subject)
+```
+
+The subject might be a repository, package, subsystem, module, type, function, test, collection of entities, or change between revisions.
+
+Unlike a conventional prose summary generated directly from source, a PostCode summary can be assembled from other qualified projections:
+
+```text
+summarize(MediaManager)
+        │
+        ├── structure(MediaManager)
+        ├── dependencies(MediaManager)
+        ├── callers(MediaManager)
+        ├── tests(MediaManager)
+        ├── history(MediaManager)
+        │
+        ↓
+qualified summary
+```
+
+Its output may contain derived facts, recorded assertions, observations, and interpretations. It must preserve those distinctions rather than flattening everything into equally authoritative prose.
+
+This makes summary a useful stress test of PostCode's epistemological contract: it deliberately compresses several kinds of program knowledge while still preserving the strength and provenance of consequential claims.
+
+Summary provides a qualified orientation to a subject and exposes useful directions for further investigation. It should be recursive across entity levels, with `summarize(root)` as the candidate entry point for an unfamiliar repository.
+
+#### 4.1.2 System and repository lenses
 
 Examples include:
 
@@ -493,7 +617,9 @@ Examples include:
 - type relationships;
 - package and module references.
 
-### 8.3 Entity cross-reference lenses
+Hierarchy and other structural projections should be based only on relationships the relevant adapter can define accurately.
+
+#### 4.1.3 Entity cross-reference lenses
 
 For an identified entity, possible lenses include:
 
@@ -509,7 +635,7 @@ For an identified entity, possible lenses include:
 
 The available facts and guarantees are language-dependent. PostCode should not manufacture symmetry where language semantics differ.
 
-### 8.4 Test lenses
+#### 4.1.4 Test lenses
 
 Tests occupy a semi-formal boundary between intended program behavior and source-language implementation. A test may be considered at several distinct levels:
 
@@ -546,11 +672,11 @@ PostCode should project a test at the highest useful abstraction level that pres
 
 Potential test lenses include inventory, association with entities, setup/action/assertion structure, behavior or property summaries, dependencies, affected tests, and history across revisions.
 
-### 8.5 Path lenses
+#### 4.1.5 Path lenses
 
 Possible path lenses include call paths, dependency paths, data-propagation paths, and possible control-flow paths. These may frequently produce qualified rather than exact projections.
 
-### 8.6 Temporal and revision lenses
+#### 4.1.6 Temporal and revision lenses
 
 Examples include:
 
@@ -560,127 +686,13 @@ Examples include:
 - changes in what a test exercises or asserts;
 - the same projection across branches.
 
-### 8.7 Rationale and evidence lenses
+#### 4.1.7 Rationale and evidence lenses
 
 Possible lenses include recorded rationale, relevant annotations, history explaining a design choice, tests that appear to encode requirements, evidence supporting or contradicting old rationale, and synthesized explanations with explicit epistemological status.
 
 Whether these become stable lens families should emerge from use rather than being assumed.
 
-## 9. Source as a Secondary View
-
-Source should not be PostCode's default or primary representation. Completely excluding it, however, would hide the cases in which projections are insufficient and add artificial friction to investigation.
-
-PostCode may therefore provide an explicit **Show Source** escape hatch.
-
-Source can be understood as a special view whose underlying information is the conventional implementation itself rather than a deliberately reduced PostCode projection.
-
-Opening source is a legitimate action, not a failure. It allows the human to obtain implementation detail, verify a projection, or continue an investigation for which PostCode cannot yet provide an adequate representation.
-
-## 10. Revision and Projection Comparison
-
-During agent-mediated development, one of the most important questions is:
-
-> **What did the agent just change?**
-
-Git source diffs answer that at the implementation-text level. A projection comparison can instead ask:
-
-> **What changed at the level at which I was thinking about the program?**
-
-Examples include changed dependencies, callers, construction sites, test relationships, behavior, call paths, or recorded rationale.
-
-The smallest design is to apply the same lens to the same subject at two revisions and compare the resulting projections:
-
-```text
-before = lens(repository, revisionA, subject, parameters)
-after  = lens(repository, revisionB, subject, parameters)
-
-compare(before, after)
-```
-
-The two projections may initially be placed side by side. More specialized comparison views can emerge if use demands them.
-
-Projection stability is particularly important here: changes in the projection mechanism must not masquerade as changes in the program.
-
-## 11. Agent Integration
-
-Separating PostCode from the coding agent creates an important interaction question.
-
-The human may understand a desired change through a PostCode view, but the agent ordinarily sees the repository and the human's prose—not necessarily the projection, its qualifications, or the investigation that produced it. If the human must repeatedly translate a projected concept back into filenames, symbols, and implementation details, much of the value of working at the projection level may be lost.
-
-The human and agent should be able to discuss the software using projections as shared referents. For example:
-
-> Separate the synchronization policy shown in this projection from catalog-state management.
-
-or:
-
-> Preserve the behavior represented here, but remove this dependency path.
-
-### 11.1 Shared machine-readable context
-
-The initial mechanism can be a machine-readable context artifact that PostCode keeps synchronized with the current workspace. Agent instructions such as `AGENTS.md` or `CLAUDE.md` can direct coding agents to read that artifact when interpreting the human's prompts.
-
-The purpose is not merely to give the agent another description of the repository. It is to let the human refer directly to PostCode context in a prompt: the focused view, a projected relationship, a qualified summary, or the current investigation. The agent can then resolve that reference without requiring the human to translate the projection back into filenames, symbols, and implementation details.
-
-The artifact should describe at least:
-
-- the repository and revision or working-tree state against which it was generated;
-- the open views and their stable identifiers;
-- which view or subject currently has the human's focus;
-- the lens, subject, and projection underlying each view;
-- the projection's content, provenance, epistemological status, and limitations;
-- source entities or locations that allow an agent to reconnect projected concepts to the implementation;
-- relationships among views where they form part of the same investigation.
-
-Conceptually:
-
-```text
-PostCode workspace
-        │
-        ↓ continuously updates
-machine-readable context artifact
-        │
-        ↓ read according to project agent instructions
-external coding agent
-```
-
-The context artifact should be generated state rather than a canonical program representation. It should not normally be committed, and updating it should not dirty the repository or trigger PostCode to analyze its own output. It should be written atomically and carry enough revision information for an agent to recognize when the context no longer describes the current program state.
-
-A compact manifest may be preferable to duplicating every projection into one indefinitely growing file. The manifest can describe the current workspace and point to separate machine-readable projection records when necessary. The exact representation can emerge with the implementation, but it should be documented and stable enough that different coding agents can consume it without bespoke integration.
-
-This allows prompts such as “remove the dependency shown in the focused view” or “preserve the behavior represented here” to carry useful shared context.
-
-### 11.2 Agent-supplied context
-
-Communication can also flow from the coding agent back into PostCode.
-
-Project instructions can ask the agent to leave a structured response artifact or invoke a command to record context relating to its work. That context might include:
-
-- which projected concept the agent understood the request to concern;
-- how the implementation corresponds to that concept;
-- rationale for a change;
-- constraints, uncertainty, or missing information encountered;
-- tests or other verification performed;
-- source entities affected;
-- projections that should be refreshed or shown;
-- questions that another lens might help answer.
-
-Agent-supplied context must retain its provenance and epistemological status. An agent's account of its rationale, behavior, or interpretation is a recorded assertion or interpretation, not a derived fact merely because it was written in a structured form.
-
-The response artifact should be associated with the relevant repository state and, where possible, the task or conversation that produced it. PostCode can then present this development context alongside derived structure, history, tests, and other evidence without collapsing their distinctions.
-
-### 11.3 Bidirectional interaction
-
-The file-based exchange can later develop into a more interactive protocol. An external agent might:
-
-- query PostCode lenses directly;
-- refer to projections and views by stable identifier;
-- request a new projection or refresh;
-- contribute rationale or uncertainty during development rather than only after a task;
-- suggest useful additions to the current investigation.
-
-PostCode might in turn generate prompt-ready references, expose structured queries, or eventually contain the agent conversation itself. These mechanisms can build on the same shared context model rather than replacing it.
-
-## 12. Language Adapters
+### 4.2 Language Adapters
 
 A language adapter supplies the entity discovery, analyses, and guarantees available for a particular language.
 
@@ -694,7 +706,7 @@ Tests are a particularly useful stress case. A behavioral test may project natur
 
 Shared concepts and language-specific extensions can coexist. The adapter model should allow experience across languages to reveal their boundary rather than deciding that boundary in advance.
 
-## 13. Runtime Observations
+### 4.3 Runtime Observations
 
 Runtime information fits naturally into the projection model without requiring PostCode itself to become a debugger, profiler, test runner, or execution environment.
 
