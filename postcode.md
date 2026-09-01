@@ -5,98 +5,6 @@
 
 ---
 
-## 1. Motivation
-
-The long-term question motivating this project is:
-
-> **What does programming become when humans increasingly delegate implementation to agents?**
-
-A particularly interesting version is:
-
-> **If humans are no longer routinely reading or writing TypeScript, Python, Rust, etc., why should those source languages remain the primary persistent representation of a program?**
-
-This is a motivating research curiosity, not a premise of PostCode.
-
-It is entirely possible that conventional source remains an excellent canonical representation even when humans rarely inspect it. It is also possible that source contains information that cannot usefully be replaced by higher-level views, or that agents themselves continue to work best with conventional languages.
-
-PostCode should be capable of producing evidence against the motivating intuition.
-
-The immediate question is deliberately narrower:
-
-> **Can trustworthy, read-only projections of conventional codebases become a viable way for humans to investigate and supervise software instead of routinely reading source?**
-
-If so, a natural next question is:
-
-> **When are projections preferable to source, and when is source preferable to projections?**
-
-PostCode need not demonstrate that projections universally outperform source. Discovering which kinds of software questions are well served by projections—and which continue to send the developer back to source—is itself a useful result.
-
-### 1.1 Adaptive representation as a familiar AI interaction
-
-PostCode's proposed interaction has an analogue in an increasingly ordinary use of AI outside programming:
-
-> **Inspect this larger artifact and give me the representation of it that is useful for my current purpose.**
-
-For example:
-
-> Read this paper and summarize it for me.
-
-> Compare these two documents.
-
-> What changed between these reports?
-
-> What matters in this email thread?
-
-The human does not necessarily want to navigate the complete underlying artifact. Nor do they necessarily specify in advance exactly how the result should be represented. They express an information need and delegate some combination of inspection, selection, compression and presentation.
-
-PostCode asks whether this increasingly familiar interaction can usefully extend to software:
-
-> **Don't require me to reconstruct the program from source. Inspect it and give me the projection appropriate to what I need to know.**
-
-This makes PostCode less radical as an interaction model than it might initially appear. What is unusual is the degree of trust required.
-
-Ordinary summarization can often tolerate approximation, omission and interpretive compression. Software investigation frequently cannot.
-
-For example:
-
-> These are the three callers.
-
-is materially different from:
-
-> These are the three direct callers established by static analysis; additional calls through escaped closures cannot be exhaustively determined.
-
-Thus PostCode can be thought of, in part, as applying AI-mediated adaptive representation to programs while imposing a stronger epistemological discipline on the resulting claims.
-
-This also provides another possible explanation for why the timing may matter.
-
-Developers are increasingly becoming accustomed to delegating **representation selection and compression** to AI in other domains. At the same time, coding agents are reducing the amount of source developers necessarily inspect as a side effect of implementation.
-
-PostCode asks whether these two changes make a source-secondary software-development workflow newly practical.
-
-### 1.2 What PostCode does not establish about source
-
-There are at least three distinct questions:
-
-1. **Human representation:** Does source need to remain the primary representation through which humans understand and supervise a program?
-2. **Agent representation:** Is source the best representation for coding agents to consume and manipulate?
-3. **Persistent program representation:** Should source remain the canonical durable representation from which the program is built?
-
-PostCode directly investigates only the first.
-
-Even a maximally successful PostCode—one in which developers can conduct sustained software work without routinely inspecting source—would not establish that source should disappear.
-
-Agents might still work best with conventional source. Source might still be the best canonical representation. Or some future system might eventually replace source with a different persistent representation.
-
-Those are separate research questions.
-
-PostCode may remove one historical reason for source's privileged status:
-
-> Humans need source because source is how programmers understand programs.
-
-It does not establish what should replace source, or even that source should be replaced.
-
----
-
 ## 2. Core Idea
 
 PostCode is a read-only application that watches a filesystem/Git repository and allows the user to investigate the program through any number of projected views.
@@ -281,10 +189,6 @@ PostCode can therefore concentrate on the less-solved problem:
 This also keeps PostCode independent of any particular coding agent.
 
 Again, this separation is methodological rather than a claim about the eventual programming system.
-
-PostCode investigates the **human inspection surface**.
-
-It does not investigate whether coding agents themselves would benefit from a richer semantic representation, nor whether such a representation should eventually become the persistent program.
 
 ---
 
@@ -1576,101 +1480,15 @@ The distinction is:
 
 ---
 
-## 20. Success and Failure
-
-During the formative phase, success should not be defined primarily as reducing the number of source openings.
-
-A useful early success is:
-
-> **PostCode becomes sufficiently expressive that real development can be carried out primarily through it, while the remaining sources of friction and reasons for consulting source become increasingly identifiable.**
-
-Another useful result is:
-
-> **Recurring lens and projection needs emerge clearly enough to guide subsequent design.**
-
-Failures are equally informative:
-
-- projections are less efficient than source for broad classes of questions;
-- useful analyses cannot provide adequate guarantees;
-- PostCode frequently chooses inappropriate lenses or views;
-- the human must understand the visualization vocabulary well enough that automatic selection adds little;
-- recorded rationale is too stale or unreliable to help;
-- test intent cannot be projected usefully without source-level detail;
-- cross-language abstractions fail;
-- important implementation facts routinely escape projection;
-- prose + source + existing agents already constitute a better workflow.
-
-Mixed results may be especially interesting.
-
----
-
 ## 21. Research Practice: Speculative Papers
 
 An occasional useful research exercise is to write the paper **before the research is complete**, explicitly as speculative fiction.
 
-Rather than writing only the hoped-for paper, imagine incompatible outcomes:
-
-### A — Projections work
-
-Developers supervising agents substantially reduce routine source inspection.
-
-### B — Source survives
-
-Higher-level projections help in particular circumstances, but source remains extraordinarily efficient and information-dense.
-
-### C — Diffs are the result
-
-Projection diffs substantially improve review of agent-generated changes.
-
-### D — Trust is the result
-
-Representation choice matters less than explicit epistemological guarantees about what projections do and do not establish.
-
-### E — Cross-language vocabulary emerges
-
-Multiple adapters converge on a stable set of language-independent program concepts.
-
-### F — Provenance is the result
-
-The useful replacement for source is an environment that distinguishes derived facts, recorded rationale, behavioral evidence and interpretation while allowing them to be investigated together.
-
-### G — Tests are the bridge
-
-Behavioral test intent can often be separated usefully from source-language realization, while cases that resist abstraction expose important boundaries.
-
-### H — Representation selection is the result
-
-The important capability is not any particular visualization but automatically selecting a useful lens and view for the developer's current information need.
+Rather than writing only the hoped-for paper, imagine incompatible outcomes. See [`research.md` — “What Might We Learn?”](research.md#possible-findings) for examples of possible findings the project might produce.
 
 For each speculative result, ask:
 
 > **What observations would make this paper impossible to write?**
-
----
-
-## 22. Impact Goal
-
-If the work proves worthwhile, it should make a meaningful contribution to how programming evolves in an agent-mediated world.
-
-Possible routes include:
-
-- open-source software;
-- research publication;
-- eventual collaboration.
-
-Potential research contributions may concern:
-
-- projections as substitutes for source inspection;
-- epistemological contracts for program views;
-- automatic lens and representation selection;
-- combining derived facts, recorded assertions, observations and interpretation;
-- tests as projected behavioral evidence;
-- projection diffs for supervising agent changes;
-- persistence of human attention without semantic identity;
-- language-independent versus language-specific abstractions;
-- circumstances in which source remains necessary.
-
-> **Build to discover; publish what turns out to have been discovered.**
 
 ---
 
