@@ -1,5 +1,7 @@
 # PostCode: Research Direction
 
+The current PostCode design and its terminology are described in [`design.md`](design.md).
+
 ## 1. Motivation
 
 The long-term question motivating PostCode is:
@@ -18,19 +20,19 @@ PostCode should be capable of producing evidence against the motivating intuitio
 
 The immediate question is deliberately narrower:
 
-> **Can trustworthy projections become a viable way for humans to understand, direct, and supervise software development instead of routinely working through conventional programming-language source?**
+> **Can trustworthy projection-based views become a viable way for humans to understand, direct, and supervise software development instead of routinely working through conventional programming-language source?**
 
 This includes both understanding software that already exists and supervising the creation or continued development of software implemented by coding agents.
 
 Natural follow-up questions include:
 
-> **When are projections preferable to source, and when is source preferable to projections?**
+> **When are projection-based views preferable to source, and when is source preferable to projection-based views?**
 
 and:
 
 > **Can humans effectively direct software development while interacting primarily at the level of higher-level concepts rather than conventional programming-language source?**
 
-PostCode need not demonstrate that projections are preferable to source in general. Discovering which activities and questions are well served by projections—and which continue to send the developer back to source—is itself useful.
+PostCode need not demonstrate that projection-based views are preferable to source in general. Discovering which activities and questions are well served by them—and which continue to send the developer back to source—is itself useful.
 
 ### 1.1 Learning to supervise
 
@@ -224,7 +226,7 @@ PostCode may simply reproduce the historical pattern: source may remain sufficie
 
 The central initial question is:
 
-> **Can trustworthy projections become a viable primary conceptual interface for humans understanding, directing and supervising agent-mediated software development?**
+> **Can trustworthy projection-based views become a viable primary conceptual interface for humans understanding, directing and supervising agent-mediated software development?**
 
 That question leads to several subsidiary questions:
 
