@@ -393,15 +393,15 @@ The important rule is:
 
 Text is a first-class kind of view. A projection need not be graphical or mechanically derived, provided the provenance and epistemological status of its claims remain visible.
 
-### 3.2 Summary as Entry Point and Recursive Navigation
+### 3.2 Summary as Initial View and Recursive Navigation
 
-When PostCode first opens an unfamiliar repository, the natural initial projection may be:
+The default initial projection for a subject is:
 
 ```text
-summarize(root)
+summarize(subject, parameters)
 ```
 
-Its purpose is not to produce a definitive architecture document. It is to provide enough orientation for the human to decide where to look next.
+For an unfamiliar subject, a summary can provide an overview of its structure, behavior, and role; for a familiar subject, it can provide efficient access to details relevant to the current investigation. Parameter values can adjust the summary's focus, breadth, depth, and information budget. A summary may satisfy the human's current purpose or help them select or reach a further subject of investigation.
 
 A root summary might identify, where supportable:
 
@@ -413,8 +413,6 @@ A root summary might identify, where supportable:
 - build and package structure;
 - major externally recorded descriptions;
 - candidate architectural groupings, explicitly marked as interpretation.
-
-The summary is therefore not merely an endpoint. It is a navigation surface.
 
 A typical investigation might proceed:
 
