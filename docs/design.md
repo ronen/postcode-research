@@ -22,6 +22,20 @@ analysis / adapter layer
 read-only PostCode workspace
 ```
 
+In addition to projecting information available from repository state, PostCode can display runtime observations produced by external systems. PostCode need not itself become a debugger, profiler, test runner, or execution environment.
+
+```text
+debugger / profiler / tracer / test runner
+                 │
+                 ↓
+            runtime adapter
+                 │
+                 ↓
+              PostCode
+```
+
+Such observations might concern calls, time, allocation, coverage, values, stack frames, or debugger state.
+
 ## 2. Core Model and Design Principles
 
 ### 2.1 Lenses, Projections, and Views
@@ -266,7 +280,11 @@ Status
 
 That is stronger than merely guessing that duplicates are invalid, but weaker than proving that their rejection is a complete intended invariant of the system.
 
-Likewise, a runtime call count is an observation about a particular execution, not necessarily a statement about all executions.
+Runtime observations carry a natural scope qualification:
+
+> Observed during run X.
+
+They must not silently become claims about all possible executions.
 
 #### 2.3.4 Inferred explanations
 
@@ -284,25 +302,28 @@ An answer may combine current source structure, derived relationships, recorded 
 
 Such an answer may be extremely useful while still being an interpretation rather than an established program fact. Its evidence, confidence, and limitations should remain visible.
 
-### 2.4 Entities, Identity, and Continuity of Attention
+### 2.4 Identity and Continuity of Attention
 
-PostCode does not initially require persistent semantic identities or a formal architecture model.
+PostCode does not presuppose persistent semantic identities for program entities or relationships, or a formal architecture model.
 
-Entities can be discovered from the implementation according to explicit adapter rules. Possible entities include repositories, packages, modules, files, namespaces, types, functions, methods, exported symbols, tests, and fields or variables where useful. The available entities may vary by language.
+Entities and relationships can be discovered from the implementation according to explicit adapter rules. Possible entities include repositories, packages, modules, files, namespaces, types, functions, methods, exported symbols, tests, and fields or variables where useful. Possible relationships include containment, dependencies, calls, references, construction, mutation, and associations between tests and program entities. What can be discovered—and with what guarantees—may vary by language.
 
-PostCode can persist workspace state without claiming that program identities survive arbitrary transformations.
+The design distinguishes continuity of human attention from continuity of the underlying program structure:
 
-For example:
+> **PostCode can persist what the human was paying attention to without requiring continuity in the underlying program structure.**
+
+For example, workspace state might record:
 
 ```text
 MediaManager / dependencies
+MediaManager → MediaCatalog / dependency
 SyncReconciler / callers
 sync tests
 ```
 
-This records what the human was paying attention to.
+If `MediaManager` or one of its recorded relationships later disappears, PostCode need not infer a conceptual successor. It can show that the recorded subject no longer exists, identify the revisions in which it was last present and removed, and provide a qualified summary of the available evidence or let the human investigate what happened.
 
-If `MediaManager` later disappears, PostCode need not infer that another entity is its conceptual successor. It can show that the entity no longer exists, identify the revisions in which it was last present and removed, and allow the user to ask what happened. Git history and interpretation can then address the question without pretending to have established persistent semantic identity.
+In this way, PostCode preserves the continuity of the human's investigation across changes and discontinuities in the underlying program structure.
 
 ## 3. Interaction Model
 
@@ -705,27 +726,3 @@ The rule is:
 Tests are a particularly useful stress case. A behavioral test may project naturally into a shared concept such as “duplicate identifiers are rejected,” while another test may fundamentally concern a language's type system, ownership rules, macro behavior, linking semantics, runtime scheduling, or memory management.
 
 Shared concepts and language-specific extensions can coexist. The adapter model should allow experience across languages to reveal their boundary rather than deciding that boundary in advance.
-
-### 4.3 Runtime Observations
-
-Runtime information fits naturally into the projection model without requiring PostCode itself to become a debugger, profiler, test runner, or execution environment.
-
-External systems can produce observations through runtime adapters:
-
-```text
-debugger / profiler / tracer / test runner
-                 │
-                 ↓
-            runtime adapter
-                 │
-                 ↓
-              PostCode
-```
-
-Such observations might concern calls, time, allocation, coverage, values, stack frames, or debugger state.
-
-Runtime observations have a natural epistemological qualification:
-
-> Observed during run X.
-
-They must not silently become claims about all possible executions.
