@@ -261,7 +261,15 @@ Status
   Plausible but not mechanically established.
 ```
 
-#### 2.2.1 Status is part of the view
+#### 2.2.1 Evidence, method, and interpretation
+
+A claim's epistemological status must follow from its evidence and the method by which it was produced, not from the confidence expressed by a person, heuristic, or generative model.
+
+An AI agent may help select lenses, gather and combine evidence, propose labels, synthesize explanations, and identify useful interpretations. Its participation does not by itself make the resulting claims mechanically established. An interpretation does not become a derived fact merely because an agent states it confidently or cites supporting evidence. If appropriate evidence and a defined method independently establish the claim, that established claim is a separate result.
+
+PostCode can therefore make a stronger commitment about the disciplined assignment and preservation of epistemological status than it can about the correctness of unrestricted natural-language interpretation. Consequential established claims may need wording that preserves the guarantee supplied by their evidence and method; interpretive synthesis must remain identifiable as interpretation. This distinction should allow qualified views to contain useful explanation without reducing every result to an undifferentiated expression of uncertainty.
+
+#### 2.2.2 Status is part of the view
 
 Epistemological qualification must not exist only in internal metadata or surrounding documentation.
 
