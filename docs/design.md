@@ -16,7 +16,10 @@ The core projection pipeline is therefore:
 filesystem + Git
        │
        ↓
-analysis / adapter layer
+language-aware analysis
+       │
+       ↓
+lenses and projections
        │
        ↓
 read-only PostCode workspace
@@ -242,7 +245,7 @@ Program understanding can draw on several epistemologically different sources. P
 
 #### 2.3.1 Derived facts
 
-Derived facts are established through a defined analysis, such as an import relationship or a set of statically identifiable direct callers. The relevant adapter must describe what the analysis does and does not establish.
+Derived facts are established through a defined analysis, such as an import relationship or a set of statically identifiable direct callers. The relevant analysis must describe what it does and does not establish.
 
 #### 2.3.2 Recorded assertions
 
@@ -306,7 +309,7 @@ Such an answer may be extremely useful while still being an interpretation rathe
 
 PostCode does not presuppose persistent semantic identities for program entities or relationships, or a formal architecture model.
 
-Entities and relationships can be discovered from the implementation according to explicit adapter rules. Possible entities include repositories, packages, modules, files, namespaces, types, functions, methods, exported symbols, tests, and fields or variables where useful. Possible relationships include containment, dependencies, calls, references, construction, mutation, and associations between tests and program entities. What can be discovered—and with what guarantees—may vary by language.
+Entities and relationships can be discovered from the implementation according to explicit analysis rules. Possible entities include repositories, packages, modules, files, namespaces, types, functions, methods, exported symbols, tests, and fields or variables where useful. Possible relationships include containment, dependencies, calls, references, construction, mutation, and associations between tests and program entities. What can be discovered—and with what guarantees—may vary by language.
 
 The design distinguishes continuity of human attention from continuity of the underlying program structure:
 
@@ -324,6 +327,24 @@ sync tests
 If `MediaManager` or one of its recorded relationships later disappears, PostCode need not infer a conceptual successor. It can show that the recorded subject no longer exists, identify the revisions in which it was last present and removed, and provide a qualified summary of the available evidence or let the human investigate what happened.
 
 In this way, PostCode preserves the continuity of the human's investigation across changes and discontinuities in the underlying program structure.
+
+### 2.5 Naming and Terminology
+
+An entity's identity, its implementation identifier, and the label presented to the human are distinct.
+
+An implementation identifier is a mechanically established fact about the program, but it may be arbitrary, misleading, language-specific, or chosen for concerns irrelevant to the current investigation. A descriptive label expresses what the entity appears to mean or do and is therefore interpretation. A PostCode-level term may provide useful continuity across implementations or programming languages, but it must not silently become a canonical concept merely because PostCode introduced it.
+
+Views may present an implementation name, a descriptive label, or both. Exact identifiers and their source mappings should remain available for traceability and coding-agent coordination. Inferred labels must retain their provenance and interpretive status. For example:
+
+```text
+has glob
+Implementation: isFrobGlob(frob)
+Status: interpreted label
+```
+
+A change to a displayed label must not masquerade as a change to the program. Conversely, a renamed implementation identifier need not break the continuity of the human's attention when the available evidence supports continued reference to the same subject.
+
+Language-independent terminology may emerge through use, but PostCode should not prematurely impose a canonical pseudocode or universal naming vocabulary.
 
 ## 3. Interaction Model
 
@@ -658,7 +679,7 @@ Examples include:
 - type relationships;
 - package and module references.
 
-Hierarchy and other structural projections should be based only on relationships the relevant adapter can define accurately.
+Hierarchy and other structural projections should be based only on relationships the relevant language analysis can define accurately.
 
 #### 4.1.3 Entity cross-reference lenses
 
@@ -753,16 +774,27 @@ Possible lenses include:
 
 A written requirement is a recorded assertion. A test may provide partial behavioral evidence, an inferred constraint is interpretation, and a type-system restriction may be mechanically established. These distinctions must remain visible in the projection.
 
-### 4.2 Language Adapters
+#### 4.1.10 Boundary and modularity lenses
 
-A language adapter supplies the entity discovery, analyses, and guarantees available for a particular language.
+Possible lenses can identify candidate module boundaries by combining evidence from dependencies, calls, data flow, state ownership, change history, requirements, and rationale. They might ask:
 
-The first adapter should not be prematurely generalized into a universal programming ontology.
+- which entities form a relatively cohesive group;
+- where dependencies cross a possible boundary;
+- which state, effects, or invariants belong together;
+- which entities repeatedly change together;
+- what remains common across multiple implementations and what varies;
+- what would need to move or become an interface if a unit were extracted.
 
-The rule is:
+These projections should present candidate groupings, supporting and contrary evidence, cross-boundary dependencies, and ambiguity. They must be able to report that no clean boundary is evident rather than presenting an interpretive decomposition as established program structure.
+
+### 4.2 Language Integration
+
+Support for a programming language supplies the entity discovery, analyses, and guarantees available for that language.
+
+When adding new languages, the rule is:
 
 > **Accrete shared abstractions upward from multiple languages; never discard language-specific semantics merely to fit a shared model.**
 
 Tests are a particularly useful stress case. A behavioral test may project naturally into a shared concept such as “duplicate identifiers are rejected,” while another test may fundamentally concern a language's type system, ownership rules, macro behavior, linking semantics, runtime scheduling, or memory management.
 
-Shared concepts and language-specific extensions can coexist. The adapter model should allow experience across languages to reveal their boundary rather than deciding that boundary in advance.
+Shared concepts and language-specific extensions can coexist. Experience across languages should reveal their boundary rather than deciding that boundary in advance.

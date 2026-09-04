@@ -61,7 +61,7 @@ It also has important limitations. The developer is motivated to exercise PostCo
 
 ### 2.2 Enblog
 
-Using PostCode during ordinary Enblog development provides a familiar but independently evolved codebase, substantial existing design history, and real development tasks not invented solely to exercise PostCode.
+Using PostCode during ordinary Enblog development provides a familiar but independently evolved codebase, substantial existing design history, and real development tasks not invented solely to exercise PostCode. Enblog is still under active development rather than complete or deployed, so this context exercises PostCode during the creation of new behavior and structural change within an existing system, not only retrospective investigation.
 
 This context can expose:
 
@@ -73,7 +73,13 @@ This context can expose:
 
 The developer's prior familiarity remains a confound. Enblog is not evidence about unfamiliar-user comprehension.
 
-### 2.3 Unfamiliar open-source software
+### 2.3 Ab initio project
+
+Developing a separate new project with PostCode present from its inception tests whether projections can support the creation and continued supervision of software, rather than only the reconstruction of an existing implementation.
+
+Unlike PostCode-on-PostCode, the tool and its subject are distinct. Unlike Enblog, the project begins without a pre-existing implementation or development history. This context can expose whether intentions, rationale, requirements, and conceptual structure can be captured as they arise; whether PostCode's existing projection capabilities are useful for guiding a new project's early development; and how PostCode-mediated supervision affects the software being produced.
+
+### 2.4 Unfamiliar open-source software
 
 Unfamiliar OSS projects provide software whose development PostCode did not influence and for which the investigator lacks a pre-existing mental model.
 
