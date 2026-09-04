@@ -96,7 +96,7 @@ PostCode's design makes [summary the initial view and a basis for recursive navi
 
 > **A summary can satisfy the user's current information need or usefully support the next step in their investigation.**
 
-Each time the user uses this initial view provides an opportunity to observe their subsequent behavior, both to evaluate the hypothesis and to refine the summary lens. The recurring operation is:
+Each use of this initial view provides an opportunity to observe the user's subsequent behavior, both to evaluate the hypothesis and to refine the summary lens. The recurring operation is:
 
 ```text
 summarize(subject, parameters)
@@ -157,7 +157,7 @@ Source should remain conveniently available during formative use for two methodo
 
 Source excursions help answer:
 
-> **What information was missing from the projection-based workflow?**
+> **What prompted this source excursion, and what did source provide?**
 
 Their use should be recorded automatically when possible. PostCode may also ask unobtrusively what the developer was looking for, with responses such as:
 
