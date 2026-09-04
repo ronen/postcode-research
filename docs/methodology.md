@@ -49,7 +49,7 @@ Using PostCode while developing PostCode provides sustained access to the develo
 It is especially useful for discovering:
 
 - missing lenses and projection capabilities;
-- unsuitable view choices;
+- unsuitable presentation choices;
 - awkward navigation and workspace behavior;
 - failures in agent-context exchange;
 - distinctions the current design vocabulary does not capture;
@@ -105,7 +105,7 @@ PostCode's design makes [summary the initial view and a basis for recursive navi
 Each use of this initial view provides an opportunity to observe the user's subsequent behavior, both to evaluate the hypothesis and to refine the summary lens. The recurring operation is:
 
 ```text
-summarize(subject, parameters)
+summarize(subject, lens_parameters)
 ```
 
 This provides a repeatable starting point across development contexts without treating the resulting summaries as standardized measurements.
@@ -125,7 +125,7 @@ Observations relevant to refining the lens include:
 - which claims are difficult to qualify;
 - which summaries merely restate obvious repository structure;
 - which interpretations genuinely help navigation;
-- which parameter values the user selects explicitly or implies through the request, and how those choices vary by task and context;
+- which lens parameter values the user selects explicitly or implies through the request, and how those choices vary by task and context;
 - what stable or navigational structure should accompany the summary.
 
 These observations should combine interaction logs with contemporaneous annotations or other direct user reports, as described in [Self-Observation and Formative Logging](#6-self-observation-and-formative-logging).
@@ -144,8 +144,8 @@ Possible interpretations include:
 
 - the needed lens does not exist;
 - the lens exists but lacks necessary information;
-- the projection contains the information but its view presents it poorly;
-- the system selected an inappropriate lens or view;
+- the projection contains the information but the selected presentation shows it poorly;
+- the system selected an inappropriate lens or presentation;
 - the available repository evidence cannot support the desired claim;
 - source is intrinsically clearer or more efficient for this question;
 - the projection-based approach is poorly suited to the activity.
@@ -191,7 +191,7 @@ Relevant recorded context and events include:
 - the current operational task and information need, where formalized;
 - prompts and prose requests submitted to PostCode;
 - prompts sent to coding agents, when available, and references to external tasks or conversations;
-- explicit and automatically selected lenses, parameters, and views;
+- explicit and automatically selected lenses, lens parameter values, presentations, presentation parameter values, and resulting views;
 - entities and relationships discovered or opened;
 - projections produced;
 - views and linked workspaces opened, closed, or revisited;
@@ -223,7 +223,7 @@ The log is primarily a **design instrument**, not an unbiased behavioral dataset
 
 Individual events do not automatically constitute findings.
 
-A source excursion, failed projection, awkward view, or other event should retain enough context to support later interpretation. This includes the development task and information need; repository and revision; subject, lens, parameters, projection, view, and workspace context; the action taken next; and any contemporaneous subjective explanation.
+A source excursion, failed projection, awkward view, or other event should retain enough context to support later interpretation. This includes the development task and information need; repository and revision; subject, lens, lens parameter values, projection, presentation, presentation parameter values, view, and workspace context; the action taken next; and any contemporaneous subjective explanation.
 
 Recurring patterns can motivate design changes or research hypotheses. Interpretation should also preserve contrary instances and contextual boundaries rather than retaining only evidence that supports the current design.
 

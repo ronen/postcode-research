@@ -239,7 +239,7 @@ That question leads to several subsidiary questions:
 - Do projection comparisons provide a useful way to supervise agent-generated changes?
 - Which program concepts survive across languages, and which remain inherently language-specific?
 - Can useful continuity of human attention be maintained without solving persistent semantic identity?
-- When should projections preserve implementation names, translate them into descriptive language, or use language-independent terminology, and how do those choices affect understanding, continuity, and trust?
+- When should views preserve implementation names, translate them into descriptive language, or use language-independent terminology, and how do those choices affect understanding, continuity, and trust?
 - Which aspects of tests can usefully be projected above their source-language realization?
 - Does agent-mediated development materially change the usefulness of software visualization and other alternative program representations?
 - How does PostCode's usefulness depend on when it enters a program's development lifecycle?

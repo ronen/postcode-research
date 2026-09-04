@@ -24,7 +24,7 @@ The immediate milestone is the smallest trustworthy read-only version of PostCod
 It should support:
 
 - analysis of the PostCode repository in one programming language;
-- `summarize(subject, parameters)` and a few mechanically derived lenses;
+- `summarize(subject, lens_parameters)` and a few mechanically derived lenses;
 - simple views that preserve provenance, epistemological status, guarantees, and limitations;
 - navigation among subjects and projections;
 - convenient access to source;
@@ -46,7 +46,7 @@ Observe changes made by external coding agents and keep affected projections and
 
 ### 3.2 Prose investigation and selection
 
-Allow prose requests to identify subjects, select or parameterize lenses, choose useful views, and request qualified explanations. This becomes important when explicit controls make investigation awkward or require the user to know the lens vocabulary prematurely.
+Allow prose requests to identify subjects, select or parameterize lenses, choose or parameterize presentations, create useful views, and request qualified explanations. This becomes important when explicit controls make investigation awkward or require the user to know the lens and presentation vocabulary prematurely.
 
 ### 3.3 Shared coding-agent context
 
@@ -59,8 +59,8 @@ This is no longer an initial non-goal. Its timing should depend on when repeated
 Allow the same lens and subject to be projected at two repository states and initially place the results side by side:
 
 ```text
-before = lens(repository, revisionA, subject, parameters)
-after  = lens(repository, revisionB, subject, parameters)
+before = lens(repository, revisionA, subject, lens_parameters)
+after  = lens(repository, revisionB, subject, lens_parameters)
 
 compare(before, after)
 ```
@@ -69,9 +69,9 @@ Stable projection behavior is a prerequisite: changes in the projection mechanis
 
 Specialized diff presentations—such as highlighted additions and removals, overlays, movement, animation, or conceptual change summaries—should be added only if simpler comparison proves useful but inadequate.
 
-### 3.5 Lens and view growth
+### 3.5 Lens and presentation growth
 
-Add or revise lenses and views in response to recurring needs. A failed investigation does not by itself imply that a new lens is required; the problem may instead lie in projection content, parameters, presentation, selection, available evidence, or the underlying projection approach.
+Add or revise lenses and presentations in response to recurring needs. A failed investigation does not by itself imply that a new lens is required; the problem may instead lie in projection content, lens parameters, presentation behavior, presentation parameters, selection, available evidence, or the underlying projection approach.
 
 Candidate lenses are recorded in [`design.md`](design.md#41-candidate-lenses). Their eventual set, behavior, and grouping should be shaped by use.
 
@@ -99,7 +99,7 @@ Additional repositories are useful only while they expose new assumptions, needs
 
 Apply PostCode to software in another programming language when cross-language pressure can test concepts that have emerged through actual use. PostCode should preserve the language's semantics rather than force them into abstractions inherited from the first language.
 
-Observe which entities, lenses, parameters, guarantees, and test concepts transfer; which require language-specific treatment; and where shared terminology conceals different semantics.
+Observe which entities, lenses, lens parameter values, guarantees, and test concepts transfer; which require language-specific treatment; and where shared terminology conceals different semantics.
 
 ### 4.5 Unfamiliar-language challenge
 

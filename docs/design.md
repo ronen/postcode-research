@@ -41,9 +41,9 @@ Such observations might concern calls, time, allocation, coverage, values, stack
 
 ## 2. Core Model and Design Principles
 
-### 2.1 Lenses, Projections, and Views
+### 2.1 Lenses, Projections, Presentations, and Views
 
-PostCode distinguishes three related concepts that should not be used interchangeably. They need not become formal software abstractions prematurely; their immediate purpose is to keep the design vocabulary clear.
+PostCode distinguishes four related concepts that should not be used interchangeably. They need not become formal software abstractions prematurely; their immediate purpose is to keep the design vocabulary clear.
 
 #### 2.1.1 Lens
 
@@ -77,7 +77,7 @@ A **projection** is the information produced by applying a lens to a particular 
 Conceptually:
 
 ```text
-projection = lens(repository, revision, subject, parameters)
+projection = lens(repository, revision, subject, lens_parameters)
 ```
 
 The lens parameter values are part of the projection's identity and must remain distinct from choices about how the projection is presented.
@@ -106,9 +106,9 @@ Limitation
   exhaustively determined.
 ```
 
-#### 2.1.3 View
+#### 2.1.3 Presentation
 
-A **view** is the human-facing presentation of a projection.
+A **presentation** describes how a projection should be rendered and interacted with.
 
 A projection might be presented as:
 
@@ -121,6 +121,44 @@ A projection might be presented as:
 - a combination of these.
 
 Presentation can be selected independently of the information requested. Four dependencies might be most useful as a small graph; eighty-seven might be better as a searchable or clustered table. A rationale projection might be best presented as annotated text.
+
+A presentation may accept presentation-specific parameters such as sorting, grouping, layout, filtering, expansion depth, or whether to show implementation names, descriptive labels, or both. Consequential filtering, aggregation, or omission must remain visible so that presentation does not make a projection appear more complete than the information shown.
+
+Presentations may share common interaction affordances such as hover or focus detail, subject and relationship selection, contextual lens application, expansion and collapse of evidence or qualifications, opening or pinning views, and copying stable references for coding-agent prompts.
+
+#### 2.1.4 View
+
+A **view** is an instantiated presentation of a particular projection in the workspace.
+
+Conceptually:
+
+```text
+view = presentation(projection, context, presentation_parameters)
+```
+
+Different presentations of the same projection produce different views, as do different presentation parameter values or presentation contexts.
+
+#### 2.1.5 Logical Model and Execution Planning
+
+The conceptual separation of lens, projection, presentation, and view does not require PostCode to materialize each stage independently or in that order.
+
+An implementation may plan them together:
+
+```text
+plan = optimize(
+  lens,
+  lens_parameters,
+  presentation,
+  presentation_parameters,
+  available_analyses
+)
+
+view = execute(plan)
+```
+
+Presentation requirements such as filtering, ordering, field selection, or pagination may be pushed into a lens or underlying analysis. Lens and lens-parameter choices may likewise select a narrower or less expensive analysis.
+
+These optimizations must preserve the conceptual distinctions. Lens parameters define the information requested; presentation parameters define how it is shown; pushdown is an execution strategy rather than a reclassification of those choices. Partial or lazy materialization must retain explicit coverage and limitation information, and a change in execution plan must not masquerade as a change in the projected program information.
 
 ### 2.2 Epistemological Contract
 
@@ -350,13 +388,13 @@ Language-independent terminology may emerge through use, but PostCode should not
 
 ### 3.1 Investigation and Representation Selection
 
-The human can choose a subject, lens, lens parameter values, view, or any combination of them. PostCode can choose whichever elements the human leaves unspecified, based on the expressed information need and the projections available.
+The human can choose a subject, lens, lens parameter values, presentation, presentation parameter values, or any combination of them. PostCode can choose whichever elements the human leaves unspecified, based on the expressed information need and the projections available, and create the resulting view.
 
 Selection can therefore be explicit, automatic, or mixed. For example:
 
 > What depends on this?
 
-leaves PostCode to choose an appropriate lens and view.
+leaves PostCode to choose an appropriate lens and presentation.
 
 > Show callers of this.
 
@@ -364,11 +402,11 @@ effectively selects the lens while leaving the presentation open.
 
 > Show this as a tree.
 
-selects a view for information established by the surrounding context.
+selects a presentation for information established by the surrounding context.
 
 > Show the transitive callers of this as a tree.
 
-selects a lens, a lens parameter value, and a view.
+selects a lens, a lens parameter value, and a presentation.
 
 The prose interface supports questions at several levels:
 
@@ -392,13 +430,16 @@ and explicit choices
 prose interpretation
         │
         ↓
-subject / lens / parameter selection
+subject / lens / lens-parameter selection
         │
         ↓
 qualified projection
         │
         ↓
-view selection
+presentation / presentation-parameter selection
+        │
+        ↓
+workspace view
 ```
 
 “What calls this?” may map almost directly to a callers lens backed by static analysis. “Why does this exist?” may select evidence, history, and rationale lenses and synthesize several projections. “What behavior do these tests appear to protect?” may combine mechanically established test structure with recorded descriptions and explicitly marked interpretation.
@@ -412,17 +453,17 @@ The important rule is:
 
 > **Interpretation may guide investigation and may itself be useful output, but it must not masquerade as mechanically established program truth.**
 
-Text is a first-class kind of view. A projection need not be graphical or mechanically derived, provided the provenance and epistemological status of its claims remain visible.
+Text is a first-class presentation. A view need not be graphical, and its underlying projection need not be mechanically derived, provided the provenance and epistemological status of its claims remain visible.
 
 ### 3.2 Summary as Initial View and Recursive Navigation
 
 The default initial projection for a subject is:
 
 ```text
-summarize(subject, parameters)
+summarize(subject, lens_parameters)
 ```
 
-For an unfamiliar subject, a summary can provide an overview of its structure, behavior, and role; for a familiar subject, it can provide efficient access to details relevant to the current investigation. Parameter values can adjust the summary's focus, breadth, depth, and information budget. A summary may satisfy the human's current purpose or help them select or reach a further subject of investigation.
+For an unfamiliar subject, a summary can provide an overview of its structure, behavior, and role; for a familiar subject, it can provide efficient access to details relevant to the current investigation. Lens parameter values can adjust the summary's focus, breadth, depth, and information budget. A summary may satisfy the human's current purpose or help them select or reach a further subject of investigation.
 
 A root summary might identify, where supportable:
 
@@ -460,11 +501,11 @@ This gives PostCode a simple recursive interaction model:
 A workspace contains an arbitrary number of independent views over projections.
 
 ```text
-projection = lens(repository, revision, subject, parameters)
-view       = present(projection, context)
+projection = lens(repository, revision, subject, lens_parameters)
+view       = presentation(projection, context, presentation_parameters)
 ```
 
-Presentation context might eventually include the current investigation, the number and shape of results, available screen space, neighbouring views, user preferences, and previous interaction.
+Presentation parameters may express choices such as sorting, grouping, layout, filtering, expansion depth, or label style. Presentation context might eventually include the current investigation, the number and shape of results, available screen space, neighbouring views, user preferences, and previous interaction.
 
 A revision may be the current working tree, a branch, or a commit. Staged or index state may also be useful.
 
@@ -479,13 +520,13 @@ A PostCode workspace may comprise multiple linked workspaces, each preserving it
 
 ### 3.4 Navigation Through Views
 
-Views are not merely endpoints. Subjects and relationships exposed by one view can become the starting points for further investigation.
+Navigation is a common affordance of views, not a separate class of view. Any presentation may allow a displayed subject or relationship to become the subject of another lens.
 
-Selecting an entity shown in a summary, tree, graph, table, or textual view can apply another lens to that entity or make it the subject of a new query. A dependency shown in one view might lead to a summary of the dependency, its callers, its tests, its history, or another available projection.
+Selecting an entity shown in a view—whether presented as a summary, tree, graph, table, or text—can apply another lens to that entity or make it the subject of a new query. A dependency shown in one view might lead to a summary of the dependency, its callers, its tests, its history, or another available projection.
 
-Selecting a subject or relationship can open another projection in the current workspace, add a new view alongside the existing views, or create a linked workspace focused on that subject. A focused workspace might begin with `summarize(subject)` and accumulate additional views as the investigation develops. The originating workspace remains available so that the human can move among related investigation contexts without reconstructing them.
+Selecting a subject or relationship can create another projection and open its view in the current workspace, add a new view alongside the existing views, or create a linked workspace focused on that subject. A focused workspace might begin with `summarize(subject)` and accumulate additional views as the investigation develops. The originating workspace remains available so that the human can move among related investigation contexts without reconstructing them.
 
-Some views may be constructed primarily for navigation. A package or module hierarchy, for example, might be presented as a tree through which the human can move into more specific subjects. Other navigation may proceed through non-hierarchical relationships such as dependencies, calls, data flow, tests, or history.
+Some presentations may emphasize navigation, while others emphasize explanation, comparison, or inspection. A package or module hierarchy projection, for example, might use a tree presentation through which the human can move into more specific subjects. Other navigation may proceed through non-hierarchical relationships such as dependencies, calls, data flow, tests, or history.
 
 PostCode should not assume that there is one uniquely correct conceptual hierarchy of the program. Containment and decomposition may be hierarchical; many other useful relationships are not. Navigation should follow whichever subjects and relationships the current investigation exposes.
 
@@ -495,7 +536,7 @@ Source should not be PostCode's default or primary representation. Completely ex
 
 PostCode may therefore provide an explicit **Show Source** escape hatch.
 
-Source can be understood as a special view whose underlying information is the conventional implementation itself rather than a deliberately reduced PostCode projection.
+Conceptually, source follows the same model as other workspace content. A source lens produces a projection containing conventional implementation text for a subject and repository state; a source presentation renders that projection; and the resulting source view is the escape hatch exposed to the human.
 
 Opening source is a legitimate action, not a failure. It allows the human to obtain implementation detail, verify a projection, or continue an investigation for which PostCode cannot yet provide an adequate representation.
 
@@ -514,8 +555,8 @@ Examples include changed dependencies, callers, construction sites, test relatio
 The smallest design is to apply the same lens to the same subject at two revisions and compare the resulting projections:
 
 ```text
-before = lens(repository, revisionA, subject, parameters)
-after  = lens(repository, revisionB, subject, parameters)
+before = lens(repository, revisionA, subject, lens_parameters)
+after  = lens(repository, revisionB, subject, lens_parameters)
 
 compare(before, after)
 ```
@@ -550,7 +591,7 @@ The artifact should describe at least:
 - the current operational task and information need, where formalized;
 - the open views and their stable identifiers;
 - which view or subject currently has the human's focus;
-- the lens, subject, and projection underlying each view;
+- the lens, lens parameter values, subject, projection, presentation, and presentation parameter values underlying each view;
 - the projection's content, provenance, epistemological status, and limitations;
 - source entities or locations that allow an agent to reconnect projected concepts to the implementation;
 - relationships among views where they form part of the same investigation.
@@ -609,7 +650,7 @@ PostCode might in turn generate prompt-ready references, expose structured queri
 
 PostCode should support formative observation without requiring the developer to maintain a separate research diary.
 
-It should automatically record relevant interaction events, including prompts and prose requests submitted to PostCode; prompts sent to coding agents, when available; selected lenses, parameters, and views; navigation; source excursions; unavailable or failed projections; workspace changes; and interactions with coding-agent context.
+It should automatically record relevant interaction events, including prompts and prose requests submitted to PostCode; prompts sent to coding agents, when available; selected lenses, lens parameter values, presentations, presentation parameter values, and resulting views; navigation; source excursions; unavailable or failed projections; workspace changes; and interactions with coding-agent context.
 
 Recorded events should be associated with the current operational task, repository state, and investigation context where available. PostCode may retain the task directly or preserve a stable reference to the external artifact or conversation that defines it.
 
