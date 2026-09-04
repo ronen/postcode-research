@@ -15,7 +15,16 @@ The roadmap therefore distinguishes:
 - **deferred directions:** ideas that fit the design but are not needed to investigate the core projection model;
 - **non-requirements:** outcomes PostCode does not need to achieve in order for the research to succeed.
 
-Candidate directions may be reordered, combined, skipped, or abandoned. The roadmap records them so that useful possibilities are not forgotten, not to prescribe the project before experience exists.
+Candidate capability directions and formative contexts may be reordered, combined, revisited, skipped, or abandoned as evidence develops. The roadmap records them so that useful possibilities are not forgotten, not to prescribe the project before experience exists.
+
+After each meaningful use, apply the methodological loop before extending the roadmap. Ask:
+
+- What limitation, friction, success, or surprise was observed?
+- Is the resulting finding supported by the available evidence?
+- Does it call for a design revision, a new capability, another development context, or a change to the research question?
+- What small or inexpensive next step could distinguish among plausible interpretations, remove disproportionate friction, or unlock useful formative work?
+
+The next step should be selected for what it can clarify or make possible.
 
 ## 2. Immediate Bootstrap
 
@@ -75,6 +84,10 @@ Add or revise lenses and presentations in response to recurring needs. A failed 
 
 Candidate lenses are recorded in [`design.md`](design.md#41-candidate-lenses). Their eventual set, behavior, and grouping should be shaped by use.
 
+### 3.6 Workspace usability and chrome
+
+Refine shared workspace controls, layout, navigation, feedback, and presentation affordances when interface friction interferes with sustained use or obscures what is being learned about projections. Visual polish by itself is not a roadmap milestone.
+
 ## 4. Expanding Formative Contexts
 
 PostCode should eventually be exercised across the different contexts described in [`methodology.md`](methodology.md#2-formative-use). These contexts are sources of different pressure, not consecutive milestones that must all be completed.
@@ -117,11 +130,11 @@ After multiple languages and real tasks have exerted pressure on the design, com
 
 Shared abstractions should be consolidated only where the evidence supports them. A federation of common concepts and language-specific extensions may be preferable to a universal ontology.
 
-## 5. External Evaluation
+## 5. External Use and Evaluation
 
-External exploratory use becomes useful when PostCode is coherent and reliable enough that participants are investigating the approach rather than merely encountering bootstrap defects. It can expose assumptions created by the author's knowledge, vocabulary, workflow, and tolerance for friction.
+External exploratory use becomes useful once PostCode supports a sufficiently coherent and reliable workflow for other developers to try it during their own development work. It can expose assumptions created by the author's knowledge, vocabulary, workflow, and tolerance for friction.
 
-Comparative evaluation should be considered only when a specific, sufficiently mature question warrants it. It may examine what developers choose when both projections and source are convenient, for which tasks, and why. It is not a single final verdict on PostCode.
+Formal user studies become useful when a specific research question and the relevant tasks, methods, and outcomes are sufficiently mature.
 
 The evidence and claims appropriate to these forms of evaluation are described in [`methodology.md`](methodology.md#8-evidence-and-claim-scope).
 
@@ -157,14 +170,3 @@ PostCode does not need to produce:
 - proof that coding agents should cease working with conventional source.
 
 These remain possible adjacent questions or outcomes, but the roadmap does not depend on resolving them.
-
-## 8. Selecting the Next Step
-
-After each meaningful use, apply the methodological loop before extending the roadmap. Ask:
-
-- What limitation, friction, success, or surprise was observed?
-- Is the resulting finding supported by the available evidence?
-- Does it call for a design revision, a new capability, another development context, or a change to the research question?
-- What is the smallest next experiment capable of distinguishing among the plausible interpretations?
-
-The next step should be selected for what it can clarify or make possible, not because it was assigned a phase number in advance.

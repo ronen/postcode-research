@@ -195,6 +195,7 @@ Relevant recorded context and events include:
 - entities and relationships discovered or opened;
 - projections produced;
 - views and linked workspaces opened, closed, or revisited;
+- relationships among views, including derivation, placement, live dependencies, and changes in investigation roots;
 - test projections inspected;
 - revisions and branches inspected;
 - projection comparisons;
@@ -223,7 +224,7 @@ The log is primarily a **design instrument**, not an unbiased behavioral dataset
 
 Individual events do not automatically constitute findings.
 
-A source excursion, failed projection, awkward view, or other event should retain enough context to support later interpretation. This includes the development task and information need; repository and revision; subject, lens, lens parameter values, projection, presentation, presentation parameter values, view, and workspace context; the action taken next; and any contemporaneous subjective explanation.
+A source excursion, failed projection, awkward view, or other event should retain enough context to support later interpretation. This includes the development task and information need; repository and revision; subject, lens, lens parameter values, projection, presentation, presentation parameter values, view, workspace context, and relevant navigation lineage; the action taken next; and any contemporaneous subjective explanation.
 
 Recurring patterns can motivate design changes or research hypotheses. Interpretation should also preserve contrary instances and contextual boundaries rather than retaining only evidence that supports the current design.
 
@@ -245,9 +246,9 @@ Evidence from sustained formative use, interaction logs, contemporaneous observa
 
 External users can reveal assumptions caused by the author's prior knowledge, vocabulary, workflow, and willingness to tolerate friction. Exploratory use can refine tasks, instrumentation, and hypotheses without yet supporting broad comparative claims.
 
-### 8.3 Comparative user study
+### 8.3 Formal user studies
 
-Comparative studies can support appropriately scoped claims about what developers choose when both projections and source are available, and about preference, effectiveness, speed, comprehension, confidence, and trust. They should address specific mature questions and identify the relevant population, tasks, comparisons, and development contexts rather than act as a single final verdict on PostCode.
+User studies can support appropriately scoped claims about developer behavior, including what developers choose when both projections and source are available, and about preference, effectiveness, speed, comprehension, confidence, and trust. They should address specific mature questions and identify the relevant population, tasks, methods, outcomes, and development contexts rather than act as a single final verdict on PostCode.
 
 All findings should remain scoped to their evidence. Negative and mixed findings should be treated with the same discipline as positive ones; a technique may be useful for one task, repository, language, or development context and unhelpful for another.
 

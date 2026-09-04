@@ -136,7 +136,7 @@ Conceptually:
 view = presentation(projection, context, presentation_parameters)
 ```
 
-Different presentations of the same projection produce different views, as do different presentation parameter values or presentation contexts.
+Different presentations or presentation parameter values may produce distinct views over the same projection. Presentation context may change how an existing view is rendered without changing its identity.
 
 #### 2.1.5 Logical Model and Execution Planning
 
@@ -498,7 +498,7 @@ This gives PostCode a simple recursive interaction model:
 
 ### 3.3 Workspace Model
 
-A workspace contains an arbitrary number of independent views over projections.
+A workspace contains an arbitrary number of views over projections.
 
 ```text
 projection = lens(repository, revision, subject, lens_parameters)
@@ -516,15 +516,21 @@ Views may be:
 
 The user constructs the working surface appropriate to the current problem rather than operating within a predetermined dashboard.
 
-A PostCode workspace may comprise multiple linked workspaces, each preserving its own focal subject and collection of views. Collectively, these linked contexts form the workspace through which the human conducts an investigation.
+A workspace organizes its views as an investigation graph. Views are nodes; relationships record how views were derived, placed, and connected. Navigation usually creates a relationship to the view that supplied the new subject or other input, while comparison or synthesis may relate a view to several earlier views.
+
+Derivation, placement, revision binding, and investigation role are distinct. A view may be embedded in another view, placed alongside it, or moved into a linked workspace. It may be live or pinned independently of whether it is a root or descendant of the investigation. A view can become the root of a linked workspace without being pinned and without losing its derivation history.
+
+A PostCode workspace may comprise multiple such linked workspaces, each preserving its own focal subject and collection of views. Collectively, they form the workspace through which the human conducts an investigation.
 
 ### 3.4 Navigation Through Views
 
-Navigation is a common affordance of views, not a separate class of view. Any presentation may allow a displayed subject or relationship to become the subject of another lens.
+Views support navigation by allowing displayed subjects and relationships to become subjects of other lenses. Any presentation may provide this affordance.
 
 Selecting an entity shown in a view—whether presented as a summary, tree, graph, table, or text—can apply another lens to that entity or make it the subject of a new query. A dependency shown in one view might lead to a summary of the dependency, its callers, its tests, its history, or another available projection.
 
-Selecting a subject or relationship can create another projection and open its view in the current workspace, add a new view alongside the existing views, or create a linked workspace focused on that subject. A focused workspace might begin with `summarize(subject)` and accumulate additional views as the investigation develops. The originating workspace remains available so that the human can move among related investigation contexts without reconstructing them.
+Selecting a subject or relationship can create another projection and embed its view within the originating view, open it as a separate view in the current workspace, or create a linked workspace focused on that subject. For example, expanding an item in a tree might show a summary view inline while preserving the item's position in the surrounding hierarchy. A focused workspace might begin with `summarize(subject)` and accumulate additional views as the investigation develops. The originating workspace remains available so that the human can move among related investigation contexts without reconstructing them.
+
+The relationship to an originating view may record only how a subject was discovered, or it may remain a live dependency in which input to one view comes from another view's projection. If a live parent changes, an anchored view may remain in place, move with its anchor, or become detached when the anchor disappears. PostCode must not silently retarget or destroy the view when correspondence becomes uncertain; it should preserve the continuity of the human's investigation and expose whether the anchor is present, moved, absent, or uncertain.
 
 Some presentations may emphasize navigation, while others emphasize explanation, comparison, or inspection. A package or module hierarchy projection, for example, might use a tree presentation through which the human can move into more specific subjects. Other navigation may proceed through non-hierarchical relationships such as dependencies, calls, data flow, tests, or history.
 
@@ -594,7 +600,7 @@ The artifact should describe at least:
 - the lens, lens parameter values, subject, projection, presentation, and presentation parameter values underlying each view;
 - the projection's content, provenance, epistemological status, and limitations;
 - source entities or locations that allow an agent to reconnect projected concepts to the implementation;
-- relationships among views where they form part of the same investigation.
+- relationships among views, including derivation, placement, live dependencies, and investigation roots.
 
 Conceptually:
 
