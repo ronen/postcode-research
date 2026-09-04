@@ -126,7 +126,7 @@ These observations should combine interaction logs with contemporaneous annotati
 
 ## 4. Interpreting Formative Use
 
-The developer should deliberately exercise PostCode during real work, including tolerating some friction that might ordinarily cause an immediate return to source.
+To gather formative evidence, the developer will deliberately use PostCode during real development work and tolerate some friction that might otherwise prompt an immediate return to source.
 
 That tolerance is useful during formative self-study because sustained use exposes missing representations and awkward interactions. It also means that source-use frequency during formative use is not an unbiased measure of PostCode's success.
 
@@ -178,11 +178,13 @@ Independent evaluation can later ask a different question:
 
 ## 6. Self-Observation and Formative Logging
 
-PostCode should record its own use rather than relying on the developer to maintain a separate research diary.
+Formative evidence should combine automatically recorded interaction events with contemporaneous subjective observations. PostCode's support for capturing this evidence is described in [Formative Observation Support](design.md#38-formative-observation-support).
 
-Potential automatically recorded events include:
+Relevant recorded context and events include:
 
-- prose questions asked;
+- the current operational task and information need, where formalized;
+- prompts and prose requests submitted to PostCode;
+- prompts sent to coding agents, when available, and references to external tasks or conversations;
 - explicit and automatically selected lenses, parameters, and views;
 - entities and relationships discovered or opened;
 - projections produced;
@@ -196,17 +198,7 @@ Potential automatically recorded events include:
 - changes in workspace state;
 - interactions with coding-agent context.
 
-PostCode should also make it easy to record subjective observations at the moment they occur.
-
-Two useful first-class actions are:
-
-> **Wanted source here**
-
-and:
-
-> **Wish I had lens/projection…**
-
-The observation may be refined when useful:
+Subjective observations may record that the user:
 
 - wanted different information;
 - wanted a different presentation of existing information;
@@ -216,6 +208,8 @@ The observation may be refined when useful:
 - could not express the intended change to the coding agent using the available context.
 
 The goal is not exhaustive annotation. It is to avoid losing useful observations because they were not recorded when they occurred.
+
+Immediate reactions provide context for later interpretation; they are not standardized satisfaction measurements or evidence of effectiveness by themselves.
 
 The log is primarily a **design instrument**, not an unbiased behavioral dataset. Instrumentation may affect behavior, and the developer decides when to persevere, when to open source, and what deserves annotation.
 

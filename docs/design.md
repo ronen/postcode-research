@@ -526,6 +526,7 @@ The purpose is not merely to give the agent another description of the repositor
 The artifact should describe at least:
 
 - the repository and revision or working-tree state against which it was generated;
+- the current operational task and information need, where formalized;
 - the open views and their stable identifiers;
 - which view or subject currently has the human's focus;
 - the lens, subject, and projection underlying each view;
@@ -557,6 +558,7 @@ Communication can also flow from the coding agent back into PostCode.
 
 Project instructions can ask the agent to leave a structured response artifact or invoke a command to record context relating to its work. That context might include:
 
+- the task and request as the agent understood them;
 - which projected concept the agent understood the request to concern;
 - how the implementation corresponds to that concept;
 - rationale for a change;
@@ -581,6 +583,26 @@ The file-based exchange can later develop into a more interactive protocol. An e
 - suggest useful additions to the current investigation.
 
 PostCode might in turn generate prompt-ready references, expose structured queries, or eventually contain the agent conversation itself. These mechanisms can build on the same shared context model rather than replacing it.
+
+### 3.8 Formative Observation Support
+
+PostCode should support formative observation without requiring the developer to maintain a separate research diary.
+
+It should automatically record relevant interaction events, including prompts and prose requests submitted to PostCode; prompts sent to coding agents, when available; selected lenses, parameters, and views; navigation; source excursions; unavailable or failed projections; workspace changes; and interactions with coding-agent context.
+
+Recorded events should be associated with the current operational task, repository state, and investigation context where available. PostCode may retain the task directly or preserve a stable reference to the external artifact or conversation that defines it.
+
+PostCode should also make it easy to record subjective observations and reactions at the moment they occur. Lightweight controls might record an immediate positive or negative reaction—for example, 😁 or 😩—and offer an optional prompt for explanatory text.
+
+Two useful first-class actions are:
+
+> **Wanted source here**
+
+and:
+
+> **Wish I had lens/projection…**
+
+The methodological use and limitations of these records are described in [Self-Observation and Formative Logging](methodology.md#6-self-observation-and-formative-logging).
 
 ## 4. Projection Capabilities and Architecture
 
