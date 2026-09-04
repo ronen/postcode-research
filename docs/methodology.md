@@ -34,6 +34,8 @@ use again
 
 The process is directed by what the evidence supports. Positive, negative, limiting, mixed, and unexpected findings should all be allowed to redirect the work.
 
+Abstractions should likewise earn their place through accumulated pressure from real use rather than elegance alone.
+
 ## 2. Formative Use
 
 PostCode should be exercised across substantially different projects, tasks, architectures, domains, and programming languages. No single development context is representative; variation helps expose context-specific assumptions and reduces the risk of optimizing PostCode for any one of them.

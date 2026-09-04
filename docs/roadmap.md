@@ -136,6 +136,8 @@ Observe which entities, lenses, lens parameter values, guarantees, and test conc
 
 A later experiment may use a language the developer does not know well. Where practical, coding agents can integrate the new language into PostCode from PostCode-level requirements while reporting where the existing abstractions fail to transfer.
 
+The developer's unfamiliarity with the language also strengthens the trust experiment: source-language expertise is less available to expose a plausible-looking but incorrect projection. PostCode must instead earn trust through analysis, provenance, and explicit guarantees.
+
 The experiment can ask:
 
 > **Can the developer form a useful understanding of a program through PostCode without first learning enough of its implementation language to reconstruct that understanding from source?**
