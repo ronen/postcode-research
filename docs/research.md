@@ -190,6 +190,8 @@ Software visualization, architecture recovery, program-comprehension tools and h
 
 PostCode does not assume that agent-mediated development invalidates what has already been learned from those fields.
 
+Relevant literature and provisional distinctions from neighboring work are recorded in [`related-work.md`](related-work.md).
+
 Instead, it investigates whether the economics have changed.
 
 In conventional development, developers continuously read and manipulate source. In doing so, they acquire and refresh a detailed source-grounded mental model of the program as a side effect of implementation work. A separate visualization or higher-level representation must therefore provide enough additional value to justify supplementing an already-familiar representation.
@@ -373,11 +375,7 @@ Possible contributions may concern:
 - differences between PostCode-native, continued-development and unfamiliar-codebase use;
 - circumstances in which source remains necessary.
 
-The project may lead to open-source software, research publication, collaboration, or some combination of these.
-
-Those outcomes should follow from what is discovered rather than determine the result in advance.
-
-> **Build to discover; publish what turns out to have been discovered.**
+The strategy for recognizing, communicating, and strengthening these contributions is described in [`research-strategy.md`](research-strategy.md).
 
 The long-term question remains open:
 

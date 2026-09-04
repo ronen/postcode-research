@@ -53,7 +53,7 @@ It should support:
 - analysis of the PostCode repository in one programming language;
 - `summarize(subject, lens_parameters)` and a few mechanically derived lenses;
 - simple views that preserve provenance, epistemological status, guarantees, and limitations;
-- navigation among subjects and projections;
+- navigation among subjects, relationships, and views;
 - convenient access to source;
 - enough formative observation support to record use, friction, and immediate reactions.
 
@@ -79,7 +79,7 @@ Allow prose requests to identify subjects, select or parameterize lenses, choose
 
 Generate the machine-readable context described in [`design.md`](design.md#371-shared-machine-readable-context), allowing prompts to refer directly to focused views, projected relationships, and the current investigation. Agent-supplied context can later complete the exchange.
 
-This is no longer an initial non-goal. Its timing should depend on when repeatedly translating PostCode concepts back into source-level terms becomes a material obstacle to formative use.
+Its timing should depend on when repeatedly translating PostCode concepts back into source-level terms becomes a material obstacle to formative use.
 
 ### 3.4 Revision and projection comparison
 

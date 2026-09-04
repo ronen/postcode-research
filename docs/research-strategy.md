@@ -49,7 +49,7 @@ Candidate audiences include:
 - AI and agent research, where findings concern agent context, behavior, or oversight;
 - software practitioners, for tools, workflows, demonstrations, and experience reports.
 
-This list is provisional rather than exhaustive. Related work and emerging findings may identify other audiences or show that some of these are not relevant.
+This list is provisional rather than exhaustive. [`Related work`](related-work.md) and emerging findings may identify other audiences or show that some of these are not relevant.
 
 For each prospective contribution, ask who could use or evaluate it, what evidence that audience expects, which terminology and related work it requires, and whether presenting the contribution for that audience would clarify or distort the finding.
 

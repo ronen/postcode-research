@@ -640,7 +640,7 @@ Agent-supplied context must retain its provenance and epistemological status. An
 
 The response artifact should be associated with the relevant repository state and, where possible, the task or conversation that produced it. PostCode can then present this development context alongside derived structure, history, tests, and other evidence without collapsing their distinctions.
 
-#### 3.7.3 Bidirectional interaction
+#### 3.7.3 Interactive agent exchange
 
 The file-based exchange can later develop into a more interactive protocol. An external agent might:
 

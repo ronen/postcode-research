@@ -218,7 +218,7 @@ The current working hypothesis is that the less-occupied research territory lies
 - sustained software development rather than one-shot comprehension;
 - source as a secondary rather than assumed-primary human representation;
 - multiple task-dependent lenses and projections;
-- automatic selection of lenses and views from human information needs;
+- automatic selection of lenses and presentations from human information needs;
 - epistemological status and provenance visible at the point of every claim;
 - explicit accommodation of incomplete and language-dependent analyses;
 - tests treated as projected evidence rather than merely pass/fail gates;
