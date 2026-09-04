@@ -2,7 +2,7 @@
 
 This document describes the current development plan for PostCode and records plausible later directions without treating them as commitments.
 
-The research questions are described in [`research.md`](research.md), the current design in [`design.md`](design.md), and the process by which development produces research evidence in [`methodology.md`](methodology.md).
+The research questions are described in [`research.md`](docs/research.md), the current design in [`design.md`](docs/design.md), and the process by which development produces research evidence in [`methodology.md`](docs/methodology.md).
 
 ## 1. Roadmap Stance
 
@@ -26,7 +26,7 @@ After each meaningful use, apply the methodological loop before extending the ro
 
 The next step should be selected for what it can clarify or make possible.
 
-At suitable checkpoints, also consider whether [Publication-Aware Prioritization](research-strategy.md#33-publication-aware-prioritization) should affect what comes next.
+At suitable checkpoints, also consider whether [Publication-Aware Prioritization](docs/research-strategy.md#33-publication-aware-prioritization) should affect what comes next.
 
 ## 2. Planned Work
 
@@ -77,7 +77,7 @@ Allow prose requests to identify subjects, select or parameterize lenses, choose
 
 ### 3.3 Shared coding-agent context
 
-Generate the machine-readable context described in [`design.md`](design.md#371-shared-machine-readable-context), allowing prompts to refer directly to focused views, projected relationships, and the current investigation. Agent-supplied context can later complete the exchange.
+Generate the machine-readable context described in [`design.md`](docs/design.md#371-shared-machine-readable-context), allowing prompts to refer directly to focused views, projected relationships, and the current investigation. Agent-supplied context can later complete the exchange.
 
 Its timing should depend on when repeatedly translating PostCode concepts back into source-level terms becomes a material obstacle to formative use.
 
@@ -100,7 +100,7 @@ Specialized diff presentations—such as highlighted additions and removals, ove
 
 Add or revise lenses and presentations in response to recurring needs. A failed investigation does not by itself imply that a new lens is required; the problem may instead lie in projection content, lens parameters, presentation behavior, presentation parameters, selection, available evidence, or the underlying projection approach.
 
-Candidate lenses are recorded in [`design.md`](design.md#41-candidate-lenses). Their eventual set, behavior, and grouping should be shaped by use.
+Candidate lenses are recorded in [`design.md`](docs/design.md#41-candidate-lenses). Their eventual set, behavior, and grouping should be shaped by use.
 
 ### 3.6 Workspace usability and chrome
 
@@ -108,7 +108,7 @@ Refine shared workspace controls, layout, navigation, feedback, and presentation
 
 ## 4. Expanding Formative Contexts
 
-PostCode should eventually be exercised across the different contexts described in [`methodology.md`](methodology.md#2-formative-use). These contexts are sources of different pressure, not consecutive milestones that must all be completed.
+PostCode should eventually be exercised across the different contexts described in [`methodology.md`](docs/methodology.md#2-formative-use). These contexts are sources of different pressure, not consecutive milestones that must all be completed.
 
 ### 4.1 Enblog
 
@@ -166,7 +166,7 @@ External exploratory use becomes useful once PostCode supports a sufficiently co
 
 Formal user studies become useful when a specific research question and the relevant tasks, methods, and outcomes are sufficiently mature.
 
-The evidence and claims appropriate to these forms of evaluation are described in [`methodology.md`](methodology.md#8-evidence-and-claim-scope).
+The evidence and claims appropriate to these forms of evaluation are described in [`methodology.md`](docs/methodology.md#8-evidence-and-claim-scope).
 
 ## 6. Deferred Directions
 
