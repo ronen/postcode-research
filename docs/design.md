@@ -606,11 +606,11 @@ The methodological use and limitations of these records are described in [Self-O
 
 ## 4. Projection Capabilities and Architecture
 
-### 4.1 Candidate Lens Families
+### 4.1 Candidate Lenses
 
-The initial vocabulary should avoid claims such as “important component” or “architectural responsibility” that inherently require judgment unless those claims are explicitly presented as interpretation.
+Candidate lenses may include judgments such as “important component” or “architectural responsibility,” but must present them explicitly as interpretation rather than established program facts.
 
-These are candidate lenses, not a proposed universal ontology.
+These are candidate lenses and lens families, not a proposed universal ontology. The eventual set of lenses, their behavior, and their grouping should emerge from use rather than being assumed.
 
 #### 4.1.1 Summary lenses
 
@@ -752,8 +752,6 @@ Possible lenses include:
 - evidence that the implementation satisfies, violates, or does not establish them.
 
 A written requirement is a recorded assertion. A test may provide partial behavioral evidence, an inferred constraint is interpretation, and a type-system restriction may be mechanically established. These distinctions must remain visible in the projection.
-
-Whether these become stable lens families should emerge from use rather than being assumed.
 
 ### 4.2 Language Adapters
 
