@@ -6,14 +6,14 @@ The research questions are described in [`research.md`](research.md), the curren
 
 ## 1. Roadmap Stance
 
-Only the immediate bootstrap and the first PostCode-on-PostCode formative loop are currently planned. Everything beyond them is a candidate direction whose value, order, and shape depend on what earlier use reveals.
+The roadmap distinguishes:
 
-The roadmap therefore distinguishes:
-
-- **planned work:** the smallest implementation needed to begin formative use;
+- **planned work:** work that the project has explicitly committed to doing next;
 - **candidate directions:** plausible next experiments or capabilities, selected when evidence makes them useful;
 - **deferred directions:** ideas that fit the design but are not needed to investigate the core projection model;
 - **non-requirements:** outcomes PostCode does not need to achieve in order for the research to succeed.
+
+This is a living roadmap. As evidence and explicit decisions turn candidate directions into commitments, they can be added or moved into Planned Work; planned work can likewise be revised when subsequent evidence warrants it. Completed work can be removed from the roadmap or reduced to a brief checklist when retaining it helps explain later dependencies or decisions.
 
 Candidate capability directions and formative contexts may be reordered, combined, revisited, skipped, or abandoned as evidence develops. The roadmap records them so that useful possibilities are not forgotten, not to prescribe the project before experience exists.
 
@@ -26,7 +26,25 @@ After each meaningful use, apply the methodological loop before extending the ro
 
 The next step should be selected for what it can clarify or make possible.
 
-## 2. Immediate Bootstrap
+At suitable checkpoints, also consider whether [Publication-Aware Prioritization](research-strategy.md#33-publication-aware-prioritization) should affect what comes next.
+
+## 2. Planned Work
+
+### 2.1 Complete and publish the project foundation
+
+Before substantial implementation begins:
+
+- finish decomposing the original PostCode document;
+- compare the resulting documents with the original for omissions;
+- resolve any resulting inconsistencies or missing material;
+- add a README describing the project's status and document structure;
+- choose a license;
+- audit the repository and its history for material that should not become public;
+- create and push a public GitHub repository.
+
+This establishes public repository visibility. It is not yet a public launch, an invitation to use PostCode, or a solicitation of contributions.
+
+### 2.2 Immediate bootstrap
 
 The immediate milestone is the smallest trustworthy read-only version of PostCode that can be used during development of PostCode itself. Its purpose is to make the projection model concrete enough to evaluate and to create the conditions for sustained formative use.
 
@@ -130,7 +148,17 @@ After multiple languages and real tasks have exerted pressure on the design, com
 
 Shared abstractions should be consolidated only where the evidence supports them. A federation of common concepts and language-specific extensions may be preferable to a universal ontology.
 
-## 5. External Use and Evaluation
+## 5. Public Availability, External Use, and Evaluation
+
+Opening PostCode to others involves several separable choices:
+
+- making the repository publicly visible;
+- presenting PostCode publicly as a project;
+- inviting others to try it;
+- making the project ready to accept contributions;
+- actively soliciting and supporting contributors.
+
+The first choice is part of [Planned Work](#21-complete-and-publish-the-project-foundation). The others need not occur together or in a fixed order. Each becomes useful when its expected gains justify the corresponding documentation, stability, communication, and coordination work.
 
 External exploratory use becomes useful once PostCode supports a sufficiently coherent and reliable workflow for other developers to try it during their own development work. It can expose assumptions created by the author's knowledge, vocabulary, workflow, and tolerance for friction.
 
