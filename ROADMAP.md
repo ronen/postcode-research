@@ -37,6 +37,7 @@ Before substantial implementation begins:
 - finish decomposing the original PostCode document;
 - compare the resulting documents with the original for omissions;
 - resolve any resulting inconsistencies or missing material;
+- define and document the initial operational workflow for developing PostCode;
 - add a README describing the project's status and document structure;
 - choose a license;
 - audit the repository and its history for material that should not become public;
