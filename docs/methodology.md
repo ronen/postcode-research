@@ -217,116 +217,35 @@ The log is primarily a **design instrument**, not an unbiased behavioral dataset
 
 Individual events do not automatically constitute findings.
 
-A source excursion, failed projection, or awkward view should retain enough context to support later interpretation. Relevant context may include:
+A source excursion, failed projection, awkward view, or other event should retain enough context to support later interpretation. This includes the development task and information need; repository and revision; subject, lens, parameters, projection, view, and workspace context; the action taken next; and any contemporaneous subjective explanation.
 
-- the development task and information need;
-- the repository and revision;
-- the current subject, lens, parameters, projection, and view;
-- other views and workspace context available at the time;
-- the action taken next;
-- contemporaneous subjective explanation;
-- whether the event recurred in other tasks or contexts.
+Recurring patterns can motivate design changes or research hypotheses. Interpretation should also preserve contrary instances and contextual boundaries rather than retaining only evidence that supports the current design.
 
-Recurring patterns can motivate design changes or research hypotheses. For example:
+Findings may revise the design hypothesis, the set and behavior of lenses, the interaction model, the roadmap, or the research questions themselves.
 
-- repeatedly wanting a lens showing who can modify an object;
-- dependency projections proving less useful than expected;
-- repeatedly asking why particular structures exist;
-- consulting source for local sequential behavior;
-- projection comparisons becoming unexpectedly important;
-- explicit incompleteness increasing willingness to rely on static-analysis results;
-- comments and commit history becoming useful ingredients of projected rationale;
-- behavioral descriptions of tests proving useful;
-- some tests resisting abstraction because their subject is language-specific;
-- automatic lens or view selection failing in characteristic ways;
-- different presentations proving appropriate for the same projection in different contexts.
+## 8. Evidence and Claim Scope
 
-The interpretation should record contrary instances and boundaries rather than preserving only evidence that supports the current design.
-
-Findings can change:
-
-- the design hypothesis;
-- the candidate lens vocabulary;
-- the interaction model;
-- the roadmap;
-- the research questions themselves.
-
-## 8. Evidence and Evaluation Stages
-
-Evaluation should progress in stages rather than treating early formative use as a user study.
-
-### 8.1 Formative self-study
-
-Question:
-
-> **What is required to make projection-based investigation viable?**
-
-Evidence may include:
-
-- sustained PostCode-on-PostCode use;
-- Enblog development;
-- unfamiliar-repository investigations;
-- automatic usage logs;
-- contemporaneous subjective observations;
-- source excursions and their stated reasons;
-- missing-projection requests;
-- design changes motivated by recurring friction.
-
-This stage supports design findings, bounded observations about the author's experience, and hypotheses for later investigation.
-
-### 8.2 External exploratory use
-
-Question:
-
-> **Can unfamiliar developers use this approach, and what happens when they try?**
-
-External users can reveal assumptions caused by the author's prior knowledge, vocabulary, workflow, and willingness to tolerate friction. Exploratory use can refine tasks, instrumentation, and hypotheses without yet supporting broad comparative claims.
-
-### 8.3 Comparative user study
-
-Question:
-
-> **When developers have convenient access to both projections and source, what do they choose, for which tasks, and why?**
-
-This is the appropriate stage for stronger claims concerning:
-
-- voluntary source reduction;
-- preference;
-- task effectiveness;
-- speed;
-- comprehension;
-- confidence;
-- trust;
-- differences among task types and development contexts.
-
-Comparative studies should be designed around specific mature questions rather than treated as a single final verdict on PostCode.
-
-## 9. Claim Discipline
-
-Formative experience can produce legitimate findings when claims are scoped to the evidence.
+The methodology distinguishes forms of evidence by the claims they can support.
 
 The governing distinction is:
 
 > **Formative use can produce design findings and hypotheses; independent evaluation is required for general claims about developer behavior.**
 
-Appropriate formative claims include:
+### 8.1 Formative self-study
 
-- “During PostCode development, the author repeatedly wanted mutation information that the available projections did not provide.”
-- “Across these three repositories, qualified summaries repeatedly led to useful next investigations.”
-- “In this task, source was preferred for understanding local sequential behavior.”
-- “This projection vocabulary failed to transfer from TypeScript to Rust.”
+Evidence from sustained formative use, interaction logs, contemporaneous observations, source excursions, and resulting design changes can help determine what is required to make projection-based investigation viable. It supports design findings, bounded observations about the developer's experience, and hypotheses for later investigation.
 
-Inappropriate generalizations include:
+### 8.2 External exploratory use
 
-- “Developers prefer projections to source.”
-- “PostCode improves comprehension.”
-- “Projection comparisons make agent supervision faster.”
+External users can reveal assumptions caused by the author's prior knowledge, vocabulary, workflow, and willingness to tolerate friction. Exploratory use can refine tasks, instrumentation, and hypotheses without yet supporting broad comparative claims.
 
-unless those claims are supported by evidence designed for the relevant population, tasks, comparison, and outcome.
+### 8.3 Comparative user study
 
-Negative and mixed findings should be reportable with the same discipline. A technique can be useful for one task, repository, language, or development context and unhelpful for another.
+Comparative studies can support appropriately scoped claims about what developers choose when both projections and source are available, and about preference, effectiveness, speed, comprehension, confidence, and trust. They should address specific mature questions and identify the relevant population, tasks, comparisons, and development contexts rather than act as a single final verdict on PostCode.
 
-## 10. Relationship to Development Workflow
+All findings should remain scoped to their evidence. Negative and mixed findings should be treated with the same discipline as positive ones; a technique may be useful for one task, repository, language, or development context and unhelpful for another.
+
+## 9. Relationship to Development Workflow
 
 This methodology overlays software development; it does not prescribe the operational workflow by which development is planned and implemented.
 
@@ -339,4 +258,4 @@ The same checkpoint may produce both kinds of output:
 
 Those outputs should remain distinguishable. Architectural rationale should not be buried in research logs, and subjective formative-use observations should not silently become canonical design decisions.
 
-The development workflow for building PostCode itself may eventually differ from the workflow for using PostCode to develop another system. That distinction should emerge from actual use rather than be prescribed before sufficient experience exists.
+Development workflows may vary across developers, projects, tasks, and contexts, including between building PostCode itself and using PostCode to develop other systems. The methodology should accommodate those differences rather than presuppose a single PostCode workflow.
