@@ -645,7 +645,7 @@ Its output may contain derived facts, recorded assertions, observations, and int
 
 This makes summary a useful stress test of PostCode's epistemological contract: it deliberately compresses several kinds of program knowledge while still preserving the strength and provenance of consequential claims.
 
-Summary provides a qualified orientation to a subject and exposes useful directions for further investigation. It should be recursive across entity levels, with `summarize(root)` as the candidate entry point for an unfamiliar repository.
+Summary provides a qualified initial account of a subject. It should be recursive across entity levels and may either satisfy the human's current purpose or expose useful directions for further investigation.
 
 #### 4.1.2 System and repository lenses
 
@@ -730,6 +730,28 @@ Examples include:
 #### 4.1.7 Rationale and evidence lenses
 
 Possible lenses include recorded rationale, relevant annotations, history explaining a design choice, tests that appear to encode requirements, evidence supporting or contradicting old rationale, and synthesized explanations with explicit epistemological status.
+
+#### 4.1.8 External dependency lenses
+
+Possible lenses include:
+
+- libraries and packages, classified by development, build, test, or runtime use;
+- external services and APIs;
+- tools, platforms, and infrastructure;
+- specifications, standards, and protocols upon which the program depends;
+- versions, configuration, affected program entities, and evidence for each dependency.
+
+#### 4.1.9 Requirement and constraint lenses
+
+Possible lenses include:
+
+- stated behavioral and non-behavioral requirements;
+- design and implementation constraints;
+- requirements or constraints encoded by tests, types, configuration, documentation, history, or external specifications;
+- their scope, provenance, epistemological status, and affected entities;
+- evidence that the implementation satisfies, violates, or does not establish them.
+
+A written requirement is a recorded assertion. A test may provide partial behavioral evidence, an inferred constraint is interpretation, and a type-system restriction may be mechanically established. These distinctions must remain visible in the projection.
 
 Whether these become stable lens families should emerge from use rather than being assumed.
 
