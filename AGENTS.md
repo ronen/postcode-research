@@ -1,6 +1,6 @@
 # Agent Instructions
 
-## Task lifecycle
+## Session Startup
 
 Before performing substantive implementation work, read and follow [`dev/task-protocol.md`](dev/task-protocol.md).
 
