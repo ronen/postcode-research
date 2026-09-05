@@ -160,9 +160,11 @@ Or the different cases may reveal different strengths.
 
 This makes the point at which PostCode enters a program's lifecycle a research dimension in its own right.
 
-### 3.2 Does PostCode change the software?
+### 3.2 How does PostCode-mediated development affect the software?
 
-PostCode-mediated development may also affect the software being produced.
+There are two related but distinct questions. First, using PostCode may cause software and its recorded development context to evolve differently without any explicit policy requiring that result. Second, experience may suggest that agents should deliberately be asked to preserve particular language-agnostic properties of the software and its recorded development context when working under PostCode-mediated human supervision.
+
+#### 3.2.1 Emergent effects
 
 This raises a further question:
 
@@ -183,6 +185,16 @@ This distinction matters.
 PostCode and PostCode-native software could co-adapt in ways that make the environment appear highly successful while reducing its ability to generalize to arbitrary software. Conversely, pressure toward projectability might turn out to encourage properties—such as clearer conceptual structure—that remain valuable even outside PostCode.
 
 Whether either effect occurs is an open question.
+
+#### 3.2.2 Deliberate conventions for PostCode-mediated development
+
+PostCode-mediated development may also benefit from explicitly stated conventions for how coding agents implement and document changes. Such conventions would not prescribe the source-language realization in detail. They would instead encourage language-agnostic properties of the software and its recorded development context that help a human understand, direct and supervise the software without routinely working through source.
+
+Possible candidates might concern correspondence between conceptual and implementation boundaries, the discoverability of effects and invariants, the expression of behavior through tests, or the preservation of links among human requests, implementation changes, rationale and verification. These are hypotheses to investigate rather than conventions PostCode currently endorses.
+
+Deliberate conventions raise the same distinction between independently useful conceptual clarity and tool-relative projectability described above. They might also conceal limitations in PostCode by adapting the software to the tool rather than improving the tool's ability to work with arbitrary software.
+
+The project should therefore distinguish effects that arise through ordinary PostCode-mediated development from effects produced by explicit instructions to coding agents. Experience should determine which conventions prove useful, how far they generalize across projects and languages, and whether they should remain project choices, become PostCode recommendations, or eventually be represented or checked by PostCode itself.
 
 ## 4. Why This Question May Be Different Now
 
@@ -248,6 +260,7 @@ That question leads to several subsidiary questions:
 - Does PostCode work differently when it participates in a program's development from its inception than when it is introduced later?
 - Does PostCode-mediated supervision change the resulting implementation or the information preserved around it?
 - Do programs developed with PostCode become more readily projectable, and if so, does that reflect independently useful conceptual clarity or merely adaptation to PostCode?
+- Can deliberate language-agnostic development conventions improve PostCode-mediated supervision, and if so, do their benefits generalize across projects and languages or merely adapt software to PostCode?
 - If humans encounter a program primarily through an evolving collection of task-specific projections, can they nevertheless develop and maintain a sufficiently coherent sense of what the program “really is”?
 - Is a durable overall mental model necessary for effective direction and supervision, or can task-specific understanding largely replace it?
 - Are there projections or concepts that should provide a relatively stable core around which more ephemeral projections are organized?
