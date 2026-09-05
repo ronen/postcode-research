@@ -85,6 +85,8 @@ Before making implementation changes, the executing agent must:
 
 The initial commit establishes the historical boundary between the approved request and the implementation performed in response to it.
 
+After confirming that the opening commit succeeded, the executing agent must delete `_work/TASK.md` if it was the source of the task. The committed task record then becomes the sole record of the active task.
+
 The approved task text is immutable evidence. It must not be rewritten retrospectively for clarity or to match the implementation.
 
 ## 3. Follow-up Prompts
