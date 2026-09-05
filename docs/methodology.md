@@ -152,16 +152,24 @@ Possible interpretations include:
 - source is intrinsically clearer or more efficient for this question;
 - the projection-based approach is poorly suited to the activity.
 
-Formative use should also observe whether PostCode-mediated development creates pressure for particular language-agnostic implementation or documentation conventions. When a convention is proposed or adopted, the investigation should distinguish:
+Formative use should also help determine which textual results belong in transient conversation, which should become retained views, and which should contribute to longer-lived workspace context.
+
+### 4.1 Evaluating Conventions
+
+In addition to individual prompts, coding agents commonly receive standing project instructions in the form of conventions to follow. Formative use of PostCode will therefore take place alongside such conventions, and the investigation should observe how those conventions affect PostCode-mediated supervision.
+
+When evaluating a convention in relation to PostCode, its rationale and whether it was already in force or adopted during formative use should be recorded where possible. Its intended role may be a project-specific engineering choice, a deliberate formative intervention, or both; that role is not a conclusion about the convention's effects or generality.
+
+Evidence about the convention's effects can be gathered from interaction logs and contemporaneous observations of whether projections become clearer, more complete or easier to trust; whether users need fewer source excursions or explanatory prompts; whether agents can implement conceptual requests with less clarification; whether the convention creates friction, artificial structure or other costs; and whether the resulting software remains clear outside PostCode. Before-and-after observations and comparison among PostCode-on-PostCode, Enblog, ab initio development, unfamiliar software and different languages can provide further evidence.
+
+Interpretation should distinguish:
 
 - a convention that formalizes a property already observed without explicit instruction from one intended to produce a property not yet observed;
 - a response to a missing PostCode capability from a property genuinely needed for source-secondary supervision;
 - an independently useful improvement in conceptual clarity from adaptation that merely makes the software easier for PostCode to project;
 - a convention that generalizes across projects or languages from one that depends on a particular implementation, analysis, project or language.
 
-Candidate conventions should be treated as interventions whose effects can be observed, not as evidence that the convention was necessary or beneficial merely because it was adopted. Comparison among PostCode-on-PostCode, Enblog, ab initio development and unfamiliar software can help reveal whether a convention transfers beyond the context in which it arose.
-
-Formative use should also help determine which textual results belong in transient conversation, which should become retained views, and which should contribute to longer-lived workspace context.
+Local adoption creates an opportunity for observation; it does not by itself establish benefit, necessity, causation or generalizability.
 
 ## 5. Source Excursions
 
