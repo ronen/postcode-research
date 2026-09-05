@@ -45,7 +45,7 @@ Before substantial implementation begins:
 
 This establishes public repository visibility. It is not yet a public launch, an invitation to use PostCode, or a solicitation of contributions.
 
-### 2.2 Immediate bootstrap
+### 2.2 Initial implementation and bootstrap transition
 
 The immediate milestone is the smallest trustworthy read-only version of PostCode that can be used during development of PostCode itself. Its purpose is to make the projection model concrete enough to evaluate and to create the conditions for sustained formative use.
 
@@ -62,7 +62,7 @@ Including summary from the beginning puts the epistemological contract under pre
 
 PostCode should be used on its own development as soon as any implemented capability can contribute usefully. That use will broaden as further subjects, lenses, views, and observation support become available.
 
-There is no objective bootstrap threshold. At some point, experience may support the judgment that PostCode has a coherent minimal set of capabilities for sustained formative use. That judgment marks only the end of the immediate bootstrap; PostCode-on-PostCode use continues afterward.
+There is no objective boundary between the bootstrap transition and ongoing formative development. At some point, experience may support the judgment that PostCode has a coherent minimal set of capabilities for sustained formative use. That judgment marks the end of the bootstrap transition; PostCode-on-PostCode use will already have begun and will continue afterward.
 
 ## 3. Candidate Capability Directions
 
