@@ -209,6 +209,10 @@ Independent evaluation can later ask a different question:
 
 Formative evidence should combine automatically recorded interaction events with contemporaneous subjective observations. PostCode's support for capturing this evidence is described in [Formative Observation Support](design.md#38-formative-observation-support).
 
+Formative investigation should maintain an explicit evidence boundary. Observation records, subsequent analysis, and withheld reference material remain outside the repository under investigation and outside the evidence available to PostCode and its coding agents.
+
+Without this boundary, coding agents developing PostCode might use research observations or findings as development guidance, and PostCode-on-PostCode projections might rely on those same materials rather than independently recovering information from application-development evidence.
+
 Relevant recorded context and events include:
 
 - the current operational task and information need, where formalized;
@@ -247,7 +251,7 @@ The log is primarily a **design instrument**, not an unbiased behavioral dataset
 
 Individual events do not automatically constitute findings.
 
-A source excursion, failed projection, awkward view, or other event should retain enough context to support later interpretation. This includes the development task and information need; repository and revision; subject, lens, lens parameter values, projection, presentation, presentation parameter values, view, workspace context, and relevant navigation lineage; the action taken next; and any contemporaneous subjective explanation.
+A source excursion, failed projection, awkward view, or other event should retain enough context to support later interpretation. This includes the development task and information need; the PostCode version; the observed repository and its Git commit or relevant working-tree state; subject, lens, lens parameter values, projection, presentation, presentation parameter values, view, workspace context, and relevant navigation lineage; the action taken next; and any contemporaneous subjective explanation.
 
 Recurring patterns can motivate design changes or research hypotheses. Interpretation should also preserve contrary instances and contextual boundaries rather than retaining only evidence that supports the current design.
 

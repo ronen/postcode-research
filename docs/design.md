@@ -664,21 +664,24 @@ PostCode might in turn generate prompt-ready references, expose structured queri
 
 PostCode should support formative observation without requiring the developer to maintain a separate research diary.
 
-It should automatically record relevant interaction events, including prompts and prose requests submitted to PostCode; prompts sent to coding agents, when available; selected lenses, lens parameter values, presentations, presentation parameter values, and resulting views; navigation; source excursions; unavailable or failed projections; workspace changes; and interactions with coding-agent context.
-
-Recorded events should be associated with the current operational task, repository state, and investigation context where available. PostCode may retain the task directly or preserve a stable reference to the external artifact or conversation that defines it.
-
-PostCode should also make it easy to record subjective observations and reactions at the moment they occur. Lightweight controls might record an immediate positive or negative reaction—for example, 😁 or 😩—and offer an optional prompt for explanatory text.
-
-Two useful first-class actions are:
-
-> **Wanted source here**
-
-and:
-
-> **Wish I had lens/projection…**
-
 The methodological use and limitations of these records are described in [Self-Observation and Formative Logging](methodology.md#6-self-observation-and-formative-logging).
+
+#### 3.8.1 Automatic Event Capture
+
+PostCode should automatically record relevant interaction events, including prompts and prose requests submitted to PostCode; prompts sent to coding agents, when available; selected lenses, lens parameter values, presentations, presentation parameter values, and resulting views; navigation; source excursions; unavailable or failed projections; workspace changes; and interactions with coding-agent context.
+
+#### 3.8.2 Contemporaneous Subjective Observations
+
+PostCode should also make it easy to record subjective observations and reactions at the moment they occur. Possibilities include:
+
+- lightweight controls that record an immediate positive or negative reaction—for example, 😁 or 😩—and offer an optional prompt for explanatory text;
+- a **Wish I had lens/projection…** control that records an unmet information need and offers an optional prompt to describe it.
+
+#### 3.8.3 Evidence Boundary and Provenance
+
+PostCode must support an explicit evidence boundary between the repository being observed and the records produced by formative investigation. Formative observation records must be stored outside the observed repository; their destination must be configurable. During PostCode-on-PostCode use, this allows observations, subsequent analysis, and withheld reference material to remain outside the application repository and unavailable as input to PostCode or its coding agents.
+
+Each recorded event should include provenance metadata sufficient to identify the version of PostCode that produced it and the observed repository state, including its Git commit and any relevant working-tree changes. The metadata should also associate the event with the current operational task and investigation context where available. PostCode may retain the task directly or preserve a stable reference to the external artifact or conversation that defines it.
 
 ## 4. Projection Capabilities and Architecture
 
