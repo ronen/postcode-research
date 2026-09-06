@@ -2,7 +2,7 @@
 
 This document describes how building and using PostCode can produce trustworthy research evidence.
 
-The research questions are described in [`research.md`](research.md). The system through which the research is conducted is described in [`design.md`](design.md).
+The research questions are described in [`research.md`](research.md). The system through which the research is conducted is described in [`product-design.md`](product-design.md).
 
 ## 1. Methodological Stance
 
@@ -106,7 +106,7 @@ OSS use should involve genuine questions or development tasks where possible. Ar
 
 ## 3. Evaluating and Refining Summary as an Initial View
 
-PostCode's design makes [summary the initial view and a basis for recursive navigation](design.md#32-summary-as-initial-view-and-recursive-navigation). We treat this design decision as a hypothesis:
+PostCode's design makes [summary the initial view and a basis for recursive navigation](product-design.md#32-summary-as-initial-view-and-recursive-navigation). We treat this design decision as a hypothesis:
 
 > **A summary can satisfy the user's current information need or usefully support the next step in their investigation.**
 
@@ -209,7 +209,7 @@ Independent evaluation can later ask a different question:
 
 ## 6. Self-Observation and Formative Logging
 
-Formative evidence should combine automatically recorded interaction events with contemporaneous subjective observations. PostCode's support for capturing this evidence is described in [Formative Observation Support](design.md#38-formative-observation-support).
+Formative evidence should combine automatically recorded interaction events with contemporaneous subjective observations. PostCode's support for capturing this evidence is described in [Formative Observation Support](product-design.md#38-formative-observation-support).
 
 Formative investigation should maintain an explicit evidence boundary. Observation records, subsequent analysis, and withheld reference material remain outside the repository under investigation and outside the evidence available to PostCode and its coding agents.
 

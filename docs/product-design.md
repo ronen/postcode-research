@@ -1,4 +1,4 @@
-# PostCode: Design
+# PostCode: Product Design
 
 This document describes the current design hypothesis for PostCode: what the system is and how its concepts fit together.
 

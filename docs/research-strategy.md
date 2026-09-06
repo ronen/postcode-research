@@ -2,7 +2,7 @@
 
 This document describes how PostCode's broader research direction will respond to what the project learns.
 
-The research questions are described in [`research.md`](research.md), the current design in [`design.md`](design.md), the process by which development produces evidence in [`methodology.md`](methodology.md), and candidate development directions in [`ROADMAP.md`](../ROADMAP.md).
+The research questions are described in [`research.md`](research.md), the current design in [`product-design.md`](product-design.md), the process by which development produces evidence in [`methodology.md`](methodology.md), and candidate development directions in [`ROADMAP.md`](../ROADMAP.md).
 
 Research strategy is distinct from both methodology and roadmap. Methodology governs how observations become findings and claims. The roadmap records implementation and formative-use possibilities. Research strategy asks which possible contributions deserve further investigation, when they may be ready to communicate, and what additional people or work could strengthen them.
 

@@ -1,6 +1,6 @@
 # PostCode: Research Direction
 
-The current PostCode design and its terminology are described in [`design.md`](design.md).
+The current PostCode design and its terminology are described in [`product-design.md`](product-design.md).
 
 ## 1. Motivation
 

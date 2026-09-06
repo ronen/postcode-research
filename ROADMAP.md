@@ -2,7 +2,7 @@
 
 This document describes the current development plan for PostCode and records plausible later directions without treating them as commitments.
 
-The research questions are described in [`research.md`](docs/research.md), the current design in [`design.md`](docs/design.md), and the process by which development produces research evidence in [`methodology.md`](docs/methodology.md).
+The research questions are described in [`research.md`](docs/research.md), the current design in [`product-design.md`](docs/product-design.md), and the process by which development produces research evidence in [`methodology.md`](docs/methodology.md).
 
 ## 1. Roadmap Stance
 
@@ -78,7 +78,7 @@ Allow prose requests to identify subjects, select or parameterize lenses, choose
 
 ### 3.3 Shared coding-agent context
 
-Generate the machine-readable context described in [`design.md`](docs/design.md#371-shared-machine-readable-context), allowing prompts to refer directly to focused views, projected relationships, and the current investigation. Agent-supplied context can later complete the exchange.
+Generate the machine-readable context described in [`product-design.md`](docs/product-design.md#371-shared-machine-readable-context), allowing prompts to refer directly to focused views, projected relationships, and the current investigation. Agent-supplied context can later complete the exchange.
 
 Its timing should depend on when repeatedly translating PostCode concepts back into source-level terms becomes a material obstacle to formative use.
 
@@ -101,7 +101,7 @@ Specialized diff presentations—such as highlighted additions and removals, ove
 
 Add or revise lenses and presentations in response to recurring needs. A failed investigation does not by itself imply that a new lens is required; the problem may instead lie in projection content, lens parameters, presentation behavior, presentation parameters, selection, available evidence, or the underlying projection approach.
 
-Candidate lenses are recorded in [`design.md`](docs/design.md#41-candidate-lenses). Their eventual set, behavior, and grouping should be shaped by use.
+Candidate lenses are recorded in [`product-design.md`](docs/product-design.md#41-candidate-lenses). Their eventual set, behavior, and grouping should be shaped by use.
 
 ### 3.6 Workspace usability and chrome
 
