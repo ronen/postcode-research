@@ -111,13 +111,13 @@ Refine shared workspace controls, layout, navigation, feedback, and presentation
 
 PostCode should eventually be exercised across the different contexts described in [`methodology.md`](docs/methodology.md#2-formative-use). These contexts are sources of different pressure, not consecutive milestones that must all be completed.
 
-### 4.1 Enblog
+### 4.1 Continued Development of an Existing Project
 
-Use PostCode during ordinary Enblog development when the bootstrap is useful enough to remain present during real work. Enblog is a familiar, independently evolved system with its own history and development goals, but it is still under active development rather than complete or deployed. It therefore exercises PostCode during the creation of new behavior and structural change within an existing project, not only retrospective investigation.
+Apply PostCode in the [existing-project development context](docs/methodology.md#existing-project-development) when the bootstrap is useful enough to remain present during real work. This will exercise PostCode during the creation of new behavior and structural change, not only retrospective investigation.
 
 ### 4.2 Ab initio project
 
-Begin a separate new project with PostCode present from its inception. Unlike PostCode-on-PostCode, the tool and its subject are distinct; unlike Enblog, the project begins without a pre-existing implementation or development history.
+Begin a separate new project with PostCode present from its inception. Unlike PostCode-on-PostCode, the tool and its subject are distinct; unlike existing-project development, the project begins without a pre-existing implementation or development history.
 
 This context tests whether intentions, rationale, requirements, and conceptual structure can be captured as they arise; whether PostCode's existing projection capabilities are useful for guiding a new project's early development; and how PostCode-mediated supervision affects the software being produced.
 

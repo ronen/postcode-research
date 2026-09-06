@@ -22,7 +22,7 @@ The strategy should remain responsive to evidence. It may be useful to investiga
 
 ## 2. Impact and Dissemination Checkpoints
 
-Reconsider practical impact, research contribution, dissemination, and collaboration periodically rather than waiting for a nominally final system. Useful checkpoints may arise after sustained PostCode-on-PostCode use, work on Enblog, unfamiliar software, an additional language, a cross-language comparison, or preparation for a formal user study. The relevant contexts are described in the [`roadmap`](../ROADMAP.md#4-expanding-formative-contexts).
+Reconsider practical impact, research contribution, dissemination, and collaboration periodically rather than waiting for a nominally final system. Useful checkpoints may arise after sustained PostCode-on-PostCode use, existing-project development, unfamiliar software, an additional language, a cross-language comparison, or preparation for a formal user study. The relevant contexts are described in the [`roadmap`](../ROADMAP.md#4-expanding-formative-contexts).
 
 At each checkpoint ask separately:
 

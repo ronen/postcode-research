@@ -61,9 +61,13 @@ This context is primarily formative self-study, not an efficacy experiment. It i
 
 It also has important limitations. The developer is motivated to exercise PostCode and can change both the tool and its subject in response to friction. It cannot by itself establish how other developers would behave or whether they would prefer PostCode to source.
 
-### 2.2 Enblog
+<a id="existing-project-development"></a>
 
-Using PostCode during ordinary Enblog development provides a familiar but independently evolved codebase, substantial existing design history, and real development tasks not invented solely to exercise PostCode. Enblog is still under active development rather than complete or deployed, so this context exercises PostCode during the creation of new behavior and structural change within an existing system, not only retrospective investigation.
+### 2.2 Continued Development of an Existing Project
+
+One useful formative context is to apply PostCode during the continued development of an existing project already familiar to the investigator. PostCode's author has a suitable pre-existing personal project. It remains in progress and undeployed, so it presents genuine development needs that were not invented to exercise PostCode. It also has no specific delivery deadline, allowing some tolerance of formative friction without interfering with time-critical work.
+
+Prior familiarity makes it possible to compare PostCode's projections with an established understanding of the system, but remains a confound when interpreting the resulting observations. The project's specific product details are not relevant here. As with every formative context, however, characteristics of its domain and development circumstances should be considered when interpreting observations.
 
 This context can expose:
 
@@ -73,13 +77,13 @@ This context can expose:
 - projections needed for work in a different domain;
 - whether PostCode supports ordinary tasks rather than only self-directed demonstrations.
 
-The developer's prior familiarity remains a confound. Enblog is not evidence about unfamiliar-user comprehension.
+Existing-project development is not evidence about unfamiliar-user comprehension.
 
 ### 2.3 Ab initio project
 
 Developing a separate new project with PostCode present from its inception tests whether projections can support the creation and continued supervision of software, rather than only the reconstruction of an existing implementation.
 
-Unlike PostCode-on-PostCode, the tool and its subject are distinct. Unlike Enblog, the project begins without a pre-existing implementation or development history. This context can expose whether intentions, rationale, requirements, and conceptual structure can be captured as they arise; whether PostCode's existing projection capabilities are useful for guiding a new project's early development; and how PostCode-mediated supervision affects the software being produced.
+Unlike PostCode-on-PostCode, the tool and its subject are distinct. Unlike existing-project development, the project begins without a pre-existing implementation or development history. This context can expose whether intentions, rationale, requirements, and conceptual structure can be captured as they arise; whether PostCode's existing projection capabilities are useful for guiding a new project's early development; and how PostCode-mediated supervision affects the software being produced.
 
 ### 2.4 Unfamiliar open-source software
 
@@ -160,7 +164,7 @@ In addition to individual prompts, coding agents commonly receive standing proje
 
 When evaluating a convention in relation to PostCode, its rationale and whether it was already in force or adopted during formative use should be recorded where possible. Its intended role may be a project-specific engineering choice, a deliberate formative intervention, or both; that role is not a conclusion about the convention's effects or generality.
 
-Evidence about the convention's effects can be gathered from interaction logs and contemporaneous observations of whether projections become clearer, more complete or easier to trust; whether users need fewer source excursions or explanatory prompts; whether agents can implement conceptual requests with less clarification; whether the convention creates friction, artificial structure or other costs; and whether the resulting software remains clear outside PostCode. Before-and-after observations and comparison among PostCode-on-PostCode, Enblog, ab initio development, unfamiliar software and different languages can provide further evidence.
+Evidence about the convention's effects can be gathered from interaction logs and contemporaneous observations of whether projections become clearer, more complete or easier to trust; whether users need fewer source excursions or explanatory prompts; whether agents can implement conceptual requests with less clarification; whether the convention creates friction, artificial structure or other costs; and whether the resulting software remains clear outside PostCode. Before-and-after observations and comparison among PostCode-on-PostCode, existing-project development, ab initio development, unfamiliar software and different languages can provide further evidence.
 
 Interpretation should distinguish:
 

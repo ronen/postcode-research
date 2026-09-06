@@ -2,7 +2,7 @@
 
 This document lists candidate language-agnostic conventions that may help humans understand, direct and supervise software through PostCode without routinely working through conventional source.
 
-These are candidates to keep in mind during PostCode development, not conventions PostCode currently endorses. They were initially extracted from conventions used during Enblog development by separating their underlying language-independent intent from their TypeScript-specific realization.
+These are candidates to keep in mind during PostCode development, not conventions PostCode currently endorses. They were initially extracted from conventions used while developing [the author's pre-existing project](methodology.md#existing-project-development) by separating their underlying language-independent intent from their TypeScript-specific realization.
 
 Some candidates may also be adopted as project-specific conventions while developing PostCode; others may remain possibilities that are not currently followed. Local adoption and general recommendation are separate decisions. Operative conventions for the PostCode repository are recorded in [`../dev/conventions.md`](../dev/conventions.md).
 
@@ -117,7 +117,7 @@ This candidate overlaps with PostCode's task protocol and agent-context design. 
 
 This candidate set does not include:
 
-- project-specific architecture, such as Enblog's particular library, CLI and GUI boundaries;
+- project-specific architecture and component boundaries;
 - project-specific domain types or approved dependencies;
 - source-language and toolchain choices such as module syntax, import paths, visibility syntax, test-framework mechanics or compiler settings;
 - preferences for a particular implementation construct, such as classes as the primary unit of organization;
