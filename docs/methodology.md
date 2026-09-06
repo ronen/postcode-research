@@ -12,6 +12,8 @@ Building the system is necessary because many of the relevant questions cannot b
 
 The initial method is therefore sustained use, observation, and revision rather than a fixed efficacy experiment.
 
+To preserve evidence from that use, PostCode is designed to export a stream of relevant interaction events and contemporaneous user reports to a configured research destination for subsequent analysis. The contents and limitations of that evidence are described in [Self-Observation and Formative Logging](#6-self-observation-and-formative-logging).
+
 The central formative question is:
 
 > **What is required to make projection-based software investigation and supervision viable?**
@@ -279,17 +281,12 @@ User studies can support appropriately scoped claims about developer behavior, i
 
 All findings should remain scoped to their evidence. Negative and mixed findings should be treated with the same discipline as positive ones; a technique may be useful for one task, repository, language, or development context and unhelpful for another.
 
-## 9. Relationship to Development Workflow
+## 9. Relationship to Development Workflows
 
-This methodology overlays software development; it does not prescribe the operational workflow by which development is planned and implemented.
+This methodology overlays software-development workflows. Its observation process does not prescribe how the projects in which PostCode is used plan and implement their work or require access to particular planning, task, or outcome mechanisms.
 
-A development workflow may define design plans, implementation tasks, checkpoints, decision logs, backlogs, testing, and updates to canonical system documentation. The research methodology instead determines what observations are gathered during that work, how they are interpreted, and which claims they can support.
+### 9.1 Development of PostCode Itself
 
-The same checkpoint may produce both kinds of output:
+PostCode's own application development is a special case. Implementing lenses, projections, presentations, and supporting infrastructure may expose considerations that affect the project-level design, research strategy, methodology, roadmap, or other overview documents, independently of any observations produced by using PostCode.
 
-- an engineering decision about what to change next;
-- a research observation about what PostCode made easy, difficult, trustworthy, or unclear.
-
-Those outputs should remain distinguishable. Architectural rationale should not be buried in research logs, and subjective formative-use observations should not silently become canonical design decisions.
-
-Development workflows may vary across developers, projects, tasks, and contexts, including between building PostCode itself and using PostCode to develop other systems. The methodology should accommodate those differences rather than presuppose a single PostCode workflow.
+To keep those considerations from being lost, PostCode's [task protocol](../dev/task-protocol.md) prescribes durable task outcomes within the application repository. In addition to examining events and observations recorded during PostCode-on-PostCode use, the overview process should examine concluded application-task outcomes for possible implications.
