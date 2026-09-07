@@ -96,29 +96,35 @@ Refine shared workspace controls, layout, navigation, feedback, and presentation
 
 PostCode should eventually be exercised across the different contexts described in [`methodology.md`](methodology.md#2-formative-use). These contexts are sources of different pressure, not consecutive milestones that must all be completed.
 
-### 4.1 Continued Development of an Existing Project
+### 4.1 Inspection-only use
+
+Use PostCode to pursue genuine questions about accessible codebases without intending to modify them. These investigations may involve familiar or unfamiliar software and can begin as soon as the implemented lenses and views are useful for them.
+
+Inspection-only use provides a low-cost way to exercise orientation, explanation, navigation, epistemological qualification, and trust across varied software. It can expose missing lenses and projection failures, but does not provide evidence about directing changes or supervising implementation outcomes.
+
+### 4.2 Continued Development of an Existing Project
 
 Apply PostCode in the [existing-project development context](methodology.md#existing-project-development) when the bootstrap is useful enough to remain present during real work. This will exercise PostCode during the creation of new behavior and structural change, not only retrospective investigation.
 
-### 4.2 Ab initio project
+### 4.3 Ab initio project
 
 Begin a separate new project with PostCode present from its inception. Unlike PostCode-on-PostCode, the tool and its subject are distinct; unlike existing-project development, the project begins without a pre-existing implementation or development history.
 
 This context tests whether intentions, rationale, requirements, and conceptual structure can be captured as they arise; whether PostCode's existing projection capabilities are useful for guiding a new project's early development; and how PostCode-mediated supervision affects the software being produced.
 
-### 4.3 Unfamiliar software in an existing language
+### 4.4 Unfamiliar software in an existing language
 
 Apply PostCode to unfamiliar open-source repositories in a language PostCode already supports. This tests whether PostCode can provide enough orientation and understanding for a user to pursue a useful investigation or development task without a pre-existing mental model. Keeping the programming language fixed helps separate variation across codebases, domains, and architectures from variation across languages.
 
 Additional repositories are useful only while they expose new assumptions, needs, or failure modes.
 
-### 4.4 Additional languages
+### 4.5 Additional languages
 
 Apply PostCode to software in another programming language when cross-language pressure can test concepts that have emerged through actual use. PostCode should preserve the language's semantics rather than force them into abstractions inherited from the first language.
 
 Observe which entities, lenses, lens parameter values, guarantees, and test concepts transfer; which require language-specific treatment; and where shared terminology conceals different semantics.
 
-### 4.5 Unfamiliar-language challenge
+### 4.6 Unfamiliar-language challenge
 
 A later experiment may use a language the developer does not know well. Where practical, coding agents can integrate the new language into PostCode from PostCode-level requirements while reporting where the existing abstractions fail to transfer.
 
@@ -130,7 +136,7 @@ The experiment can ask:
 
 Difficulty integrating a language through an existing abstraction is evidence about the abstraction, not merely an implementation inconvenience.
 
-### 4.6 Cross-language consolidation
+### 4.7 Cross-language consolidation
 
 After multiple languages and real tasks have exerted pressure on the design, compare the language integrations, lenses actually used, guarantees, unavailable projections, language-specific concepts, test projections, and source excursions.
 

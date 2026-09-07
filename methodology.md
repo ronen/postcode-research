@@ -42,6 +42,8 @@ Abstractions should likewise earn their place through accumulated pressure from 
 
 PostCode should be exercised across substantially different projects, tasks, architectures, domains, and programming languages. No single development context is representative; variation helps expose context-specific assumptions and reduces the risk of optimizing PostCode for any one of them.
 
+Formative use should include both inspection-only investigations and development tasks. Inspection-only use isolates PostCode's support for understanding software; development tasks additionally exercise direction, change supervision, and interaction with coding agents.
+
 Differences among these contexts should be formulated as findings and fed back into the methodological loop.
 
 ### 2.1 PostCode on PostCode
