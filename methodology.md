@@ -289,4 +289,4 @@ This methodology overlays software-development workflows. Its observation proces
 
 PostCode's own application development is a special case. Implementing lenses, projections, presentations, and supporting infrastructure may expose considerations that affect the project-level design, research strategy, methodology, roadmap, or other overview documents, independently of any observations produced by using PostCode.
 
-To keep those considerations from being lost, PostCode's [task protocol](../dev/task-protocol.md) prescribes durable task outcomes within the application repository. In addition to examining events and observations recorded during PostCode-on-PostCode use, the research process should examine concluded application-task outcomes for possible implications.
+To keep those considerations from being lost, PostCode's [task protocol](application/task-protocol.md) prescribes durable task outcomes within the application repository. In addition to examining events and observations recorded during PostCode-on-PostCode use, the research process should examine concluded application-task outcomes for possible implications.

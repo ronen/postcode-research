@@ -16,13 +16,13 @@ See [`ROADMAP.md`](ROADMAP.md) for planned work and candidate directions.
 
 ## Documents
 
-- [`docs/research.md`](docs/research.md) defines the research motivation, questions, and possible contributions.
-- [`docs/product-design.md`](docs/product-design.md) describes the conceptual product design.
-- [`docs/methodology.md`](docs/methodology.md) describes how building and using PostCode can produce research evidence.
-- [`docs/research-strategy.md`](docs/research-strategy.md) describes how findings may shape the broader research direction and publication strategy.
-- [`docs/related-work.md`](docs/related-work.md) records relevant prior work and comparisons.
-- [`docs/candidate-conventions.md`](docs/candidate-conventions.md) collects design conventions that may be useful during PostCode-mediated development.
-- [`dev/application-repository-setup.md`](dev/application-repository-setup.md) describes the minimal requirements for the application repository to participate in the PostCode research project.
+- [`research.md`](research.md) defines the research motivation, questions, and possible contributions.
+- [`product-design.md`](product-design.md) describes the conceptual product design.
+- [`methodology.md`](methodology.md) describes how building and using PostCode can produce research evidence.
+- [`research-strategy.md`](research-strategy.md) describes how findings may shape the broader research direction and publication strategy.
+- [`related-work.md`](related-work.md) records relevant prior work and comparisons.
+- [`candidate-conventions.md`](candidate-conventions.md) collects design conventions that may be useful during PostCode-mediated development.
+- [`application/repository-setup.md`](application/repository-setup.md) describes the minimal requirements for the application repository to participate in the PostCode research project.
 
 ## License
 

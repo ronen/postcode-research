@@ -36,7 +36,7 @@ foundation/
 
 The adopted documents should be copied verbatim from the following research-project documents:
 
-- `foundation/product-design.md` from [`../docs/product-design.md`](../docs/product-design.md);
+- `foundation/product-design.md` from [`../product-design.md`](../product-design.md);
 - `foundation/task-protocol.md` from [`task-protocol.md`](task-protocol.md);
 - `foundation/baseline-conventions.md` from [`baseline-conventions.md`](baseline-conventions.md).
 

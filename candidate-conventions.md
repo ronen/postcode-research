@@ -4,7 +4,7 @@ This document lists candidate language-agnostic conventions that may help humans
 
 These are candidates to keep in mind during PostCode development, not conventions PostCode currently endorses. They were initially extracted from conventions used while developing [the author's pre-existing project](methodology.md#existing-project-development) by separating their underlying language-independent intent from their TypeScript-specific realization.
 
-Some candidates may also be adopted as project-specific conventions while developing PostCode; others may remain possibilities that are not currently followed. Local adoption and general recommendation are separate decisions. The conventions initially adopted for application development are recorded in [`../dev/baseline-conventions.md`](../dev/baseline-conventions.md).
+Some candidates may also be adopted as project-specific conventions while developing PostCode; others may remain possibilities that are not currently followed. Local adoption and general recommendation are separate decisions. The conventions initially adopted for application development are recorded in [`application/baseline-conventions.md`](application/baseline-conventions.md).
 
 The methodological safeguards for evaluating proposed conventions are described in [`methodology.md`](methodology.md#4-interpreting-formative-use).
 
