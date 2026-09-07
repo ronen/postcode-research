@@ -16,6 +16,10 @@ PostCode presents task-appropriate views of program structure, behavior, history
 As an initial simplification, PostCode's projections and views are read-only. Humans continue to direct program changes by instructing coding agents in prose.
 
 See [`foundation/product-design.md`](foundation/product-design.md) for the full conceptual design.
+
+## Observability
+
+To support the research, PostCode records and exports observations, including relevant interaction events and contemporaneous user reports, for later analysis.
 ```
 
 ## `foundation/`
@@ -30,7 +34,7 @@ foundation/
   baseline-conventions.md
 ```
 
-The adopted documents should be copied verbatim from the following overview-project documents:
+The adopted documents should be copied verbatim from the following research-project documents:
 
 - `foundation/product-design.md` from [`../docs/product-design.md`](../docs/product-design.md);
 - `foundation/task-protocol.md` from [`task-protocol.md`](task-protocol.md);
