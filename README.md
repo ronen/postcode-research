@@ -1,12 +1,12 @@
 # PostCode Research Project
 
-PostCode is a research project investigating whether humans can understand, direct, and supervise software built with coding agents while working at a conceptual level rather than through programming-language source code.
+> *When coding agents do the coding, humans should be able to understand, direct, and supervise software development without ever needing to see programming-language source code.*
 
-The project explores a software-development environment that derives task-appropriate views of program structure, behavior, history, rationale, and other evidence. Those projections preserve their provenance, epistemological status, and limitations so that derived facts, recorded assertions, observations, and interpretations are not presented as equally authoritative.
+The PostCode Research Project investigates whether a software-development environment can make that possible. It does so by building the [PostCode application](https://github.com/ronen/postcode), which presents task-appropriate views of program structure, behavior, history, rationale, and other evidence while preserving the provenance, epistemological status, and limitations of their content.
 
-The research proceeds by building PostCode and studying its use during real software development. The application records and exports observations, including relevant interaction events and contemporaneous user reports. This evidence stream supports later analysis of how PostCode is used, where it succeeds or fails, and how the design should evolve.
+The research proceeds by studying PostCode during real software development. The application is intended to record and export observations, including relevant interaction events and contemporaneous user reports. This evidence stream will support later analysis of how PostCode is used, where it succeeds or fails, and how the design should evolve.
 
-The [PostCode application](https://github.com/ronen/postcode) is developed in a separate repository. This allows it to stand alone as a software project and makes its source and Git history a well-defined subject for PostCode's use on its own implementation.
+The application is developed in a separate repository so that it can stand alone as a software project. Once minimally functional, it will be used to understand and supervise its own further development.
 
 ## Status
 
