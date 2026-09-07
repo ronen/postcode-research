@@ -6,7 +6,7 @@ The project explores a software-development environment that derives task-approp
 
 The research proceeds by building PostCode and studying its use during real software development. The application records and exports observations, including relevant interaction events and contemporaneous user reports. This evidence stream supports later analysis of how PostCode is used, where it succeeds or fails, and how the design should evolve.
 
-The PostCode application is developed in a separate repository. This allows it to stand alone as a software project and makes its source and Git history a well-defined subject for PostCode's use on its own implementation.
+The [PostCode application](https://github.com/ronen/postcode) is developed in a separate repository. This allows it to stand alone as a software project and makes its source and Git history a well-defined subject for PostCode's use on its own implementation.
 
 ## Status
 

@@ -19,7 +19,7 @@ See [`foundation/product-design.md`](foundation/product-design.md) for the full 
 
 ## Observability
 
-To support the research, PostCode records and exports observations, including relevant interaction events and contemporaneous user reports, for later analysis.
+To support the [PostCode Research Project](https://github.com/ronen/postcode-research), PostCode records and exports observations, including relevant interaction events and contemporaneous user reports, for later analysis.
 ```
 
 ## `foundation/`
