@@ -39,6 +39,7 @@ It should support:
 - analysis of the PostCode repository in one programming language;
 - `summarize(subject, lens_parameters)` and a few mechanically derived lenses;
 - simple views that preserve provenance, epistemological status, guarantees, and limitations;
+- CLI support for those views;
 - navigation among subjects, relationships, and views;
 - convenient access to source;
 - enough formative observation support to record use, friction, and immediate reactions.
