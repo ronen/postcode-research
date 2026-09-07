@@ -30,22 +30,7 @@ At suitable checkpoints, also consider whether [Publication-Aware Prioritization
 
 ## 2. Planned Work
 
-### 2.1 Complete and publish the project foundation
-
-Before substantial implementation begins:
-
-- finish decomposing the original PostCode document;
-- compare the resulting documents with the original for omissions;
-- resolve any resulting inconsistencies or missing material;
-- define and document the initial operational workflow for developing PostCode;
-- add a README describing the project's status and document structure;
-- choose a license;
-- audit the repository and its history for material that should not become public;
-- create and push a public GitHub repository.
-
-This establishes public repository visibility. It is not yet a public launch, an invitation to use PostCode, or a solicitation of contributions.
-
-### 2.2 Initial implementation and bootstrap transition
+### 2.1 Initial implementation and bootstrap transition
 
 The immediate milestone is the smallest trustworthy read-only version of PostCode that can be used during development of PostCode itself. Its purpose is to make the projection model concrete enough to evaluate and to create the conditions for sustained formative use.
 
@@ -161,7 +146,7 @@ Opening PostCode to others involves several separable choices:
 - making the project ready to accept contributions;
 - actively soliciting and supporting contributors.
 
-The first choice is part of [Planned Work](#21-complete-and-publish-the-project-foundation). The others need not occur together or in a fixed order. Each becomes useful when its expected gains justify the corresponding documentation, stability, communication, and coordination work.
+The research and application repositories are publicly visible. The remaining choices need not occur together or in a fixed order. Each becomes useful when its expected gains justify the corresponding documentation, stability, communication, and coordination work.
 
 External exploratory use becomes useful once PostCode supports a sufficiently coherent and reliable workflow for other developers to try it during their own development work. It can expose assumptions created by the author's knowledge, vocabulary, workflow, and tolerance for friction.
 
