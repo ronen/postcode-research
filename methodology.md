@@ -164,7 +164,7 @@ Formative use should also help determine which textual results belong in transie
 
 ### 4.1 Reported Limitations as Development Feedback
 
-When reported uncertainty or a limitation in a projection influences development, formative observation should preserve what was reported and its stated cause, how it was used, and what effects followed. The development response—including any change to the program or available evidence, or a decision to continue without change—is itself part of the evidence. Analysis should not assume that the stated cause was correct or that adapting the program to PostCode was necessarily beneficial or harmful. If the finding instead motivates a change to PostCode, that change is a methodological intervention: the original observation should be preserved, and subsequent observations interpreted in relation to the revised PostCode version.
+When reported uncertainty or a limitation in a projection influences development, formative observation should preserve what was reported and any stated cause, how it was used, and what effects followed. The development response—including any change to the program or available evidence, or a decision to continue without change—is itself part of the evidence. If the program was changed to enable stronger projection guarantees, analysis should not assume that the change was beneficial or harmful. If the finding instead motivates a change to PostCode, that change is a methodological intervention: the original observation should be preserved, and subsequent observations interpreted in relation to the revised PostCode version.
 
 ### 4.2 Evaluating Conventions
 
