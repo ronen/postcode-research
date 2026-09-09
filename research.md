@@ -254,6 +254,7 @@ That question leads to several subsidiary questions:
 - Which program concepts survive across languages, and which remain inherently language-specific?
 - Can useful continuity of human attention be maintained without solving persistent semantic identity?
 - When should views preserve implementation names, translate them into descriptive language, or use language-independent terminology, and how do those choices affect understanding, continuity, and trust?
+- How can humans and coding agents refer naturally and reliably in prose to conceptual entities—including entities without suitable intrinsic names—without falling back to source-level identifiers or locations?
 - Which aspects of tests can usefully be projected above their source-language realization?
 - Does agent-mediated development materially change the usefulness of software visualization and other alternative program representations?
 - How does PostCode's usefulness depend on when it enters a program's development lifecycle?
