@@ -236,7 +236,9 @@ Relevant recorded context and events include:
 - projection comparisons;
 - source views opened;
 - navigation between projections and source;
-- unavailable, refused, or failed projections;
+- unavailable, refused, or failed projection requests;
+- analysis applicability and availability, execution state, and result materialization;
+- analysis-cost estimates, resource budgets or thresholds, user choices, and actual resource use where available;
 - changes in workspace state;
 - interactions with coding-agent context.
 
