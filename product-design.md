@@ -205,13 +205,13 @@ or simply:
 
 The unacceptable result is presenting partial, historical, asserted, observed, or inferred information in a way that implies a stronger claim than the evidence supports.
 
-For mechanically derived information, a projection might be:
+For mechanically derived information that has been produced, a projection's guarantee might be:
 
 - exact;
 - sound but incomplete;
-- complete but over-approximate;
-- observational;
-- unavailable.
+- complete but over-approximate.
+
+A projection may instead report that the requested information or analysis is unavailable. Availability is distinct from the guarantee attached to any result that has been produced. Information derived from observation requires a scope qualification identifying what was observed.
 
 Other kinds of information require different qualifications. PostCode need not finalize a formal terminology immediately; plain-English qualification may initially be clearer.
 
