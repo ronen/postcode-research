@@ -261,6 +261,7 @@ That question leads to several subsidiary questions:
 - Does PostCode-mediated supervision change the resulting implementation or the information preserved around it?
 - Do programs developed with PostCode become more readily projectable, and if so, does that reflect independently useful conceptual clarity or merely adaptation to PostCode?
 - Can deliberate language-agnostic development conventions improve PostCode-mediated supervision, and if so, do their benefits generalize across projects and languages or merely adapt software to PostCode?
+- When is adapting software so that its properties can be projected with stronger guarantees a useful engineering convention, and when does it impose artificial or tool-specific structure whose costs outweigh its benefits?
 - If humans encounter a program primarily through an evolving collection of task-specific projections, can they nevertheless develop and maintain a sufficiently coherent sense of what the program “really is”?
 - Is a durable overall mental model necessary for effective direction and supervision, or can task-specific understanding largely replace it?
 - Are there projections or concepts that should provide a relatively stable core around which more ephemeral projections are organized?
