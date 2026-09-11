@@ -251,6 +251,7 @@ That question leads to several subsidiary questions:
 - How much epistemological qualification is necessary for projected information to be trustworthy?
 - Can derived facts, recorded assertions, behavioral evidence and interpretation be combined without obscuring their different epistemological status?
 - Do projection comparisons provide a useful way to supervise agent-generated changes?
+- Can PostCode produce a useful compact conceptual diff between revisions, and is there a generally useful default account or must selection among multiple valid descriptions depend on the requested focus, task, or investigation context?
 - Which program concepts survive across languages, and which remain inherently language-specific?
 - Can useful continuity of human attention be maintained without solving persistent semantic identity?
 - When should views preserve implementation names, translate them into descriptive language, or use language-independent terminology, and how do those choices affect understanding, continuity, and trust?

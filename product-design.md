@@ -609,6 +609,24 @@ The two projections may initially be placed side by side. More specialized compa
 
 Projection stability is particularly important here: changes in the projection mechanism must not masquerade as changes in the program.
 
+#### 3.6.1 Conceptual Diffs
+
+A broader change-oriented lens for conceptual diffs takes a revision or commit range as its input and identifies relevant subjects and kinds of change rather than requiring the human to select one lens and subject in advance:
+
+```text
+diff(revision_range, lens_parameters)
+```
+
+Lens parameters may specify a subject or scope; a perspective such as dependencies, behavior, boundaries, tests, or requirements; a focus expressed in prose; breadth, depth, or an information budget; and whether to include interpreted significance as well as mechanically derived changes.
+
+A command-line interface might expose this capability as `postcode diff`, accepting explicit options or descriptive text that asks for a particular perspective or focus. The resulting projection can also use an appropriate presentation in the GUI.
+
+An unfocused conceptual diff may provide a compact, qualified starting view analogous to `summarize(subject)`. It should expose the lenses, evidence, and selection criteria behind its account and allow the human to expand alternative descriptions or lens-specific comparisons. It must not imply that its account is uniquely correct or that omitted changes are unimportant unless those claims are supportable.
+
+A single commit might, for example, be described from different perspectives as moving responsibility across a module boundary, adding a runtime dependency, preserving externally visible behavior while restructuring implementation, satisfying a recorded refactoring requirement, and strengthening a projected boundary guarantee.
+
+These descriptions may coexist while having different epistemological bases: the dependency change may be mechanically derived, movement of responsibility may be interpretation, behavioral preservation may be supported by tests, and correspondence to the requirement may come from recorded development context. Which descriptions are salient generally depends on the current task and investigation.
+
 ### 3.7 Agent Integration
 
 Separating PostCode from the coding agent creates an important interaction question.
