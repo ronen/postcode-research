@@ -219,7 +219,7 @@ Independent evaluation can later ask a different question:
 
 ## 6. Formative Logging
 
-Formative evidence should combine automatically recorded interaction events with contemporaneous subjective observations. PostCode's support for capturing this evidence is described in [Formative Observation Support](product-design.md#38-formative-observation-support).
+Formative evidence should combine automatically recorded interaction events with contemporaneous subjective observations. PostCode's support for capturing this evidence is described in [Research Observation Support](product-design.md#38-research-observation-support).
 
 Formative investigation should maintain an explicit evidence boundary. Observation records, subsequent analysis, and withheld reference material remain outside the repository under investigation and outside the evidence available to PostCode and its coding agents.
 
