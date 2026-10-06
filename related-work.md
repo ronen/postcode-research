@@ -172,18 +172,19 @@ The distinction is not that PostCode can produce prose summaries while existing 
 
 Instead, PostCode asks whether program summarization can become part of a **qualified, navigable projection system**.
 
-A PostCode summary may:
+A PostCode summary view may:
 
-- compose mechanically defined lenses;
+- coordinate projections produced by mechanically defined lenses;
+- include a synthesized summary projection where a new qualified account is useful;
 - incorporate recorded assertions and behavioral evidence;
 - expose provenance;
 - distinguish derived facts from interpretation;
 - state limitations and unavailable information;
 - link directly into deeper projections;
-- remain associated with a particular repository revision;
+- preserve the repository state associated with each projection;
 - be compared across revisions.
 
-Thus `summarize(root)` is not intended merely as a better prompt for an LLM. It is a candidate entry point into a structured investigation of the program.
+Thus the request **Summarize the project** is not intended merely as a better prompt for an LLM. It is a candidate entry point into a structured investigation of the program.
 
 This may also provide a useful bridge between familiar contemporary AI use and PostCode's broader research question:
 

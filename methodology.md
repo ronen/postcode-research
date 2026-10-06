@@ -116,13 +116,11 @@ PostCode's design makes [summary the initial view and a basis for recursive navi
 
 > **A summary can satisfy the user's current information need or usefully support the next step in their investigation.**
 
-Each use of this initial view provides an opportunity to observe the user's subsequent behavior, both to evaluate the hypothesis and to refine the summary lens. The recurring operation is:
+Each use of this initial view provides an opportunity to observe the user's subsequent behavior, both to evaluate the hypothesis and to refine how PostCode constructs summary views. The recurring request is:
 
-```text
-summarize(subject, lens_parameters)
-```
+> **Summarize the subject.**
 
-This provides a repeatable starting point across development contexts without treating the resulting summaries as standardized measurements.
+This provides a repeatable starting point across development contexts without treating the resulting summary views as standardized measurements.
 
 Observations relevant to evaluating the hypothesis include:
 
@@ -132,14 +130,14 @@ Observations relevant to evaluating the hypothesis include:
 - which suggested next lenses are actually followed;
 - when the user stops after the summary, and whether that reflects sufficient understanding, an unhelpful result, or abandonment.
 
-Observations relevant to refining the lens include:
+Observations relevant to refining summary-view construction include:
 
 - which information is consistently useful for orientation;
 - which information is omitted but immediately wanted;
 - which claims are difficult to qualify;
 - which summaries merely restate obvious repository structure;
 - which interpretations genuinely help navigation;
-- which lens parameter values the user selects explicitly or implies through the request, and how those choices vary by task and context;
+- which projections, lens parameter values, presentations, and presentation parameter values are selected explicitly or inferred from the request, and how those choices vary by task and context;
 - what stable or navigational structure should accompany the summary.
 
 These observations should combine interaction logs with contemporaneous annotations or other direct user reports, as described in [Formative Logging](#6-formative-logging).
@@ -230,7 +228,7 @@ Relevant recorded context and events include:
 - the current operational task and information need, where formalized;
 - prompts and prose requests submitted to PostCode;
 - prompts sent to coding agents, when available, and references to external tasks or conversations;
-- explicit and automatically selected lenses, lens parameter values, presentations, presentation parameter values, and resulting views;
+- explicit and automatically selected lenses, lens parameter values, projections and their composition within views, presentations, presentation parameter values, and resulting views;
 - entities and relationships discovered or opened;
 - projections produced;
 - views and linked workspaces opened, closed, or revisited;
@@ -265,7 +263,7 @@ The log is primarily a **design instrument**, not an unbiased behavioral dataset
 
 Individual events do not automatically constitute findings.
 
-A source excursion, failed projection, awkward view, or other event should retain enough context to support later interpretation. This includes the development task and information need; the PostCode version; the observed repository and its Git commit or relevant working-tree state; subject, lens, lens parameter values, projection, presentation, presentation parameter values, view, workspace context, and relevant navigation lineage; the action taken next; and any contemporaneous subjective explanation.
+A source excursion, failed projection, awkward view, or other event should retain enough context to support later interpretation. This includes the development task and information need; the PostCode version; the observed repository and its Git commit or relevant working-tree state; the subjects, lenses, lens parameter values, and projections involved; their composition within the presentation and view; presentation parameter values, workspace context, and relevant navigation lineage; the action taken next; and any contemporaneous subjective explanation.
 
 Recurring patterns can motivate design changes or research hypotheses. Interpretation should also preserve contrary instances and contextual boundaries rather than retaining only evidence that supports the current design.
 
