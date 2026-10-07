@@ -64,7 +64,7 @@ A lens answers:
 
 > **What aspect of this subject are we interested in?**
 
-A lens may accept lens-specific parameters that refine the information requested. A summary lens might specify focus, breadth, depth, or an information budget; a callers lens might distinguish direct from transitive callers.
+A lens may accept lens-specific parameters that refine the information requested. A summary lens might specify focus, breadth, or depth; a callers lens might distinguish direct from transitive callers.
 
 A lens may derive its answer from multiple analyses, evidence sources, or previously qualified results. Its projection must preserve the method, provenance, qualifications, and limitations needed to understand the resulting answer.
 
@@ -78,7 +78,7 @@ Conceptually:
 projection = lens(program_states, subject, lens_parameters)
 ```
 
-`program_states` identifies the repository revisions, working-tree states, or other program states to which the lens is applied. Many lenses use one state; comparison and historical lenses may use more than one. A subject may itself be a collection or a change between revisions.
+`program_states` identifies the repository revisions, working-tree states, or other program states to which the lens is applied. Many lenses use one state; comparison and historical lenses may use more than one. When order matters, the collection preserves it. A subject may itself be a collection.
 
 The lens parameter values are part of the projection's identity and must remain distinct from choices about how the projection is presented.
 
@@ -501,7 +501,7 @@ When the human has not expressed a more specific information need, PostCode may 
 
 PostCode constructs an appropriate summary view by selecting one or more projections and a presentation. For an unfamiliar subject, the view can provide an overview of its structure, behavior, and role; for a familiar subject, it can provide efficient access to details relevant to the current investigation. It may satisfy the human's current purpose or help them select a further lens or reach a further subject of investigation.
 
-Construction may vary with explicit choices or inferred context, which can adjust the view's focus, breadth, depth, and information budget by affecting the projections, lens parameter values, presentation, or presentation parameter values selected. For example, a project summary might use a lens that synthesizes a new qualified account, while a module summary might present structure, dependencies, exports, tests, and history as separately qualified projections through a single coordinating presentation.
+Construction may vary with explicit choices or inferred context, which can adjust the view's focus, breadth, and depth by affecting the projections, lens parameter values, presentation, or presentation parameter values selected. For example, a project summary might use a lens that synthesizes a new qualified account, while a module summary might present structure, dependencies, exports, tests, and history as separately qualified projections through a single coordinating presentation.
 
 Conceptually, a multi-projection module summary might be constructed as:
 
@@ -564,6 +564,8 @@ A program state used by a projection may be:
 
 - **live:** it follows a working tree or branch;
 - **pinned:** it remains attached to a particular revision.
+
+Live and pinned describe revision-oriented program states. Other inputs, such as runtime observations, retain bindings appropriate to their source—for example, an execution, observation interval, or continuing stream—and need not fit that classification.
 
 A projection may combine program states with different revision bindings, as in a comparison between a working tree and a commit. A multi-projection view may in turn combine projections with different bindings.
 
@@ -657,7 +659,9 @@ A broader change-oriented lens for conceptual diffs takes multiple program state
 change = diff([stateA, stateB], subject, lens_parameters)
 ```
 
-The subject may be the project root for an unfocused project diff or a narrower subject or collection. Lens parameters may specify a perspective such as dependencies, behavior, boundaries, tests, or requirements; a focus expressed in prose; breadth, depth, or an information budget; and whether to include interpreted significance as well as mechanically derived changes.
+Two states may represent the endpoints of a net change. A single-commit diff ordinarily uses the commit and its parent, while an ordered sequence of states may preserve intermediate evolution when that matters.
+
+The subject may be the project root for an unfocused project diff or a narrower subject or collection. Lens parameters may specify a perspective such as dependencies, behavior, boundaries, tests, or requirements; a focus expressed in prose; breadth or depth; and whether to include interpreted significance as well as mechanically derived changes.
 
 A command-line interface might expose this capability as `postcode diff`, accepting explicit options or descriptive text that asks for a particular perspective or focus. The resulting projection can also use an appropriate presentation in the GUI.
 
@@ -804,7 +808,7 @@ Conceptually:
 summary_projection = summary_lens(program_states, subject, lens_parameters)
 ```
 
-The subject might be a repository, package, subsystem, module, type, function, test, collection of entities, or change between revisions.
+The subject might be a repository, package, subsystem, module, type, function, test, or collection of entities.
 
 Unlike a conventional prose summary generated directly from source, one method for producing a summary projection can draw on other qualified projections:
 

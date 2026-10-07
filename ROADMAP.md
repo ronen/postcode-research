@@ -37,14 +37,16 @@ The immediate milestone is the smallest trustworthy read-only version of PostCod
 It should support:
 
 - analysis of the PostCode repository in one programming language;
-- summary views over subjects and a few mechanically derived lenses;
-- simple views that preserve provenance, epistemological status, guarantees, and limitations;
+- a small initial set of mechanically derived lenses;
+- one or more basic interpretive lenses whose claims remain explicitly qualified;
+- summary views that select and present projections appropriate to their subjects;
+- simple presentations and views that preserve provenance, epistemological status, guarantees, and limitations;
 - CLI support for those views;
 - navigation among subjects, relationships, and views;
 - convenient access to source;
 - enough formative observation support to record use, friction, and immediate reactions.
 
-Including summary views from the beginning puts representation selection and the epistemological contract under pressure: PostCode must assemble useful orientation from qualified projections and, where it synthesizes interpretation, keep that status distinguishable from precise analysis.
+Including both summary views and an interpretive lens from the beginning puts representation selection and the epistemological contract under pressure: PostCode must assemble useful orientation from qualified projections while keeping interpretation distinguishable from precise analysis.
 
 PostCode should be used on its own development as soon as any implemented capability can contribute usefully. That use will broaden as further subjects, lenses, views, and observation support become available.
 
