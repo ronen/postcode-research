@@ -112,11 +112,11 @@ OSS use should involve genuine questions or development tasks where possible. Ar
 
 ## 3. Evaluating and Refining Summary as an Initial View
 
-PostCode's design makes [summary the initial view and a basis for recursive navigation](product-design.md#32-summary-as-initial-view-and-recursive-navigation). We treat this design decision as a hypothesis:
+PostCode's design offers [summary as a suggested initial view and a basis for recursive navigation](product-design.md#32-summary-as-initial-view-and-recursive-navigation). We treat whether summary deserves that role as a hypothesis:
 
 > **A summary can satisfy the user's current information need or usefully support the next step in their investigation.**
 
-Each use of this initial view provides an opportunity to observe the user's subsequent behavior, both to evaluate the hypothesis and to refine how PostCode constructs summary views. The recurring request is:
+Each use of a summary as an initial view provides an opportunity to observe the user's subsequent behavior, both to evaluate the hypothesis and to refine how PostCode constructs summary views. The recurring request is:
 
 > **Summarize the subject.**
 

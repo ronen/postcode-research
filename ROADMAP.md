@@ -73,8 +73,11 @@ Its timing should depend on when repeatedly translating PostCode concepts back i
 Allow the same lens and subject to be projected at two repository states and initially present the results together:
 
 ```text
-before = lens(repository, revisionA, subject, lens_parameters)
-after  = lens(repository, revisionB, subject, lens_parameters)
+stateA = repository at revisionA
+stateB = repository at revisionB
+
+before = lens([stateA], subject, lens_parameters)
+after  = lens([stateB], subject, lens_parameters)
 
 comparison_view = comparison_presentation(
   [before, after],

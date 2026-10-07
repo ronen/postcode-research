@@ -120,13 +120,15 @@ A projection might be presented as:
 - a diagram;
 - a combination of these.
 
-Presentation can be selected independently of the information requested. Four dependencies might be most useful as a small graph; eighty-seven might be better as a searchable or clustered table. A rationale projection might be best presented as annotated text.
+Presentation can be selected independently of the information requested. Four dependencies might be most useful as a small graph; eighty-seven might be better as a searchable or grouped table. A rationale projection might be best presented as annotated text.
 
 A presentation may arrange, align, overlay, compare, or otherwise coordinate several projections while preserving each projection's identity and qualifications. The projections may concern the same subject or different subjects, revisions, or program states. Presentation may align or overlay information using correspondence already established by the input projections or an exact identity guarantee they provide; determining further correspondence is analysis and belongs to a lens. Likewise, a presentation may display or coordinate a flow only when an input projection establishes that flow.
 
 If combining projections derives correlations, priorities, reconciliations, summaries, aggregates, or other information not already present in the inputs, that derivation belongs to a lens and produces another qualified projection; it must not be hidden inside presentation. For example, placing dependency projections from two revisions in corresponding positions may be presentational when their identities already match, while identifying and characterizing additions, removals, or correspondence across renames requires a revision-diff lens.
 
 A presentation may accept presentation-specific parameters such as sorting, grouping, layout, filtering, expansion depth, or whether to show implementation names, descriptive labels, or both. Consequential filtering, grouping, or omission must remain visible so that presentation does not make any input projection appear more complete than the information shown.
+
+Sorting, exact grouping by fields already present in an input projection, and reporting the cardinality of displayed items or groups may remain presentational because they describe the rendered input. They must not imply coverage or completeness beyond that projection's qualifications. Clustering by inferred similarity, deriving categories, or presenting an aggregate as a new claim about the program instead requires a lens and qualified projection.
 
 Presentations may share common interaction affordances such as hover or focus detail, subject and relationship selection, contextual lens application, expansion and collapse of evidence or qualifications, opening or pinning views, and copying stable references for coding-agent prompts.
 
@@ -146,7 +148,7 @@ view = presentation(projections, context, presentation_parameters)
 
 Several independent views placed beside one another remain several views in a workspace. A single presentation of several projections is one view when it defines relationships among them—such as shared alignment, axes, anchoring, or linked selection—that would be lost if they were presented independently. Neither visual proximity nor a shared container alone makes them one view. This distinction concerns the presentation and interaction offered to the human, not whether the implementation uses one or several UI components.
 
-Adding or removing an underlying projection changes the view's composition rather than merely its rendering context. Such changes must remain visible and be recorded.
+Adding or removing an underlying projection changes the view's composition rather than merely its rendering context. Such changes must remain visible and be recorded. Whether the implementation treats the result as continued evolution of the existing view or as a newly derived view is an implementation design decision; the relevant continuity and derivation must remain available.
 
 #### 2.1.5 Logical Model and Execution Planning
 
@@ -425,7 +427,7 @@ Given the human's request and any explicit choices, PostCode constructs an appro
 
 When PostCode selects the projections or presentation, its selection criteria and consequential omissions should remain inspectable. A composition must not imply that an omitted aspect is absent, unavailable, or unimportant unless that conclusion is supported.
 
-Selection can therefore be explicit, automatic, or mixed. For example:
+Selection can be explicit, automatic, or mixed. For example:
 
 > What depends on this?
 
@@ -493,7 +495,7 @@ Text is a first-class presentation. A view need not be graphical, and its underl
 
 ### 3.2 Summary as Initial View and Recursive Navigation
 
-The default initial view for a subject answers the request:
+When the human has not expressed a more specific information need, PostCode may suggest a summary view as an initial view for the subject:
 
 > **Summarize the subject.**
 
@@ -517,7 +519,7 @@ summary_view = summary_presentation(
 )
 ```
 
-The presentation coordinates and may compact these projections without turning them into a synthesized claim about the module. Each projection remains separately identifiable and qualified.
+The presentation coordinates these projections and may visibly abbreviate or omit displayed content without turning them into a synthesized claim about the module. Each projection remains separately identifiable and qualified.
 
 A root summary view might identify, where supportable:
 
@@ -558,20 +560,22 @@ Presentation parameters may express choices such as sorting, grouping, layout, f
 
 A revision may be the current working tree, a branch, or a commit. Staged or index state may also be useful.
 
-A projection used by a view may be:
+A program state used by a projection may be:
 
 - **live:** it follows a working tree or branch;
 - **pinned:** it remains attached to a particular revision.
 
-A multi-projection view may combine projections with different revision bindings, as in a comparison across revisions.
+A projection may combine program states with different revision bindings, as in a comparison between a working tree and a commit. A multi-projection view may in turn combine projections with different bindings.
 
-When projections in one view reflect different program states or refresh at different times, the presentation must expose that difference rather than imply that they form a synchronized snapshot.
+When program states represented within one view differ or refresh at different times, the presentation must expose their associations and timing rather than imply that they form a synchronized snapshot.
 
 The user constructs the working surface appropriate to the current problem rather than operating within a predetermined dashboard.
 
 A workspace organizes its views as an investigation graph. Views are nodes; relationships record how views were derived, placed, and connected. Navigation usually creates a relationship to the view that supplied the new subject or other input, while comparison or synthesis may relate a view to several earlier views.
 
-Derivation, placement, revision binding, and investigation role are distinct. A view may be embedded in another view, placed alongside it, or moved into a linked workspace. The revision binding of each underlying projection is independent of whether the view is a root or descendant of the investigation. A view can become the root of a linked workspace without pinning its projections and without losing its derivation history.
+A comparison may be constructed directly as one multi-projection view or as a new view derived from projections already shown in earlier views. Investigation-graph relationships preserve the relevant lineage in either case.
+
+Derivation, placement, revision binding, and investigation role are distinct. A view may be embedded in another view, placed alongside it, or moved into a linked workspace. The revision binding of each program state underlying its projections is independent of whether the view is a root or descendant of the investigation. A view can become the root of a linked workspace without pinning those states and without losing its derivation history.
 
 A PostCode workspace may comprise multiple such linked workspaces, each preserving its own focal subject and collection of views. Collectively, they form the workspace through which the human conducts an investigation.
 
@@ -581,7 +585,7 @@ Views support navigation by allowing displayed subjects and relationships to bec
 
 Selecting an entity shown in a view—whether presented as a summary, tree, graph, table, or text—can apply another lens to that entity or make it the subject of a new query. A dependency shown in one view might lead to a summary of the dependency, its callers, its tests, its history, or another available projection.
 
-Selecting a subject or relationship can produce another view and embed it within the originating view, open it separately in the current workspace, or create a linked workspace focused on that subject. For example, expanding an item in a tree might show a summary view inline while preserving the item's position in the surrounding hierarchy. A focused workspace might begin with a summary view of its subject and accumulate additional views as the investigation develops. The originating workspace remains available so that the human can move among related investigation contexts without reconstructing them.
+Selecting a subject or relationship can produce another view and embed it within the originating view, open it separately in the current workspace, or create a linked workspace focused on that subject. For example, expanding an item in a tree might show a summary inline while preserving the item's position in the surrounding hierarchy. The implementation may realize that expansion by adding projections to the originating presentation or by embedding another view; projection boundaries, qualifications, and investigation relationships must remain visible either way. A focused workspace might begin with a summary view of its subject and accumulate additional views as the investigation develops. The originating workspace remains available so that the human can move among related investigation contexts without reconstructing them.
 
 The relationship to an originating view may record only how a subject was discovered, or it may remain a live dependency in which input to one view comes from one or more of another view's projections. If a live parent changes, an anchored view may remain in place, move with its anchor, or become detached when the anchor disappears. PostCode must not silently retarget or destroy the view when correspondence becomes uncertain; it should preserve the continuity of the human's investigation and expose whether the anchor is present, moved, absent, or uncertain.
 
@@ -628,8 +632,11 @@ Examples include changed dependencies, callers, construction sites, test relatio
 The smallest design is to apply the same lens to the same subject at two revisions and present the resulting projections together:
 
 ```text
-before = lens(repository, revisionA, subject, lens_parameters)
-after  = lens(repository, revisionB, subject, lens_parameters)
+stateA = repository at revisionA
+stateB = repository at revisionB
+
+before = lens([stateA], subject, lens_parameters)
+after  = lens([stateB], subject, lens_parameters)
 
 comparison_view = comparison_presentation(
   [before, after],
@@ -638,19 +645,19 @@ comparison_view = comparison_presentation(
 )
 ```
 
-The presentation may initially place the two projections side by side or align corresponding information while preserving each projection's identity and qualifications. This does not produce a new claim about what changed. Identifying additions, removals, changed relationships, or their significance instead requires a comparison or revision-diff lens whose method and qualifications are explicit. More specialized comparison presentations and lenses can emerge if use demands them.
+The two lens applications produce independent single-state projections. The presentation may initially place them side by side or align corresponding information while preserving each projection's identity and qualifications. This does not produce a new claim about what changed. Identifying additions, removals, changed relationships, or their significance instead requires a comparison or revision-diff lens whose method and qualifications are explicit. More specialized comparison presentations and lenses can emerge if use demands them.
 
 Projection stability is particularly important here: changes in the projection mechanism must not masquerade as changes in the program.
 
 #### 3.6.1 Conceptual Diffs
 
-A broader change-oriented lens for conceptual diffs takes a revision or commit range as its input and identifies relevant subjects and kinds of change rather than requiring the human to select one lens and subject in advance:
+A broader change-oriented lens for conceptual diffs takes multiple program states and a subject as its input and identifies relevant kinds of change rather than requiring the human to select a particular single-state lens in advance:
 
 ```text
-diff(revision_range, lens_parameters)
+change = diff([stateA, stateB], subject, lens_parameters)
 ```
 
-Lens parameters may specify a subject or scope; a perspective such as dependencies, behavior, boundaries, tests, or requirements; a focus expressed in prose; breadth, depth, or an information budget; and whether to include interpreted significance as well as mechanically derived changes.
+The subject may be the project root for an unfocused project diff or a narrower subject or collection. Lens parameters may specify a perspective such as dependencies, behavior, boundaries, tests, or requirements; a focus expressed in prose; breadth, depth, or an information budget; and whether to include interpreted significance as well as mechanically derived changes.
 
 A command-line interface might expose this capability as `postcode diff`, accepting explicit options or descriptive text that asks for a particular perspective or focus. The resulting projection can also use an appropriate presentation in the GUI.
 
