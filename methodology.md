@@ -122,6 +122,8 @@ Each use of this initial view provides an opportunity to observe the user's subs
 
 This provides a repeatable starting point across development contexts without treating the resulting summary views as standardized measurements.
 
+Analysis should distinguish summary views built from a synthesized summary projection, coordinated independent projections, or a mixture of both. These constructions may serve the same information need while having different trust properties and failure modes.
+
 Observations relevant to evaluating the hypothesis include:
 
 - whether the summary satisfies the user's current information need;
@@ -263,7 +265,7 @@ The log is primarily a **design instrument**, not an unbiased behavioral dataset
 
 Individual events do not automatically constitute findings.
 
-A source excursion, failed projection, awkward view, or other event should retain enough context to support later interpretation. This includes the development task and information need; the PostCode version; the observed repository and its Git commit or relevant working-tree state; the subjects, lenses, lens parameter values, and projections involved; their composition within the presentation and view; presentation parameter values, workspace context, and relevant navigation lineage; the action taken next; and any contemporaneous subjective explanation.
+A source excursion, failed projection, awkward view, or other event should retain enough context to support later interpretation. This includes the development task and information need; the PostCode version; the repository states involved, including their Git commits or relevant working-tree states and their association with the projections; the subjects, lenses, lens parameter values, and projections involved; their composition within the presentation and view; presentation parameter values, workspace context, and relevant navigation lineage; the action taken next; and any contemporaneous subjective explanation.
 
 Recurring patterns can motivate design changes or research hypotheses. Interpretation should also preserve contrary instances and contextual boundaries rather than retaining only evidence that supports the current design.
 

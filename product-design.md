@@ -70,13 +70,15 @@ A lens may derive its answer from multiple analyses, evidence sources, or previo
 
 #### 2.1.2 Projection
 
-A **projection** is the information produced by applying a lens to a particular program state and subject.
+A **projection** is the information produced by applying a lens to one or more program states and a subject.
 
 Conceptually:
 
 ```text
-projection = lens(repository, revision, subject, lens_parameters)
+projection = lens(program_states, subject, lens_parameters)
 ```
+
+`program_states` identifies the repository revisions, working-tree states, or other program states to which the lens is applied. Many lenses use one state; comparison and historical lenses may use more than one. A subject may itself be a collection or a change between revisions.
 
 The lens parameter values are part of the projection's identity and must remain distinct from choices about how the projection is presented.
 
@@ -120,9 +122,11 @@ A projection might be presented as:
 
 Presentation can be selected independently of the information requested. Four dependencies might be most useful as a small graph; eighty-seven might be better as a searchable or clustered table. A rationale projection might be best presented as annotated text.
 
-A presentation may arrange, align, overlay, compare, or otherwise coordinate several projections while preserving each projection's identity and qualifications. The projections may concern the same subject or different subjects, revisions, or program states. If their combination derives correlations, priorities, reconciliations, summaries, or other information not already present in the input projections, that derivation belongs to a lens and produces another qualified projection; it must not be hidden inside presentation. For example, aligning dependency projections from two revisions may be presentational, while determining and characterizing the dependency changes requires a revision-diff lens.
+A presentation may arrange, align, overlay, compare, or otherwise coordinate several projections while preserving each projection's identity and qualifications. The projections may concern the same subject or different subjects, revisions, or program states. Presentation may align or overlay information using correspondence already established by the input projections or an exact identity guarantee they provide; determining further correspondence is analysis and belongs to a lens. Likewise, a presentation may display or coordinate a flow only when an input projection establishes that flow.
 
-A presentation may accept presentation-specific parameters such as sorting, grouping, layout, display-level aggregation, filtering, expansion depth, or whether to show implementation names, descriptive labels, or both. Consequential filtering, aggregation, or omission must remain visible so that presentation does not make any input projection appear more complete than the information shown.
+If combining projections derives correlations, priorities, reconciliations, summaries, aggregates, or other information not already present in the inputs, that derivation belongs to a lens and produces another qualified projection; it must not be hidden inside presentation. For example, placing dependency projections from two revisions in corresponding positions may be presentational when their identities already match, while identifying and characterizing additions, removals, or correspondence across renames requires a revision-diff lens.
+
+A presentation may accept presentation-specific parameters such as sorting, grouping, layout, filtering, expansion depth, or whether to show implementation names, descriptive labels, or both. Consequential filtering, grouping, or omission must remain visible so that presentation does not make any input projection appear more complete than the information shown.
 
 Presentations may share common interaction affordances such as hover or focus detail, subject and relationship selection, contextual lens application, expansion and collapse of evidence or qualifications, opening or pinning views, and copying stable references for coding-agent prompts.
 
@@ -138,9 +142,11 @@ Conceptually:
 view = presentation(projections, context, presentation_parameters)
 ```
 
-`projections` is a nonempty collection whose members retain their own subjects, program states, lens parameters, content, provenance, and qualifications. A multi-projection view may coordinate projections of one subject or support comparison, flow, or another relationship across subjects or program states. Different presentations or presentation parameter values may produce distinct views over the same projection or collection of projections. Presentation context may change how an existing view is rendered without changing its identity.
+`projections` is a nonempty collection whose members retain their own subjects, program states, lens parameters, content, provenance, and qualifications. A multi-projection view may coordinate projections of one subject or present a comparison, flow, or another relationship already established by its inputs across subjects or program states. Different presentations or presentation parameter values may produce distinct views over the same projection or collection of projections. Presentation context may change how an existing view is rendered without changing its identity.
 
-Several independent views placed beside one another remain several views in a workspace. A single coordinated rendering of several projections is one view; neither visual proximity nor a shared container alone makes it so. This distinction concerns the presentation and interaction offered to the human, not whether the implementation uses one or several UI components.
+Several independent views placed beside one another remain several views in a workspace. A single presentation of several projections is one view when it defines relationships among them—such as shared alignment, axes, anchoring, or linked selection—that would be lost if they were presented independently. Neither visual proximity nor a shared container alone makes them one view. This distinction concerns the presentation and interaction offered to the human, not whether the implementation uses one or several UI components.
+
+Adding or removing an underlying projection changes the view's composition rather than merely its rendering context. Such changes must remain visible and be recorded.
 
 #### 2.1.5 Logical Model and Execution Planning
 
@@ -159,7 +165,7 @@ plan = optimize(
 view = execute(plan)
 ```
 
-Each projection request identifies a repository state, subject, lens, and lens parameter values. Presentation requirements such as filtering, ordering, field selection, or pagination may be pushed into a lens or underlying analysis. Lens and lens-parameter choices may likewise select a narrower or less expensive analysis.
+Each projection request identifies one or more program states, a subject, a lens, and lens parameter values. Presentation requirements such as filtering, ordering, field selection, or pagination may be pushed into a lens or underlying analysis. Lens and lens-parameter choices may likewise select a narrower or less expensive analysis.
 
 These optimizations must preserve the conceptual distinctions. Lens parameters define the information requested; presentation parameters define how it is shown; pushdown is an execution strategy rather than a reclassification of those choices. Partial or lazy materialization must retain explicit coverage and limitation information, and a change in execution plan must not masquerade as a change in the projected program information.
 
@@ -417,6 +423,8 @@ PostCode may expose a command-line interface for requesting and inspecting indiv
 
 Given the human's request and any explicit choices, PostCode constructs an appropriate view by selecting one or more projections and a presentation. The human can choose the subject, lens, and lens parameter values for any projection, together with the presentation and presentation parameter values, or any combination of them. PostCode can choose whichever elements the human leaves unspecified, based on the expressed information need and the projections available.
 
+When PostCode selects the projections or presentation, its selection criteria and consequential omissions should remain inspectable. A composition must not imply that an omitted aspect is absent, unavailable, or unimportant unless that conclusion is supported.
+
 Selection can therefore be explicit, automatic, or mixed. For example:
 
 > What depends on this?
@@ -485,25 +493,25 @@ Text is a first-class presentation. A view need not be graphical, and its underl
 
 ### 3.2 Summary as Initial View and Recursive Navigation
 
-A useful default initial view for a subject answers the request:
+The default initial view for a subject answers the request:
 
 > **Summarize the subject.**
 
-PostCode constructs an appropriate summary view by selecting one or more projections and a presentation. For an unfamiliar subject, the view can provide an overview of its structure, behavior, and role; for a familiar subject, it can provide efficient access to details relevant to the current investigation. It may satisfy the human's current purpose or help them select or reach a further subject of investigation.
+PostCode constructs an appropriate summary view by selecting one or more projections and a presentation. For an unfamiliar subject, the view can provide an overview of its structure, behavior, and role; for a familiar subject, it can provide efficient access to details relevant to the current investigation. It may satisfy the human's current purpose or help them select a further lens or reach a further subject of investigation.
 
-Construction may vary with explicit choices or inferred context, which can adjust the view's focus, breadth, depth, and information budget by affecting the projections, lens parameter values, presentation, or presentation parameter values selected. For example, a project summary might use a lens that synthesizes a new qualified account, while a module summary might present responsibility, dependencies, exports, tests, and history as separately qualified projections through a single coordinating presentation.
+Construction may vary with explicit choices or inferred context, which can adjust the view's focus, breadth, depth, and information budget by affecting the projections, lens parameter values, presentation, or presentation parameter values selected. For example, a project summary might use a lens that synthesizes a new qualified account, while a module summary might present structure, dependencies, exports, tests, and history as separately qualified projections through a single coordinating presentation.
 
 Conceptually, a multi-projection module summary might be constructed as:
 
 ```text
-responsibility = responsibility(module)
+structure      = structure(module)
 dependencies   = dependencies(module)
 exports        = exports(module)
 tests          = tests(module)
 history        = history(module)
 
 summary_view = summary_presentation(
-  [responsibility, dependencies, exports, tests, history],
+  [structure, dependencies, exports, tests, history],
   context,
   presentation_parameters
 )
@@ -556,6 +564,8 @@ A projection used by a view may be:
 - **pinned:** it remains attached to a particular revision.
 
 A multi-projection view may combine projections with different revision bindings, as in a comparison across revisions.
+
+When projections in one view reflect different program states or refresh at different times, the presentation must expose that difference rather than imply that they form a synchronized snapshot.
 
 The user constructs the working surface appropriate to the current problem rather than operating within a predetermined dashboard.
 
@@ -621,7 +631,11 @@ The smallest design is to apply the same lens to the same subject at two revisio
 before = lens(repository, revisionA, subject, lens_parameters)
 after  = lens(repository, revisionB, subject, lens_parameters)
 
-comparison_view = comparison_presentation([before, after], presentation_parameters)
+comparison_view = comparison_presentation(
+  [before, after],
+  context,
+  presentation_parameters
+)
 ```
 
 The presentation may initially place the two projections side by side or align corresponding information while preserving each projection's identity and qualifications. This does not produce a new claim about what changed. Identifying additions, removals, changed relationships, or their significance instead requires a comparison or revision-diff lens whose method and qualifications are explicit. More specialized comparison presentations and lenses can emerge if use demands them.
@@ -670,7 +684,7 @@ The purpose is not merely to give the agent another description of the repositor
 
 The artifact should describe at least:
 
-- the repository and revision or working-tree state against which it was generated;
+- the repositories and program states represented in the workspace, including their association with each projection;
 - the current operational task and information need, where formalized;
 - the open views and their stable identifiers;
 - which view or subject currently has the human's focus;
@@ -692,7 +706,7 @@ machine-readable context artifact
 external coding agent
 ```
 
-The context artifact should be generated state rather than a canonical program representation. It should not normally be committed, and updating it should not dirty the repository or trigger PostCode to analyze its own output. It should be written atomically and carry enough revision information for an agent to recognize when the context no longer describes the current program state.
+The context artifact should be generated state rather than a canonical program representation. It should not normally be committed, and updating it should not dirty the repository or trigger PostCode to analyze its own output. It should be written atomically and carry enough revision information for an agent to recognize when any projection or other context no longer describes its associated program state.
 
 A compact manifest may be preferable to duplicating every projection into one indefinitely growing file. The manifest can describe the current workspace and point to separate machine-readable projection records when necessary. The exact representation can emerge with the implementation, but it should be documented and stable enough that different coding agents can consume it without bespoke integration.
 
@@ -752,7 +766,7 @@ PostCode should also make it easy to record subjective observations and reaction
 Each recorded event should include provenance and context metadata sufficient to identify:
 
 - the version of PostCode that produced it;
-- the observed repository state, including its Git commit and any relevant working-tree changes;
+- the repository state or states relevant to the event, including their Git commits and any relevant working-tree changes, and their association with the projections involved;
 - a session identifier, where applicable, allowing related events to be grouped without assuming that a session corresponds to a single investigation or task;
 - the current operational task and relevant contextual information, where available;
 - whether the event arose from genuine use of PostCode for software investigation or development or from testing or debugging PostCode itself.
@@ -780,7 +794,7 @@ A summary lens is one possible way to satisfy a summary request. It produces a n
 Conceptually:
 
 ```text
-summary_projection = summary_lens(repository, revision, subject, lens_parameters)
+summary_projection = summary_lens(program_states, subject, lens_parameters)
 ```
 
 The subject might be a repository, package, subsystem, module, type, function, test, collection of entities, or change between revisions.
@@ -792,7 +806,7 @@ summary_lens(project)
         │
         ├── structure(project)
         ├── dependencies(project)
-        ├── callers(project)
+        ├── exports(project)
         ├── tests(project)
         ├── history(project)
         │

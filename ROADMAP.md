@@ -70,18 +70,22 @@ Its timing should depend on when repeatedly translating PostCode concepts back i
 
 ### 3.4 Revision and projection comparison
 
-Allow the same lens and subject to be projected at two repository states and initially place the results side by side:
+Allow the same lens and subject to be projected at two repository states and initially present the results together:
 
 ```text
 before = lens(repository, revisionA, subject, lens_parameters)
 after  = lens(repository, revisionB, subject, lens_parameters)
 
-compare(before, after)
+comparison_view = comparison_presentation(
+  [before, after],
+  context,
+  presentation_parameters
+)
 ```
 
 Stable projection behavior is a prerequisite: changes in the projection mechanism must not masquerade as changes in the program.
 
-Specialized diff presentations—such as highlighted additions and removals, overlays, movement, animation, or conceptual change summaries—should be added only if simpler comparison proves useful but inadequate.
+Specialized comparison presentations—such as side-by-side layouts, alignment based on already established correspondence, or animation of an established change—should be added only if simpler presentation proves useful but inadequate. Identifying additions, removals, movement, correspondence, or conceptual significance instead requires qualified comparison or revision-diff lenses; presentations can then expose those results through highlights, overlays, animation, or change summaries.
 
 ### 3.5 Lens and presentation growth
 
