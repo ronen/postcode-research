@@ -84,6 +84,8 @@ The lens parameter values are part of the projection's identity and must remain 
 
 A projection includes both its content and the qualifications needed to understand what that content establishes.
 
+A produced projection identifies the program states captured as the basis for its content, supporting evidence, method, and qualifications. A branch, working tree, or continuing stream does not by itself identify that captured basis. Following changing inputs is a binding policy for subsequent requests. When the resulting information is based on newly captured input, its content and qualifications must remain associated with that new basis rather than appearing to continue unchanged from the earlier evidence.
+
 For example, applying a callers lens to `MediaManager` might produce:
 
 ```text
@@ -128,7 +130,7 @@ If combining projections derives correlations, priorities, reconciliations, summ
 
 A presentation may accept presentation-specific parameters such as sorting, grouping, layout, filtering, expansion depth, or whether to show implementation names, descriptive labels, or both. Consequential filtering, grouping, or omission must remain visible so that presentation does not make any input projection appear more complete than the information shown.
 
-Sorting, exact grouping by fields already present in an input projection, and reporting the cardinality of displayed items or groups may remain presentational because they describe the rendered input. They must not imply coverage or completeness beyond that projection's qualifications. Clustering by inferred similarity, deriving categories, or presenting an aggregate as a new claim about the program instead requires a lens and qualified projection.
+Sorting, exact grouping by fields already present in an input projection, and reporting exact counts over an explicitly identified population supplied by a projection may remain presentational. For example, a presentation may report “87 dependencies; showing 20” when its input projection supplies a qualified population of 87 dependencies; one that receives only 20 cannot infer the larger total. Counting rows across overlapping projections does not establish a count of distinct program entities unless their correspondence is already established. These operations must not imply coverage or completeness beyond the input projections' qualifications. Clustering by inferred similarity, deriving categories or correspondence, extrapolating a broader total, or presenting an aggregate as a new claim about the program instead requires a lens and qualified projection.
 
 Presentations may share common interaction affordances such as hover or focus detail, subject and relationship selection, contextual lens application, expansion and collapse of evidence or qualifications, opening or pinning views, and copying stable references for coding-agent prompts.
 
@@ -558,18 +560,16 @@ A workspace contains an arbitrary number of views, each presenting one or more p
 
 Presentation parameters may express choices such as sorting, grouping, layout, filtering, expansion depth, or label style. Presentation context might eventually include the current investigation, the number and shape of results, available screen space, neighbouring views, user preferences, and previous interaction.
 
-A revision may be the current working tree, a branch, or a commit. Staged or index state may also be useful.
+A revision-oriented input may designate a working tree, branch, commit, or staged or index state. Its binding policy may be:
 
-A program state used by a projection may be:
+- **live:** subsequent requests follow a working tree or branch;
+- **pinned:** subsequent requests continue to use a particular revision.
 
-- **live:** it follows a working tree or branch;
-- **pinned:** it remains attached to a particular revision.
+These policies select inputs for subsequent requests. The information shown by a presentation must remain associated with the captured program state or states that form its basis.
 
-Live and pinned describe revision-oriented program states. Other inputs, such as runtime observations, retain bindings appropriate to their source—for example, an execution, observation interval, or continuing stream—and need not fit that classification.
+Other inputs, such as runtime observations, retain bindings appropriate to their source—for example, an execution, observation interval, or continuing stream. A projection based on such inputs still identifies the observations captured as its basis; later observations do not silently become support for information attributed to an earlier interval.
 
-A projection may combine program states with different revision bindings, as in a comparison between a working tree and a commit. A multi-projection view may in turn combine projections with different bindings.
-
-When program states represented within one view differ or refresh at different times, the presentation must expose their associations and timing rather than imply that they form a synchronized snapshot.
+A projection may concern several captured states obtained under different binding policies, as in a comparison between a working tree and a commit. A multi-projection view may likewise coordinate projections obtained under different policies. The presentation must preserve the association of each projection and claim with its captured states, including meaningful order or roles, capture timing, and relevant capture limitations, rather than imply that the states form a synchronized snapshot.
 
 The user constructs the working surface appropriate to the current problem rather than operating within a predetermined dashboard.
 
@@ -577,7 +577,7 @@ A workspace organizes its views as an investigation graph. Views are nodes; rela
 
 A comparison may be constructed directly as one multi-projection view or as a new view derived from projections already shown in earlier views. Investigation-graph relationships preserve the relevant lineage in either case.
 
-Derivation, placement, revision binding, and investigation role are distinct. A view may be embedded in another view, placed alongside it, or moved into a linked workspace. The revision binding of each program state underlying its projections is independent of whether the view is a root or descendant of the investigation. A view can become the root of a linked workspace without pinning those states and without losing its derivation history.
+Derivation, placement, input binding, and investigation role are distinct. A view may be embedded in another view, placed alongside it, or moved into a linked workspace. The binding policy for each input underlying its projections is independent of whether the view is a root or descendant of the investigation. A view can become the root of a linked workspace without pinning those inputs and without losing its derivation history.
 
 A PostCode workspace may comprise multiple such linked workspaces, each preserving its own focal subject and collection of views. Collectively, they form the workspace through which the human conducts an investigation.
 
@@ -738,7 +738,7 @@ Project instructions can ask the agent to leave a structured response artifact o
 - constraints, uncertainty, or missing information encountered;
 - tests or other verification performed;
 - source entities affected;
-- projections that should be refreshed or shown;
+- projection requests that should be repeated or results that should be shown;
 - questions that another lens might help answer.
 
 Agent-supplied context must retain its provenance and epistemological status. An agent's account of its rationale, behavior, or interpretation is a recorded assertion or interpretation, not a derived fact merely because it was written in a structured form.
@@ -751,7 +751,7 @@ The file-based exchange can later develop into a more interactive protocol. An e
 
 - query PostCode lenses directly;
 - refer to projections and views by stable identifier;
-- request a new projection or refresh;
+- request a new projection or repeat a projection request using its current bindings;
 - contribute rationale or uncertainty during development rather than only after a task;
 - suggest useful additions to the current investigation.
 
