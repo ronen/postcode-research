@@ -425,7 +425,7 @@ PostCode may expose a command-line interface for requesting and inspecting indiv
 
 Given the human's request and any explicit choices, PostCode constructs an appropriate view by selecting one or more projections and a presentation. The human can choose the subject, lens, and lens parameter values for any projection, together with the presentation and presentation parameter values, or any combination of them. PostCode can choose whichever elements the human leaves unspecified, based on the expressed information need and the projections available.
 
-When PostCode selects the projections or presentation, its selection criteria should remain inspectable. A request about output form or length may be realized through presentation when it changes only rendering or visible abbreviation. If satisfying it changes which information is requested or synthesized, it instead affects projection selection or lens parameters. The resolved choices and consequential omissions must remain inspectable, and a composition must not imply that an omitted aspect is absent, unavailable, or unimportant unless that conclusion is supported.
+When PostCode selects the projections or presentation, a request about output form or length may be realized through presentation when it changes only rendering or visible abbreviation. If satisfying it changes which information is requested or synthesized, it instead affects projection selection or lens parameters. The resolved selections, their criteria, and consequential omissions must remain inspectable, and a composition must not imply that an omitted aspect is absent, unavailable, or unimportant unless that conclusion is supported.
 
 Selection can be explicit, automatic, or mixed. For example:
 
@@ -662,6 +662,8 @@ change = diff([stateA, stateB], subject, lens_parameters)
 Two states may represent the endpoints of a net change. A single-commit diff ordinarily uses the commit and its parent, while an ordered sequence of states may preserve intermediate evolution when that matters.
 
 The subject may be the project root for an unfocused project diff or a narrower subject or collection. Lens parameters may specify a perspective such as dependencies, behavior, boundaries, tests, or requirements; a focus expressed in prose; breadth or depth; and whether to include interpreted significance as well as mechanically derived changes.
+
+A change summary remains organized around a chosen subject across states; a diff is organized around the changes between states and may identify the subjects they affect.
 
 A command-line interface might expose this capability as `postcode diff`, accepting explicit options or descriptive text that asks for a particular perspective or focus. The resulting projection can also use an appropriate presentation in the GUI.
 
