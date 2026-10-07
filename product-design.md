@@ -425,7 +425,7 @@ PostCode may expose a command-line interface for requesting and inspecting indiv
 
 Given the human's request and any explicit choices, PostCode constructs an appropriate view by selecting one or more projections and a presentation. The human can choose the subject, lens, and lens parameter values for any projection, together with the presentation and presentation parameter values, or any combination of them. PostCode can choose whichever elements the human leaves unspecified, based on the expressed information need and the projections available.
 
-When PostCode selects the projections or presentation, a request about output form or length may be realized through presentation when it changes only rendering or visible abbreviation. If satisfying it changes which information is requested or synthesized, it instead affects projection selection or lens parameters. The resolved selections, their criteria, and consequential omissions must remain inspectable, and a composition must not imply that an omitted aspect is absent, unavailable, or unimportant unless that conclusion is supported.
+A request about output form or length may be realized through presentation when it changes only rendering or visible abbreviation. If satisfying it changes which information is requested or synthesized, it instead affects projection selection or lens parameters. When PostCode selects the projections or presentation, the resolved selections, their criteria, and consequential omissions must remain inspectable, and a composition must not imply that an omitted aspect is absent, unavailable, or unimportant unless that conclusion is supported.
 
 Selection can be explicit, automatic, or mixed. For example:
 
