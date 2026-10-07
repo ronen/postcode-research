@@ -425,7 +425,7 @@ PostCode may expose a command-line interface for requesting and inspecting indiv
 
 Given the human's request and any explicit choices, PostCode constructs an appropriate view by selecting one or more projections and a presentation. The human can choose the subject, lens, and lens parameter values for any projection, together with the presentation and presentation parameter values, or any combination of them. PostCode can choose whichever elements the human leaves unspecified, based on the expressed information need and the projections available.
 
-When PostCode selects the projections or presentation, its selection criteria and consequential omissions should remain inspectable. A composition must not imply that an omitted aspect is absent, unavailable, or unimportant unless that conclusion is supported.
+When PostCode selects the projections or presentation, its selection criteria should remain inspectable. A request about output form or length may be realized through presentation when it changes only rendering or visible abbreviation. If satisfying it changes which information is requested or synthesized, it instead affects projection selection or lens parameters. The resolved choices and consequential omissions must remain inspectable, and a composition must not imply that an omitted aspect is absent, unavailable, or unimportant unless that conclusion is supported.
 
 Selection can be explicit, automatic, or mixed. For example:
 
@@ -501,7 +501,7 @@ When the human has not expressed a more specific information need, PostCode may 
 
 PostCode constructs an appropriate summary view by selecting one or more projections and a presentation. For an unfamiliar subject, the view can provide an overview of its structure, behavior, and role; for a familiar subject, it can provide efficient access to details relevant to the current investigation. It may satisfy the human's current purpose or help them select a further lens or reach a further subject of investigation.
 
-Construction may vary with explicit choices or inferred context, which can adjust the view's focus, breadth, and depth by affecting the projections, lens parameter values, presentation, or presentation parameter values selected. For example, a project summary might use a lens that synthesizes a new qualified account, while a module summary might present structure, dependencies, exports, tests, and history as separately qualified projections through a single coordinating presentation.
+The focus, breadth, and depth of a summary view may vary with explicit choices or inferred context. For example, a project summary might use a lens that synthesizes a new qualified account, while a module summary might present structure, dependencies, exports, tests, and history as separately qualified projections through a single coordinating presentation.
 
 Conceptually, a multi-projection module summary might be constructed as:
 
@@ -809,6 +809,8 @@ summary_projection = summary_lens(program_states, subject, lens_parameters)
 ```
 
 The subject might be a repository, package, subsystem, module, type, function, test, or collection of entities.
+
+When supplied with multiple ordered program states, a summary lens may describe how its subject changed across them. Summarizing a single commit ordinarily uses the commit state and its parent.
 
 Unlike a conventional prose summary generated directly from source, one method for producing a summary projection can draw on other qualified projections:
 
