@@ -56,9 +56,9 @@ There is no objective boundary between the bootstrap transition and ongoing form
 
 The first formative loop should determine which capabilities become useful next. The following are candidates rather than a fixed sequence.
 
-### 3.1 Live repository updates
+### 3.1 Following repository changes
 
-Observe changes made by external coding agents and keep affected projections and views current. This becomes important when manual refresh disrupts sustained use or leaves the workspace visibly stale.
+Observe changes made by external coding agents and allow affected projection requests with following bindings to be repeated so that relevant views can show information based on newly captured states. Changes in captured basis must remain visible. This becomes important when manual re-execution disrupts sustained use or leaves the workspace visibly stale.
 
 ### 3.2 Prose investigation and selection
 
