@@ -495,13 +495,15 @@ The important rule is:
 
 Text is a first-class presentation. A view need not be graphical, and its underlying projections need not be mechanically derived, provided the provenance and epistemological status of their claims remain visible.
 
+Resolving a request may depend on qualified information that PostCode has not yet established. Query planning may request and consume that information, but must not itself derive the population used for subject resolution or other program claims. The information and its qualifications must remain attributable to the resulting selection, ambiguity, or inability to resolve the request. Failure to resolve a subject must not conceal established candidates, incomplete coverage, unavailable analysis, or other consequential outcomes.
+
 #### 3.1.1 System-Initiated Investigation
 
-PostCode may initiate investigations without a corresponding explicit request when doing so facilitates orientation, a suggested initial view, query planning, subject resolution, navigation, or later interaction. For example, it might request qualified analysis that establishes a population of modules whose names can subsequently be used to resolve a designation. System-initiated investigation uses the same analysis, provenance, qualification, and resource-constraint mechanisms as work explicitly initiated by a human or external agent, but need not create a visible view.
+Analysis that PostCode initiates to satisfy an explicit request from a human or external agent—including prerequisite work not separately requested—is part of that request and is governed by its resource constraints and the choices described in [Resource-Bounded Analysis](#2151-resource-bounded-analysis). System-initiated investigation is work that PostCode undertakes without such an initiating request.
+
+PostCode may initiate investigations when doing so facilitates orientation, a suggested initial view, navigation, or anticipated later interaction. For example, it might request qualified analysis that establishes a population of modules whose names can subsequently be used to resolve a designation. System-initiated investigation uses the same analysis, provenance, and qualification mechanisms as explicitly requested work, but need not create a visible view.
 
 System-initiated investigation may proceed only within resource policies the human has authorized for such work. Work that would exceed those limits or materially delay an explicit request remains deferred unless the human authorizes it. Subject to those constraints, whether the work is performed eagerly, lazily, during navigation, or in response to a later need is an implementation decision.
-
-Resolving a request may depend on qualified information that PostCode has not yet established. Query planning may request and consume that information, but must not itself derive the population used for subject resolution or other program claims. The information and its qualifications must remain attributable to the resulting selection, ambiguity, or inability to resolve the request. Failure to resolve a subject must not conceal established candidates, incomplete coverage, unavailable analysis, or other consequential outcomes.
 
 When system-initiated work influences what PostCode shows, selects, suggests, or reports, its trigger, captured basis, relevant result, and qualifications must be inspectable from that outcome. Reusing an earlier result does not make it current merely because its input has a following binding.
 
