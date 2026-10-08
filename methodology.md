@@ -118,7 +118,7 @@ PostCode's design offers [summary as a suggested initial view and a basis for re
 
 Formative use should deliberately begin suitable investigations with the suggested summary view often enough to evaluate its usefulness across subjects and contexts, while allowing a more specific information need to bypass it.
 
-Each use of a summary as an initial view provides an opportunity to observe the user's subsequent behavior, both to evaluate the hypothesis and to refine how PostCode constructs summary views. The recurring request is:
+Each use of a summary as an initial view provides an opportunity to observe the user's subsequent behavior, both to evaluate the hypothesis and to refine how PostCode constructs summary views. Analysis should distinguish whether the summary was explicitly requested, suggested and accepted, or constructed by PostCode without an explicit request. The recurring information need can be expressed as:
 
 > **Summarize the subject.**
 
@@ -232,7 +232,7 @@ Relevant recorded context and events include:
 - the current operational task and information need, where formalized;
 - prompts and prose requests submitted to PostCode;
 - prompts sent to coding agents, when available, and references to external tasks or conversations;
-- system-initiated supporting investigations and their triggering context;
+- whether an investigation was initiated by a human, an external agent, or PostCode, and the triggering context of system-initiated work;
 - explicit and automatically selected lenses, lens parameter values, projections and their composition within views, presentations, presentation parameter values, and resulting views;
 - entities and relationships discovered or opened;
 - projections produced;
