@@ -447,6 +447,10 @@ selects a presentation for information established by the surrounding context.
 
 selects a lens, a lens parameter value, and a presentation.
 
+PostCode may also initiate supporting investigations without a corresponding explicit human request when doing so facilitates planning, subject resolution, navigation, or later interaction. For example, it might establish a qualified population of modules whose names can subsequently be used to resolve a designation. System-initiated investigation uses the same analysis, provenance, qualification, and resource-constraint mechanisms as human-initiated investigation, but need not create a visible view. Whether it is performed eagerly, lazily, during navigation, or in response to a later need is an implementation decision.
+
+Resolving a request may depend on qualified information that PostCode has not yet established. Planning may request and use that information, but must not establish the candidate population or other program claims itself. The information and its qualifications must remain attributable to the resulting selection, ambiguity, or inability to resolve the request. Failure to resolve a subject must not conceal established candidates, incomplete coverage, unavailable analysis, or other consequential outcomes.
+
 The prose interface supports questions at several levels:
 
 > Show me everything related to synchronization.
@@ -500,6 +504,8 @@ Text is a first-class presentation. A view need not be graphical, and its underl
 When the human has not expressed a more specific information need, PostCode may suggest a summary view as an initial view for the subject:
 
 > **Summarize the subject.**
+
+When PostCode constructs such a suggested view without an explicit request, it is one application of system-initiated supporting investigation.
 
 PostCode constructs an appropriate summary view by selecting one or more projections and a presentation. For an unfamiliar subject, the view can provide an overview of its structure, behavior, and role; for a familiar subject, it can provide efficient access to details relevant to the current investigation. It may satisfy the human's current purpose or help them select a further lens or reach a further subject of investigation.
 
@@ -767,7 +773,7 @@ This does not preclude separate operational telemetry, diagnostics, or product a
 
 #### 3.8.1 Automatic Event Capture
 
-PostCode should automatically record relevant interaction events, including prompts and prose requests submitted to PostCode; prompts sent to coding agents, when available; selected lenses, lens parameter values, projections and their composition within views, presentations, presentation parameter values, and resulting views; navigation; source escape-hatch use; unavailable, refused, or failed projection requests; analysis applicability and availability, execution state, and result materialization; resource estimates, budgets or thresholds, user choices, and actual resource use where available; workspace changes; and interactions with coding-agent context.
+PostCode should automatically record relevant interaction events, including prompts and prose requests submitted to PostCode; prompts sent to coding agents, when available; system-initiated supporting investigations and their triggering context; selected lenses, lens parameter values, projections and their composition within views, presentations, presentation parameter values, and resulting views; navigation; source escape-hatch use; unavailable, refused, or failed projection requests; analysis applicability and availability, execution state, and result materialization; resource estimates, budgets or thresholds, user choices, and actual resource use where available; workspace changes; and interactions with coding-agent context.
 
 #### 3.8.2 Contemporaneous Subjective Observations
 
