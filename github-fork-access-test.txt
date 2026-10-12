@@ -1,0 +1,7 @@
+GitHub fork access test — 2026-10-12
+
+This temporary file verifies the ChatGPT GitHub connection as ronen-agent:
+read files, create a branch and commit in ronen-agent/postcode-research,
+and open a pull request against ronen/postcode-research.
+
+Close the test pull request without merging. No project changes are intended.
