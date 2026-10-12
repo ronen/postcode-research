@@ -1,0 +1,6 @@
+GitHub connector access test — 2026-10-12
+
+This temporary file exists only to verify the end-to-end workflow:
+read repository files, create a branch, commit a change, and open a pull request.
+
+Close the test pull request without merging. No project changes are intended.
