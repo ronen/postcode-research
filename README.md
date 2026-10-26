@@ -25,8 +25,12 @@ See [`ROADMAP.md`](ROADMAP.md) for planned work and candidate directions.
 - [`methodology.md`](methodology.md) describes how building and using PostCode can produce research evidence.
 - [`research-strategy.md`](research-strategy.md) describes how findings may shape the broader research direction and publication strategy.
 - [`related-work.md`](related-work.md) records relevant prior work and comparisons.
-- [`candidate-conventions.md`](candidate-conventions.md) collects design conventions that may be useful during PostCode-mediated development.
 - [`application/repository-setup.md`](application/repository-setup.md) describes the minimal requirements for the application repository to participate in the PostCode research project.
+
+The [`notes/`](notes/) directory holds not-yet-adopted ideas, background material, and other non-primary documents:
+
+- [Candidate conventions for PostCode-mediated development](notes/candidate-conventions.md), retained for consideration rather than as endorsed practices.
+- [Cross-paradigm stress tests for architectural representations](notes/cross-paradigm-architectural-concepts.md), an exploratory proposal for testing conceptual portability across language paradigms, not scheduled work or an application-language commitment.
 
 ## License
 

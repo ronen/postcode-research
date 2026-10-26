@@ -2,11 +2,11 @@
 
 This document lists candidate language-agnostic conventions that may help humans practice software design and architecture with coding agents through PostCode, without needing to work directly in conventional programming-language source.
 
-These are candidates to keep in mind during PostCode development, not conventions PostCode currently endorses. They were initially extracted from conventions used while developing [the author's pre-existing project](methodology.md#existing-project-development) by separating their underlying language-independent intent from their TypeScript-specific realization.
+These are candidates to keep in mind during PostCode development, not conventions PostCode currently endorses. They were initially extracted from conventions used while developing [the author's pre-existing project](../methodology.md#existing-project-development) by separating their underlying language-independent intent from their TypeScript-specific realization.
 
 Some candidates may also be adopted as project-specific conventions while developing PostCode; others may remain possibilities that are not currently followed. Local adoption and general recommendation are separate decisions. Conventions adopted for application development are recorded and maintained in the application repository.
 
-The methodological safeguards for evaluating proposed conventions are described in [`methodology.md`](methodology.md#4-interpreting-formative-use).
+The methodological safeguards for evaluating proposed conventions are described in [`methodology.md`](../methodology.md#4-interpreting-formative-use).
 
 ## 1. What Would Make a Convention Relevant?
 

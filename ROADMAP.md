@@ -131,6 +131,8 @@ Additional repositories are useful only while they expose new assumptions, needs
 
 Try PostCode on software written in another programming language. Check which architectural concepts and investigation capabilities remain useful, what needs adaptation, and where language-specific differences matter.
 
+The exploratory note on [cross-paradigm stress tests](notes/cross-paradigm-architectural-concepts.md) considers how a bounded conceptual exercise could challenge architectural assumptions before implementing another language adapter. It does not change current priorities or commit to a language integration.
+
 ### 4.6 Unfamiliar-language challenge
 
 A later experiment may use a language the developer does not know well. Where practical, coding agents can integrate the new language into PostCode from PostCode-level requirements while reporting where the existing abstractions fail to transfer.
