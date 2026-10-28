@@ -8,7 +8,7 @@ This document describes the conceptual product design through which PostCode's r
 
 The goal is a projection-based software-development environment in which humans can practice software design and architecture in collaboration with agents that implement the software. PostCode provides task-appropriate, epistemologically qualified representations that help humans understand, design, direct, and evaluate software without requiring them to know how to read or write conventional programming-language source.
 
-The human user is presumed to understand relevant concepts of computation, software design, and architecture, but not the programming language used to implement the software. PostCode must not present programming-language source to the human. Source remains input to analyses and coding agents; relevant evidence attribution, qualifications, and implementation mappings remain available without requiring source-language literacy. The conceptual model does not assume that the program's persistent representation is intended for human reading.
+The human user is presumed to understand relevant concepts of computation, software design, and architecture, but not the programming language used to implement the software. PostCode is designed for the human to reason through those concepts rather than reconstruct the implementation through its programming language. PostCode must not present programming-language source to the human. Source remains input to analyses and coding agents; relevant evidence attribution, qualifications, and implementation mappings remain available without requiring source-language literacy. The conceptual model does not assume that the program's persistent representation is intended for human reading.
 
 This prohibition applies to all human-facing output, including agent-generated explanations and diagnostics. Implementation identifiers, paths, and evidence references may be shown as labels or provenance, but understanding must not depend on interpreting programming-language syntax. Code excerpts, declarations, and raw type signatures are not human-facing representations.
 
@@ -259,7 +259,7 @@ An entity's identity, its implementation identifier, and the label presented to 
 
 An implementation identifier may be arbitrary or language-specific. A descriptive label expresses interpreted meaning. A PostCode-level term may provide continuity across implementations or languages but must not silently become canonical merely because PostCode introduced it.
 
-Views may expose implementation identifiers, descriptive labels, or both. Exact identifiers and source mappings remain available for traceability and agent coordination; inferred labels retain their provenance and interpretive status. Established software-design and architecture terminology and visual notations may be adopted provisionally for human-facing presentations and tested through use. Their correspondence to implementation details and applicability across languages must be established or qualified case by case; familiar terms and diagrams do not establish program facts.
+Views may expose implementation identifiers, descriptive labels, or both. Exact identifiers and source mappings remain available for traceability and agent coordination; inferred labels retain their provenance and interpretive status. PostCode uses established software-design and architecture terminology and visual notations as part of its human-facing working vocabulary, and may develop additional terms and notations through use. The applicability of particular terms and notations, and their correspondence to implementation details, must be established or qualified case by case and may be revised through use.
 
 A change to a displayed label must not masquerade as a change to the program. Conversely, a renamed implementation identifier need not break continuity of attention when the available evidence supports continued reference to the same subject.
 
@@ -404,20 +404,24 @@ For research use, PostCode delivers observation records to a designated research
 
 ### 4.1 Illustrative Lens Families
 
+PostCode begins with established software-design and architecture concepts—such as responsibility, boundary, ownership, state, interaction, contract, and concurrency—as a human-facing working vocabulary and as starting points for designing lenses and other investigation capabilities. It may also develop new concepts, lenses, and investigation capabilities when established ones do not adequately support useful architectural reasoning through PostCode. The applicability of both established and PostCode-developed concepts to particular software must be established or qualified rather than assumed.
+
 The following lens families illustrate kinds of questions that PostCode could support:
 
 - **summary and orientation:** qualified accounts of a subject, possibly synthesized from other results;
-- **structure and repository organization:** modules, packages, containment, exports, and repository structure;
-- **cross-reference:** callers, callees, references, construction, mutation, implementations, ownership, and lifetime where meaningful;
-- **tests and behavior:** test inventory, association, realization, apparent intent, evidence, and history;
-- **paths and flows:** call, dependency, control, and data-propagation paths;
+- **responsibility and ownership:** which parts of the software are responsible for behavior, decisions, resources, or state; where responsibility is shared or transferred; and how ownership relates to lifetime;
+- **state and transition:** what states matter architecturally, what causes transitions, which conditions govern them, and what effects, invariants, failures, or recovery behavior follow;
+- **interaction and protocol:** how components collaborate through operations, messages, events, or shared resources; what occurs when an operation is admitted or rejected; and what sequencing or coordination matters;
+- **contracts, boundaries, and constraints:** what a boundary promises and assumes, which inputs, outputs, invariants, and failure modes matter, and what evidence establishes satisfaction, violation, or uncertainty;
+- **structure and modularity:** components, modules, packages, containment, cohesion, coupling, candidate groupings, cross-boundary dependencies, and repository organization;
+- **implementation relationships and flows:** callers, callees, references, construction, mutation, exports, dependencies, control flow, and data propagation;
+- **tests, behavior, and evidence:** test inventory, association, realization, observed behavior, apparent intent, supporting and contrary evidence, and history;
 - **history and change:** appearance, disappearance, revision comparison, and conceptual differences;
-- **rationale and evidence:** recorded rationale, supporting and contrary evidence, and qualified explanations;
+- **rationale and requirements:** recorded rationale, stated or inferred requirements, design tradeoffs, and qualified explanations;
 - **external dependencies:** libraries, services, tools, platforms, standards, and protocols;
-- **requirements and constraints:** stated, encoded, inferred, satisfied, violated, or unestablished requirements;
-- **boundaries and modularity:** candidate groupings, cohesion, cross-boundary dependencies, state ownership, and change coupling.
+- **change coupling and evolution:** which architectural elements tend to change together, which decisions constrain later change, and how architectural accounts evolve over time.
 
-Which lenses, parameters, and groupings prove useful is a research result to be discovered through use.
+These are candidate investigative capabilities rather than a fixed ontology or labels to attach automatically to implementation constructs. Their answers may require interpretation, and architectural concepts need not map neatly to source-language constructs. Which lenses, parameters, and groupings prove useful is a research result to be discovered through use.
 
 <a id="programming-language-integration"></a>
 
@@ -425,7 +429,7 @@ Which lenses, parameters, and groupings prove useful is a research result to be 
 
 Support for a programming language supplies the entities, analyses, and guarantees available for that language.
 
-PostCode may begin with established software architecture and design concepts—such as responsibility, boundary, ownership, state, interaction, contract, and concurrency—as candidates for human-facing investigation. Their applicability to a particular program must be assessed rather than assumed. Shared concepts and language-specific extensions may coexist. PostCode must not discard or distort language-specific semantics to fit a preselected universal model.
+Concepts shared across programming languages and language-specific extensions may coexist. PostCode must not distort implementation semantics to fit a predefined universal model.
 
 <a id="generated-output-evidence-boundary"></a>
 
