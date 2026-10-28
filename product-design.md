@@ -314,6 +314,8 @@ An **investigation context** comprises the views accumulated as the human follow
 
 An investigation may continue as the program changes, but newly captured information must not silently replace or become evidence for results based on an earlier state. Relationships among views can preserve useful lineage, such as where a subject was discovered or which earlier information contributed to a comparison or summary.
 
+PostCode may accumulate partial, qualified architectural understanding across investigations. Later investigations can reuse, extend, or challenge earlier accounts, including when examining the same software from different architectural perspectives. This does not require a single consolidated architecture model: accounts may overlap, disagree, or remain incomplete, and their evidence, qualifications, and revision history must remain distinguishable.
+
 <a id="navigation-through-views"></a>
 
 ### 3.3 Navigation Through Views
