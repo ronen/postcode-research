@@ -60,6 +60,14 @@ For PostCode, an implemented pattern is evidence of what exists, not necessarily
 
 Review basis (2 November 2026): metadata and selected full-text sections on design, results, open-source validation, discussion, and threats. The experiments cover selected choices, one controlled task family, four repositories, and two providers; they measure implementation choice and functional success, not maintainability, architecture quality, human understanding, or autonomous discovery of rules.
 
+**Granitzer, M., Ghosh Dastidar, K., Einwiller, A., Mitrović, J., & Zerhoudi, S. (2026). _Getting a Grip: Operating Human-Agent Software Teams Through Governed Messages._ Preprint, arXiv:2611.00689; submitted 31 October 2026.** [Paper](https://arxiv.org/abs/2611.00689)
+
+Studies a message-governed human–agent software team in 926 controlled runs (899 analyzable) and a four-week field deployment involving up to 19 agents and two people. The system treats humans and agents as authenticated principals exchanging typed, addressed acts in rooms with goals, rules, routing, and an append-only attributable record. Revising which messages started work, bundled with limits on repeated messages, was followed by a drop in coordination failure from 42% to 13%; instructed roles and votes were unreliable, and no conversational defense reliably stopped the studied backdoor.
+
+For PostCode, this supplies constructive and field-based evidence that a shared working environment needs enforceable distinctions among information, request, decision, authorization, and completion, while preserving provenance and critical state across compaction. The field record also makes human attention and decision latency explicit constraints. These results concern team operation rather than a human architectural interface, and the bundled intervention and convenience field setting do not isolate which mechanism caused each effect.
+
+Review basis (9 November 2026): primary metadata and selected full-text sections on architecture, controlled studies, field operation, lessons, instrument failures, and validity. The findings support design knowledge and comparison conditions for collaborative practice; they do not establish PostCode's account quality or human usefulness.
+
 ### 1.2 Human oversight of software agents
 
 **Dhanorkar, S., Passi, S., & Vorvoreanu, M. (2026). _Human oversight of agentic systems in practice: Examining the oversight work, challenges, and heuristics of developers using software agents._ FAccT 2026 / arXiv:2606.05391.**
@@ -149,6 +157,22 @@ Combines synthesized development sequences with persona-conditioned simulated us
 Relevant to constructing sustained direction/supervision tasks, including the source-language-unfamiliar case in [research.md](research.md#5-research-questions). Its task-generation approach merits inspection separately from any human-interface evaluation; successful interaction with a simulator cannot establish PostCode's human usefulness.
 
 Review basis (19 October 2026): metadata, PDF sections 3 and 5, and Appendix A.3–A.4 on persona construction and task checks. Synthetic tasks and simulated behavior constrain transfer. No artifacts run or comparative human study assessed.
+
+**Yan, X., Lei, J., Shi, D., Wang, Z., & Cao, N. (2026). _From Watching to Steering: Enabling Human-Coding Agent Collaboration through Execution Traces._ Preprint, arXiv:2611.04466; submitted 3 November 2026.** [Paper](https://arxiv.org/abs/2611.04466)
+
+VibeTrace presents coding-agent work as hierarchical execution traces and lets a user inspect intermediate states, fork from an earlier step, and retain validated progress. A formative study involved 12 experienced coding-agent users; a controlled questionnaire study with 20 participants reported higher accuracy and lower time on ten trace-comprehension questions than OpenCode's native logs; eight further experts used the prototype on two tasks. Its skill-distillation benchmark is evidence about agent performance, not human understanding.
+
+This is direct prior art for selective oversight, trace provenance, intervention, and reuse of prior investigation. An execution trace remains different from a qualified architectural account: it records how an agent acted, not necessarily what the software means or which inferred relationship is valid. The short tasks and experienced-user samples do not establish sustained architectural practice or usefulness without programming-language source.
+
+Review basis (9 November 2026): primary metadata and selected full-text sections on formative interviews, system design, controlled and expert studies, benchmark results, discussion, and limitations.
+
+**Albu, R., Khval, A., Orlova, M., Music, D., Rosa, F. A. V., Yi, L., & Khojah, R. (2026). _Tracybot: Preserving Developer Intent by Tracing Agent-Generated Code to Prompts._ Preprint, arXiv:2611.09395; submitted 6 November 2026.** [Paper](https://arxiv.org/abs/2611.09395)
+
+Tracybot groups planning and build prompts with agent responses into Tasklets, maps them to changed lines through repository history, and can export a Tasklet as an architectural decision record. Two design-science iterations included a seven-person focus group and a 24-person screenshot-based survey; 21 participants rated the Tasklet representation clear at four or above on a six-point scale.
+
+The mechanism is close prior art for retained conversation provenance and for connecting a recorded assertion to the implementation it influenced. The recorded prompt is evidence of communicated intent, not proof that the rationale is sound or current; human-judgment decision-record fields remain for people to complete. Participants did not use the tool directly, and the evaluation does not establish better understanding, intent accuracy, architecture quality, or source-independent practice.
+
+Review basis (9 November 2026): primary metadata and selected full-text sections on Tasklets, mapping and history, decision-record export, design iterations, participant evidence, and limitations.
 
 ### 1.3 Code comprehension and software visualization
 
@@ -262,6 +286,22 @@ Provides multiple simultaneous code-map views and abstraction levels, with a fou
 
 Relevant precedent for multi-view and sustained-use software visualization, while remaining primarily within the conventional program-comprehension/navigation framing.
 
+**Parveen, R., Arora, N., Zhang, Z., Mäkelä, K., & Abrahamsson, P. (2026). _Req-Space: A User Study of Interactive Visualisations for Requirements Review._ Preprint, arXiv:2611.05437; submitted 3 November 2026.** [Paper](https://arxiv.org/abs/2611.05437)
+
+In a fixed-order two-phase study, 20 participants reviewed a fictional 40-requirement specification and change request using source documents and then revisited the tasks with interactive semantic and traceability views. Seventeen added at least one source-supported item or pair; 58 of 69 assessable additions were supported, and seven decision rationales were stronger in the second phase, including five without a changed decision category. Some participants misread proximity as dependency or treated trace links as inferred effects.
+
+The study offers a useful direct-human evaluation pattern for PostCode: distinguish broader recorded coverage, changed decisions, and stronger justification; keep relationship meanings and source context visible; and test false completeness explicitly. Its fixed order prevents causal attribution to Req-Space, and a fictional requirements review does not establish architectural practice, collaborative use, or usefulness without source materials.
+
+Review basis (9 November 2026): primary metadata and selected full-text sections on study design, results, relationship misinterpretation, discussion, and threats to validity.
+
+**Storey, M.-A. (2026). _Cognitive Tours: Making Understanding a Deliverable in AI-Assisted Development._ Preprint, arXiv:2611.08456; submitted 5 November 2026.** [Paper](https://arxiv.org/abs/2611.08456)
+
+Cognitive Tours is a web prototype for human-curated paths connecting goals, user needs, design decisions, code, tests, and open questions. AI functions audit possible staleness and suggest candidates, while people verify evidence, write rationale, and choose a route. Six months of author self-use, including one detected contradiction between a decision and implementation, ground the design proposition.
+
+This is a close constructive comparator for making partial understanding persistent and revisable. It proposes productive friction, human curation, and explicit open questions as design knowledge rather than claiming an automatically recovered or complete account. The self-use episode and planned evaluation do not yet establish reduced cognitive debt, human effectiveness, or superiority over chat, diagrams, or ordinary notes.
+
+Review basis (9 November 2026): primary metadata and full paper, including design goals, interactions, self-use episode, risks, and proposed evaluation agenda.
+
 ### 1.4 Architecture and agent-generated software
 
 **Konrad, P. M., Adam, T. L., Terrenzi, R., & Ayvaz, S. (2026). _Architecture Without Architects: How AI Coding Agents Shape Software Architecture._ arXiv:2604.04990.**
@@ -343,6 +383,14 @@ CAIA separates shared stated intent, implementation, validation, and reviewed kn
 Design proposal: consolidation is an explicit, reviewed part of a change, including decisions made during implementation. This provides a candidate mechanism for preventing retained intent from lagging behind development. For PostCode, inspect one change where implementation revises an assumption: what should be retained, who endorses it, and how does it remain distinct from implementation evidence? This is a proposed comparison, not an observed benefit.
 
 Review basis (5 November 2026): metadata and [v1 sections 3–6](https://arxiv.org/html/2610.37340v1); sections 5–6 reread during the design-knowledge reassessment. Reported industrial use and subjective reception precede a planned controlled evaluation. Retained as a provisional process comparison, not efficacy evidence. Reassessed from the 2 November leads because retained knowledge and external collaboration now have explicit roles; no new empirical result is claimed.
+
+**Sepidband, M., Shin, J., Wang, S., & Hemmati, H. (2026). _How Should Agents See Code? Rethinking Code Representations for Agentic Software Engineering._ Preprint, arXiv:2611.07286; submitted 5 November 2026.** [Paper](https://arxiv.org/abs/2611.07286)
+
+Compares AST, call-graph, dependency, documentation-enriched, and hybrid repository maps with raw repository tools for one Claude Code configuration across four benchmark families. All maps improved fault-localization recall@10 and reduced tokens, while repair, test-generation, and security-patching effects varied by task and every map increased latency in the reported security setting. The study argues that a representation helps when its relations match the current bottleneck; a broader hybrid can also add distracting material.
+
+This is useful evidence for task-dependent analysis selection and for exposing reusable repository projections to agents within a shared practice. The treatment combines representation content, instructions, and a map-first hook, and uses one model configuration with one run per instance. Benchmark success and token use do not establish account fidelity, patch quality, human usefulness, or the no-source premise.
+
+Review basis (9 November 2026): primary metadata and selected full-text sections on workflows, benchmarks, results, behavioral analysis, discussion, and validity threats.
 
 ### 1.5 LLMs and software architecture — broader background
 
