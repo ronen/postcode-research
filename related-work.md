@@ -68,6 +68,14 @@ For PostCode, this supplies constructive and field-based evidence that a shared 
 
 Review basis (9 November 2026): primary metadata and selected full-text sections on architecture, controlled studies, field operation, lessons, instrument failures, and validity. The findings support design knowledge and comparison conditions for collaborative practice; they do not establish PostCode's account quality or human usefulness.
 
+**Zhu, L., Lu, Q., & Ding, M. (2026). _Understanding-First AI Engineering: Purposes, Reference Architecture, and Architectural Patterns for Human Understanding._ Preprint, arXiv:2611.13022; submitted 9 November 2026.** [Paper](https://arxiv.org/abs/2611.13022)
+
+Proposes purpose-specific understanding requirements and shared records connecting production, verification, use, and exploration. Its candidate patterns separate explanatory representations from production and exploration from commitment. Hypothetical scenarios illustrate design consequences, not empirical effectiveness.
+
+For PostCode, this is conceptual prior art at the direct-investigation and collaborative-practice levels: accepted output, supported explanation, human understanding, and decision authority need separate evidence. Compare one retained account against a specific subsequent architectural decision, including its scope and renewal needs. This supports evaluation design, not a claim that PostCode improves understanding or must become an educational system.
+
+Review basis (23 November 2026): primary metadata and selected PDF introduction, understanding definitions, reference architecture, and pattern discussion. No implementation or human study was validated.
+
 ### 1.2 Human oversight of software agents
 
 **Dhanorkar, S., Passi, S., & Vorvoreanu, M. (2026). _Human oversight of agentic systems in practice: Examining the oversight work, challenges, and heuristics of developers using software agents._ FAccT 2026 / arXiv:2606.05391.**
@@ -173,6 +181,14 @@ Tracybot groups planning and build prompts with agent responses into Tasklets, m
 The mechanism is close prior art for retained conversation provenance and for connecting a recorded assertion to the implementation it influenced. The recorded prompt is evidence of communicated intent, not proof that the rationale is sound or current; human-judgment decision-record fields remain for people to complete. Participants did not use the tool directly, and the evaluation does not establish better understanding, intent accuracy, architecture quality, or source-independent practice.
 
 Review basis (9 November 2026): primary metadata and selected full-text sections on Tasklets, mapping and history, decision-record export, design iterations, participant evidence, and limitations.
+
+**Sahni, R., Kaul, A., Bhatnagar, A., Zhang, X., Liu, V., Vir, R., & Chilton, L. B. (2026). _Rasoi: Visual Diffs for Evaluating Structural Changes Made by Coding Agents._ Preprint, arXiv:2611.16293; submitted 12 November 2026.** [Paper](https://arxiv.org/abs/2611.16293)
+
+Provisional close comparator. The primary indexed abstract describes multilevel structural diffs and a week-long deployment with twelve developers using their own codebases. It reports help noticing scope deviations and restructuring.
+
+This directly overlaps PostCode's conceptual-change review and sustained-use questions. The next step is to inspect the methods, baseline, source exposure, and evidence behind the reported observations before treating them as demonstrated comprehension gains. Confidence in one's review is distinct from independently correct judgment; no source-independent practice claim is supported by the inspected material.
+
+Review basis (23 November 2026): indexed primary arXiv abstract and metadata only. Direct abstract, versioned abstract, HTML and PDF retrieval failed. Study instruments, implementation, and full limitations remain unassessed.
 
 ### 1.3 Code comprehension and software visualization
 
@@ -301,6 +317,14 @@ Cognitive Tours is a web prototype for human-curated paths connecting goals, use
 This is a close constructive comparator for making partial understanding persistent and revisable. It proposes productive friction, human curation, and explicit open questions as design knowledge rather than claiming an automatically recovered or complete account. The self-use episode and planned evaluation do not yet establish reduced cognitive debt, human effectiveness, or superiority over chat, diagrams, or ordinary notes.
 
 Review basis (9 November 2026): primary metadata and full paper, including design goals, interactions, self-use episode, risks, and proposed evaluation agenda.
+
+**mefaba (2026). _ArchLens._ Technical project.** [Repository](https://github.com/mefaba/archlens-release) · [Inspected README](https://github.com/mefaba/archlens-release/blob/961069214434c6bab44c716f5346b80bf3990a17/README.md)
+
+Documents agent-generated architectural, sequence, and call-list perspectives, scenario playback, hierarchical detail, and labels distinguishing code-derived, documented, observed, and inferred information. This is a close presentation and agent-interaction comparator for PostCode, rather than just a generic diagram generator.
+
+Compare one scenario across views, checking whether provenance survives navigation and whether animation is mistaken for runtime evidence. Method labels alone do not establish completeness or semantic guarantees. Separately inspect implementation and licensing before considering infrastructure reuse; the README identifies a competition-restricting license, so this is not assumed to be freely reusable infrastructure.
+
+Review basis (23 November 2026): README pinned to commit `961069214434c6bab44c716f5346b80bf3990a17` (19 November). Newly found, not established as newly released. No installation, implementation validation, or human-effect evaluation performed. Its source-editor links do not establish whether useful investigation can be completed without human source exposure.
 
 ### 1.4 Architecture and agent-generated software
 
